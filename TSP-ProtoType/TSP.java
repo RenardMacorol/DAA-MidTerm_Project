@@ -1,8 +1,9 @@
 public class TSP {
     public static void main(String[] args) {
         Graph graph = new Graph(4);
-
-        graph.addNode(new Node("St. Peter"));
+        Node node = new Node();
+        node.setData("St. Peter");
+        graph.addNode(node);
         graph.addNode(new Node("St. John"));
         graph.addNode(new Node("Lanao"));
         graph.addNode(new Node("Maguindanao"));

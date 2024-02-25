@@ -27,7 +27,7 @@ public class Graph {
     }
 
     public void print() {
-        System.out.println("  ");
+        System.out.print("  ");
         for(Node node : nodes){
             System.out.print(node.data + " ");
         }
