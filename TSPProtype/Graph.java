@@ -20,19 +20,19 @@ public class Graph {
     }
 
     public void print() {
-        StringBuilder s = new StringBuilder();
-        s.append("           ");
+        StringBuilder str = new StringBuilder();
+        str.append("           ");
         for (Node nodes : nodes) {
-            s.append(String.format("%7s ", nodes.data));
+            str.append(String.format("%7s ", nodes.data));
         }
-        s.append("\n");
+        str.append("\n");
         for (int i = 0; i < matrix.length; i++) {
-            s.append(String.format("%-10s", nodes.get(i).data));
+            str.append(String.format("%-10s", nodes.get(i).data));
             for (int j = 0; j < matrix[i].length; j++) {
-                s.append(String.format("\t%-2d", matrix[i][j]));
+                str.append(String.format("\t%-2d", matrix[i][j]));
             }
-            s.append("\n");
+            str.append("\n");
         }
-        System.out.println(s);
+        System.out.println(str);
     }
 }
