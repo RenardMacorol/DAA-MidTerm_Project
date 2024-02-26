@@ -48,7 +48,7 @@ public class Graph {
         return matrix;
     }
 
-    public ArrayList<Node> getArrayList(){
+    public ArrayList<Node> getNode(){
         return nodes;
     }
 }

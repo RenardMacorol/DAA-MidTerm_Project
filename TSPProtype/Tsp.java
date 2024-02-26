@@ -26,6 +26,6 @@ public class Tsp{
         graph.addEdge(3, 2, 100);
 
         graph.print();
-        Search search = new Search(graph.getMatrix(), 0);
+        Search search = new Search(graph,0);
     }
 }
