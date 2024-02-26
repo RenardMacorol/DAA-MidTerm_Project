@@ -1,8 +1,18 @@
 package TSPProtype;
 
 public class Node {
-    String data;
+    private String data;
     Node(String data){
         this.data= data;
     }
+
+    public void set(String data){
+        this.data = data;
+    }
+
+    public String getData(){
+        return data;
+    }
+
+    
 }
