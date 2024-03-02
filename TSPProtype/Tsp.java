@@ -4,8 +4,8 @@ public class Tsp{
     public static void main(String[] args) {
         Graph graph = new Graph(4);
 
-        graph.addNode(new Node("St. Peter"));
-        graph.addNode(new Node("St. John"));
+        graph.addNode(new Node("St.Peter"));
+        graph.addNode(new Node("St.John"));
         graph.addNode(new Node("Lanao"));
         graph.addNode(new Node("Maguindanao"));
 
@@ -26,6 +26,5 @@ public class Tsp{
         graph.addEdge(3, 2, 100);
 
         graph.print();
-        Search search = new Search(graph,0);
     }
 }

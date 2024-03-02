@@ -1,18 +1,19 @@
 package TSPProtype;
 
 public class Node {
-    private String data;
-    Node(String data){
-        this.data= data;
-    }
-
-    public void set(String data){
-        this.data = data;
-    }
-
-    public String getData(){
-        return data;
-    }
-
+    private String location;
     
+    Node(String location) {
+    
+        this.location = location;
+    }
+
+    public void setData(String data) {
+        this.location = data;
+    }
+
+    public String getData() {
+        return location;
+    }
+
 }

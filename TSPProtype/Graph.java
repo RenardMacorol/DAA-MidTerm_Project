@@ -2,15 +2,40 @@ package TSPProtype;
 
 import java.util.ArrayList;
 
+
 public class Graph {
     private int[][] matrix;
     private ArrayList<Node> nodes;
+    private int size;
+   
 
     Graph(int size) {
+        this.size = size;
         setArrayList();
         setMatrix(size);
     }
 
+    public void setMatrix(int size) {
+        matrix = new int[size][size];
+    }
+
+    public void setArrayList() {
+        nodes = new ArrayList<>();
+    }
+
+    public int[][] getMatrix() {
+        return matrix;
+    }
+
+    public ArrayList<Node> getNode() {
+        return nodes;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    // Functions for adding Nodes and edge of the Graph
     public void addNode(Node node) {
         nodes.add(node);
     }
@@ -19,6 +44,7 @@ public class Graph {
         matrix[source][destination] = distance;
     }
 
+    // Print statement for debugging and refference purposes
     public void print() {
         StringBuilder str = new StringBuilder();
         str.append("           ");
@@ -36,19 +62,5 @@ public class Graph {
         System.out.println(str);
     }
 
-    public void setMatrix(int size){
-        matrix = new int[size][size];
-    }
     
-    public void setArrayList(){
-        nodes = new ArrayList<>();
-    }
-
-    public int[][] getMatrix(){
-        return matrix;
-    }
-
-    public ArrayList<Node> getNode(){
-        return nodes;
-    }
 }
