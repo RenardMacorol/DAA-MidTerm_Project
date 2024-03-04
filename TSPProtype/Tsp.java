@@ -26,5 +26,8 @@ public class Tsp{
         graph.addEdge(3, 2, 100);
 
         graph.print();
+
+        ShortestPath s = new ShortestPath();
+        s.shortestPath(graph, 0);
     }
 }
