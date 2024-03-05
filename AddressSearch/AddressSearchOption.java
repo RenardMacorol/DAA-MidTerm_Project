@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AddressSearchOption {
-    AddressSearchOption(){
+    public AddressSearchOption(){
          // creates a list of addresses and add sample addresses
          List<String> addresses = new ArrayList<>();
          //adds address to the list

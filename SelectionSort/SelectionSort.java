@@ -2,7 +2,7 @@ package SelectionSort;
 import java.util.*;
 
 public class SelectionSort {
-    SelectionSort(){
+    public SelectionSort(){
         Product[] products = {
             new Product("Canned Goods", "5", 450),
             new Product("Cooking Oil", "3", 725),

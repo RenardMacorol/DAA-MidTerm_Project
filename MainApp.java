@@ -11,6 +11,9 @@ public class MainApp{
         //Tago ko muna
         //Frame frame = new Frame();
         //LabelTest label = new LabelTest();
+        SelectionSort s = new SelectionSort();
+        Tsp cd = new Tsp();
+        AddressSearchOption adSearch = new AddressSearchOption();
         
     }
    
