@@ -1,7 +1,7 @@
 package CustomerDelivery;
 
 public class Tsp{
-    public static void main(String[] args) {
+    public Tsp(){
         Graph graph = new Graph(4);
 
         graph.addNode(new Node("St.Peter"));
@@ -30,4 +30,5 @@ public class Tsp{
         ShortestPath s = new ShortestPath();
         s.shortestPath(graph, 0);
     }
+    
 }

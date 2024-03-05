@@ -1,8 +1,10 @@
 
 import javax.swing.*;
 
-import GUI.Frame;
-import GUI.LabelTest;
+import GUI.*;
+import AddressSearch.*;
+import CustomerDelivery.*;
+import SelectionSort.*;
 
 public class MainApp{
     public static void main(String[] args) {
