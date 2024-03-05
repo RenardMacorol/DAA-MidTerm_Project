@@ -1,10 +1,11 @@
+package GUI;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class Frame {
     JFrame frame;
     JButton aboutButton;
-    Frame(){
+    public Frame(){
         frame = new JFrame("ERE");
         
         aboutButton = new JButton("About Us They/Them wbahhaha");

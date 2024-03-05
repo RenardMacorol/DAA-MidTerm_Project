@@ -1,3 +1,4 @@
+package SelectionSort;
 
 public class Product {
     String name;

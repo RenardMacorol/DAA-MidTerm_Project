@@ -1,4 +1,4 @@
-package TSPProtype;
+package CustomerDelivery;
 
 public class Tsp{
     public static void main(String[] args) {
