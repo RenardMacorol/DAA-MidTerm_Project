@@ -1,14 +1,18 @@
 package CustomerDelivery;
 
+import java.util.Map;
+
 public class Tsp{
     public Tsp(){
         Graph graph = new Graph(4);
 
-        graph.addNode(new Node("St.Peter"));
-        graph.addNode(new Node("St.John"));
-        graph.addNode(new Node("Lanao"));
-        graph.addNode(new Node("Maguindanao"));
-
+       // graph.addNode(new Node("St.Peter"));
+        //graph.addNode(new Node("St.John"));
+        //graph.addNode(new Node("Lanao"));
+        //graph.addNode(new Node("Maguindanao"));
+        String[] locations = {"St.Peter","St.John","Lanao","Maguinadanao"};
+        String startLocation = "St.Peter";
+        /* */
         graph.addEdge(0, 1, 300);
         graph.addEdge(0, 2, 150);
         graph.addEdge(0, 3, 200);
@@ -24,11 +28,18 @@ public class Tsp{
         graph.addEdge(3, 0, 200);
         graph.addEdge(3, 1, 200);
         graph.addEdge(3, 2, 100);
-
-        graph.print();
-
+        
+        int totalDistance=0;
         ShortestPath s = new ShortestPath();
-        s.shortestPath(graph, 0);
+        Map<String,Integer> shortestDistance = s.shortestPath(graph.getMatrix(),locations,startLocation);
+        System.out.println("Shortes Distance from "+ startLocation + ":");
+        for(Map.Entry<String, Integer> entry : shortestDistance.entrySet()){
+            System.out.println("To" + entry.getKey() + " :" + entry.getValue());
+            totalDistance+=entry.getValue();
+        }
+        System.out.println(totalDistance);
+        
+        
     }
     
 }
