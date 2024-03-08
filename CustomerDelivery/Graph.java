@@ -17,7 +17,7 @@ public class Graph {
     public void setMatrix(int size) {
         matrix = new int[size][size];
     }
-
+    
    
 
     public int[][] getMatrix() {

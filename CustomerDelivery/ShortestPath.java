@@ -12,7 +12,8 @@ public class ShortestPath {
         for(int i =0; i< numVertices;i++){
             locationToIndex.put(locations[i], i);
         }
-        int startIndex = locationToIndex.get(startLocation);
+        Integer startIndex = locationToIndex.get(startLocation);
+       
         int[] distance = new int[numVertices];
         boolean[] isVisited = new boolean[numVertices];
 
@@ -22,11 +23,11 @@ public class ShortestPath {
         distance[startIndex] = 0;
 
         for (int i = 0; i < numVertices - 1; i++) {
-            Integer minVertex = findMinVertex(distance, isVisited);
+            int  minVertex = findMinVertex(distance, isVisited);
             isVisited[minVertex] = true;
 
             for (int j = 0; j < numVertices; j++) {
-                if (graph[minVertex][j] != 0 && !isVisited[j] && distance[minVertex] != Integer.MAX_VALUE) {
+                if (graph[minVertex][j] != 0 && !isVisited[j] && distance[minVertex] != Integer.MAX_VALUE){
                     int newDistance = distance[minVertex] + graph[minVertex][j];
                     if (newDistance < distance[j]) {
                         distance[j] = newDistance;
@@ -37,7 +38,10 @@ public class ShortestPath {
 
         Map<String,Integer> shortestDistance = new HashMap<>();
         for(int i =0; i < numVertices;i++){
-            shortestDistance.put(locations[i], distance[i]);
+            if(locations[i]!=locations[startIndex]){
+                shortestDistance.put(locations[i], distance[i]);
+            }
+           
         }
         return shortestDistance;
     }
@@ -45,7 +49,7 @@ public class ShortestPath {
     private int findMinVertex(int[] distance, boolean[] isVisited) {
         int minVertex = 0;
         for (int i = 0; i < distance.length; i++) {
-            if (!isVisited[i] && (minVertex == 0) || distance[i] < distance[minVertex]) {
+            if (!isVisited[i] && (minVertex == -1) || distance[i] < distance[minVertex]) {
                 minVertex = i;
             }
         }

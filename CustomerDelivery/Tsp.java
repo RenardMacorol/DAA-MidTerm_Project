@@ -11,7 +11,7 @@ public class Tsp{
         //graph.addNode(new Node("Lanao"));
         //graph.addNode(new Node("Maguindanao"));
         String[] locations = {"St.Peter","St.John","Lanao","Maguinadanao"};
-        String startLocation = "St.Peter";
+        String startLocation = "Maguinadanao";
         /* */
         graph.addEdge(0, 1, 300);
         graph.addEdge(0, 2, 150);
@@ -29,16 +29,17 @@ public class Tsp{
         graph.addEdge(3, 1, 200);
         graph.addEdge(3, 2, 100);
         
-        int totalDistance=0;
+    
         ShortestPath s = new ShortestPath();
+        int totalValue = 0;
         Map<String,Integer> shortestDistance = s.shortestPath(graph.getMatrix(),locations,startLocation);
-        System.out.println("Shortes Distance from "+ startLocation + ":");
+        System.out.println("Shortest Distance from "+ startLocation + ":");
         for(Map.Entry<String, Integer> entry : shortestDistance.entrySet()){
-            System.out.println("To" + entry.getKey() + " :" + entry.getValue());
-            totalDistance+=entry.getValue();
+            System.out.println(" To " + entry.getKey() + " : " + entry.getValue());
+            totalValue+=entry.getValue();
         }
-        System.out.println(totalDistance);
-        
+        System.out.println("Total Value: "+ totalValue);
+         
         
     }
     
