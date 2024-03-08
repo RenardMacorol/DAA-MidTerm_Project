@@ -1,8 +1,6 @@
 package CustomerDelivery;
 
 
-
-
 public class Graph {
     private int[][] matrix;
     

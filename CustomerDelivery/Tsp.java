@@ -2,17 +2,26 @@ package CustomerDelivery;
 
 
 import java.util.Map;
+import java.util.Scanner;
 
 public class Tsp{
+    Scanner s = new Scanner(System.in);
     public Tsp(){
+        
+        System.out.println("Choose the location you want to start");
+        
         Graph graph = new Graph(4);
-
-       // graph.addNode(new Node("St.Peter"));
-        //graph.addNode(new Node("St.John"));
-        //graph.addNode(new Node("Lanao"));
-        //graph.addNode(new Node("Maguindanao"));
         String[] locations = {"St.Peter","St.John","Lanao","Maguinadanao"};
-        String startLocation = "St.John";
+        int input=0;
+        System.out.println("Locations:");
+        for(int i = 0;i< locations.length;i++){
+            System.out.print( i+1+" " +locations[i]+" "+ " ");
+            
+        }
+        System.out.println();
+        input = s.nextInt();
+        String startLocation=locations[input-1];
+        
          
         /* */
         graph.addEdge(0, 1, 300);
@@ -44,5 +53,7 @@ public class Tsp{
          
         
     }
+
+    
     
 }
