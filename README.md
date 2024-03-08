@@ -1,17 +1,11 @@
 # DAA-MidTerm_Project
 Project for Miterm requirement for DAA
-
-## Materials Needed:
-- Manila Paper
-- Glue
-- Pentelpen
-- Tape
-- Glitters
-- Coupon Bond
-- Crayons/Colored Pencil
-- Pencil
-- Eraser
-
+#Problem 
+- Create a Program with using any GUI. The program should have the following programs
+- 1.Knapsack
+- 2.Selection Sort
+- 3.Customer's Delivery / aka TSP
+- 4.String Matching
 >[!Caution]
 ># Deadline 
 > # March 16 2024
