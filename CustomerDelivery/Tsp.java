@@ -1,5 +1,6 @@
 package CustomerDelivery;
 
+
 import java.util.Map;
 
 public class Tsp{
@@ -11,7 +12,8 @@ public class Tsp{
         //graph.addNode(new Node("Lanao"));
         //graph.addNode(new Node("Maguindanao"));
         String[] locations = {"St.Peter","St.John","Lanao","Maguinadanao"};
-        String startLocation = "Maguinadanao";
+        String startLocation = "St.John";
+         
         /* */
         graph.addEdge(0, 1, 300);
         graph.addEdge(0, 2, 150);
