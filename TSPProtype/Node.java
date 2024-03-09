@@ -1,4 +1,4 @@
-package CustomerDelivery;
+package TSPProtype;
 
 public class Node {
     private String location;
