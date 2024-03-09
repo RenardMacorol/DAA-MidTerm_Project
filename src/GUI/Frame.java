@@ -1,4 +1,4 @@
-package GUI;
+package src.GUI;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 

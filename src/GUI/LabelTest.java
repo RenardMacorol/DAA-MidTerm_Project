@@ -1,4 +1,4 @@
-package GUI;
+package src.GUI;
 import javax.swing.JLabel;
 
 public class LabelTest extends Frame {
