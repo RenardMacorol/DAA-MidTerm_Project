@@ -1,10 +1,10 @@
-package CustomerDelivery;
+package src.CustomerDelivery;
 
 public class Node {
     private String location;
-    
+
     Node(String location) {
-    
+
         this.location = location;
     }
 

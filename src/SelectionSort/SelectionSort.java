@@ -1,4 +1,4 @@
-package SelectionSort;
+package src.SelectionSort;
 import java.util.*;
 
 public class SelectionSort {

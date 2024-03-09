@@ -1,11 +1,9 @@
-package CustomerDelivery;
-
+package src.CustomerDelivery;
 
 public class Graph {
     private int[][] matrix;
-    
+
     private int size;
-   
 
     Graph(int size) {
         this.size = size;
@@ -16,13 +14,10 @@ public class Graph {
         matrix = new int[size][size];
     }
 
-   
-
     public int[][] getMatrix() {
         return matrix;
     }
 
-   
     public int getSize() {
         return size;
     }
@@ -34,7 +29,5 @@ public class Graph {
     }
 
     // Print statement for debugging and refference purposes
-   
 
-    
 }
