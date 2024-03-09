@@ -1,22 +1,27 @@
 package src.GUI;
+import java.awt.Color;
+//import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class Frame {
-    JFrame frame;
-    JButton aboutButton;
+public class Frame extends JFrame{
+
     public Frame(){
-        frame = new JFrame("ERE");
         
-        aboutButton = new JButton("About Us They/Them wbahhaha");
-        //frame settings
-        frame.setSize(1080,800);
-        frame.setVisible(true); // sige i false moto yari ka sakin charutt
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //Butones settings
-        aboutButton.setBounds(100,100,100,100);
-        //Add elements
-        frame.add(aboutButton);
+        //Frame settings
+        this.setTitle("2BSCS-1 Miderm Project");
+        this.setSize(1080,800);//Title of this not the whole program?
+        this.setVisible(true); // sige i false moto yari ka sakin charutt
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(true); 
+        //Background color
+        //Note naka custom color ako dito guys kasi gusto ko NOTE!=Cream color yan 224,220,200
+        this.getContentPane().setBackground(new Color(224,220,200));
+        /*for logo 
+        ImageIcon image = new ImageIcon("insert image");
+        this.setIconImage(image.getImage());
+        */
+        
     }
     
         

@@ -9,8 +9,8 @@ import src.SelectionSort.*;
 public class MainApp {
     public static void main(String[] args) {
 
-        // Frame frame = new Frame();
-        // LabelTest label = new LabelTest();
+       MainGui gui = new MainGui();
+
         SelectionSort s = new SelectionSort();
         Tsp cd = new Tsp();
         AddressSearchOption adSearch = new AddressSearchOption();
