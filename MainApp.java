@@ -1,9 +1,10 @@
 
 import javax.swing.*;
 
-import GUI.*;
+
 import AddressSearch.*;
-import CustomerDelivery.*;
+
+import Delivery.Tsp;
 import SelectionSort.*;
 
 public class MainApp{
