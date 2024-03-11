@@ -1,5 +1,3 @@
-package src.SelectionSort;
-
 public class Product {
     String name;
     String weight;
