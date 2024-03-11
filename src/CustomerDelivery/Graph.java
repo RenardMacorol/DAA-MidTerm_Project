@@ -29,5 +29,29 @@ public class Graph {
     }
 
     // Print statement for debugging and refference purposes
-
+    public void print(String[] locations) {
+        StringBuilder s = new StringBuilder();
+        s.append("           ");
+        StringBuilder str = new StringBuilder();
+        str.append("           ");
+        for(int i=0; i<locations.length;i++){
+            s.append(String.format("%7s ", locations[i]));
+            str.append(String.format("%7s ", locations[i]));
+        }
+        
+        s.append("\n");
+        str.append("\n");
+        for (int i = 0; i < matrix.length; i++) {
+            s.append(String.format("%-10s", locations[i]));
+            str.append(String.format("%-10s", locations[i]));
+            for (int j = 0; j < matrix[i].length; j++) {
+                s.append(String.format("\t%-2d", matrix[i][j]));
+                str.append(String.format("\t%-2d", matrix[i][j]));
+            }
+            s.append("\n");
+            str.append("\n");
+        }
+        System.out.println(s);
+        //System.out.println(str);
+    }
 }
