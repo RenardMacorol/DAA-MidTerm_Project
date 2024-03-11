@@ -21,7 +21,7 @@ public class Tsp {
         locations.add("Farm World");
         locations.add("Land of OO");
         locations.add("Beutopia");
-        String[] locationArr = { "Tree House", "Candy Kingdom", "Farm World", "Land of OO", "Beutopia" };
+        String[] locationArr = { "Tree House", "Candy Kingdom", "Farm World", "Ice Kingdom", "Beutopia" };
 
         int input = 0;
 
