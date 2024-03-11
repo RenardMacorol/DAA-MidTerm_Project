@@ -64,17 +64,18 @@ public class MainApp extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        //new MainApp();
+        new MainApp();
 
         // KnapsackMain knapsackMain = new KnapsackMain();
         // SelectionSort selectionSort = new SelectionSort();
-         Tsp tsp = new Tsp();
+        // Tsp tsp = new Tsp();
         // AddressSearchOption addressSearchOption = new AddressSearchOption();
 
     }
 
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Hala pinindot mo");
+        dispose();
+        Frame2 frame2 = new Frame2();
     }
 
 }
