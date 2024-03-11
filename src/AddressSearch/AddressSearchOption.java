@@ -8,9 +8,11 @@ public class AddressSearchOption {
          // creates a list of addresses and add sample addresses
          List<String> addresses = new ArrayList<>();
          //adds address to the list
-         addresses.add("1 St. Peter Street, Peter Subdivision, Culiat, Quezon City");
-         addresses.add("2 Main Street, Main Subdivision, Mainland, Main City");
-         addresses.add("1 St. John Street, Peter Subdivision, Culiat, Quezon City");
+         addresses.add("234 Bubble Gum Stree, Candy Kingdom, Land Of Ooo");
+         addresses.add("154 Marceline Street, Candy Knigdom, Lnd of Ooo");
+         addresses.add("617, Fiin Street, Farmworlds, Land of Ooo);
+         addresses.add("192, Ice King Street, Ice Kindom, Land of Ooo");
+         addresses.add("808, Jake Street, Beautopia, Land of Ooo");
  
          // creates an instance of AddressSearch, passing the list of addresses
          AddressSearch addressSearch = new AddressSearch(addresses);
