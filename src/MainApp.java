@@ -32,6 +32,7 @@ public class MainApp extends JFrame implements ActionListener {
         attitudeIcon.setHorizontalAlignment(JLabel.CENTER);
         
         JButton start = new JButton("Start");
+        
         start.setBounds(425, 370, 100, 100);
         start.addActionListener(this);
         startPanel.add(start,BorderLayout.CENTER);
@@ -54,6 +55,7 @@ public class MainApp extends JFrame implements ActionListener {
         setSize(1000, 563);
         setBackground(Color.BLACK);
         setVisible(true);
+        setResizable(false);
         startPanel.add(attitudeIcon,BorderLayout.CENTER);
         startPanel.setBounds(0, 0, 500, 500);
         this.add(startPanel);
