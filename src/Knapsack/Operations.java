@@ -3,6 +3,8 @@ package src.Knapsack;
 import java.util.ArrayList;
 import java.util.List;
 
+import src.SelectionSort.SelectionSort;
+
 public class Operations {
 
     public void setItemArray(Items[] itemArray) {
@@ -125,7 +127,6 @@ public class Operations {
     }
 
     public static String printWeight(List<Items> outcome) {
-        double total = 0;
         int n = 0;
         StringBuilder builder = new StringBuilder();
         for (Items i : outcome) {
@@ -160,21 +161,38 @@ public class Operations {
     }
 
     public void printFeasible(int cart) {
+        
+        List<Double> w = new ArrayList<>();
+        List<Double> v = new ArrayList<>();
+        List<List<Items>> l = new ArrayList<>();
+        
         System.out.printf("%n%-55s%-40s%-30s%n", "ITEM/S", "WEIGHTS", "VALUES");
         int n = 0;
         int c = 0;
         for (List<Items> i : getSubsetList()) {
-            if (computeWeight(i) <= cart && computeWeight(i) != 0) {
+            double weightTotal = computeWeight(i);
+            if (weightTotal <= cart && weightTotal != 0) {
                 System.out.printf("%2d%s%-50s", n + 1, ".) ", printProductName(i));
                 System.out.printf("%-40s", printWeight(i));
                 System.out.printf("%-30s%n", printValue(i));
                 n++;
                 c++;
+
+                w.add(computeWeight(i));
+                v.add(computeValue(i));
+                l.add(getSubsetList().get(n));
             }
         }
+        
+        setFeasibleList(l);
+        setWTotal(w);
+        setVTotal(v);
+
+
         if (c==0){
             System.out.printf("%-55s%n", "No items are feasible");
         }
+
         else {
             printBestValue(cart);
         }
@@ -189,7 +207,15 @@ public class Operations {
             System.out.printf("%-5s%n", i.getValue());
         }
     }
+    private List<List<Items>> feasibleList;
 
+    public List<List<Items>> getFeasibleList() {
+        return feasibleList;
+    }
+
+    public void setFeasibleList(List<List<Items>> feasibleList) {
+        this.feasibleList = feasibleList;
+    }
 
     private List<Double> WTotal;
 
@@ -212,26 +238,10 @@ public class Operations {
     private List<Double> VTotal;
 
     public double bestValue(int cart) {
-        int b = 0;
-
-        List<Double> w = new ArrayList<>();
-        List<Double> v = new ArrayList<>();
-        for (List<Items> i : getSubsetList()) {
-            double feasibleWeights = computeWeight(i);
-            if (feasibleWeights <= cart && feasibleWeights != 0) {
-                w.add(computeWeight(i));
-                v.add(computeValue(i));
-
-            }
-        }
-
-        setWTotal(w);
-        setVTotal(v);
-
-        double best = VTotal.get(0);
-        for (int i=1; i<VTotal.size(); i++) {
-            if (VTotal.get(i)>best){
-                best = VTotal.get(i);
+        double best = getVTotal().get(0);
+        for (int i=1; i<getVTotal().size(); i++) {
+            if (getVTotal().get(i)>best){
+                best = getVTotal().get(i);
             }
         }
         return best;
@@ -252,6 +262,12 @@ public class Operations {
                 }
             }
         }
+    }
+
+    public void printSort(){
+        SelectionSort s = new SelectionSort();
+        s.selectionSortByWV(getWTotal());
+        System.out.println(getWTotal());
     }
 }
 

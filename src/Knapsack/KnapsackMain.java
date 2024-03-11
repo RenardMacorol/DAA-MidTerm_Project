@@ -13,5 +13,8 @@ public class KnapsackMain {
         int cart = sc.nextInt();
 
         op.printFeasible(cart);
+        op.printSort();
+
+        sc.close();
     }
 }
