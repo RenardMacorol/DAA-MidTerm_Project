@@ -6,10 +6,10 @@ import java.awt.FlowLayout;
 import javax.swing.*;
 
 import src.AddressSearch.AddressSearchOption;
-import src.CustomerDelivery.ShortestPath;
-import src.CustomerDelivery.Tsp;
 import src.Knapsack.KnapsackMain;
+
 import src.SelectionSort.SelectionSort;
+import src.TSP.Tsp;
 
 public class MainApp extends JFrame {
 
