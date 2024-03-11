@@ -89,12 +89,12 @@ public class Tsp {
         
     }
 
-    private static int factorial(int n) {
+    /*private static int factorial(int n) {
         if (n <= 1)
             return 1;
         else
             return n * factorial(n - 1);
-    }
+    }*/
 
     //
     // Function to calculate total distance of the tour
