@@ -2,6 +2,12 @@ package src;
 
 import javax.swing.*;
 
+import src.AddressSearch.AddressSearchOption;
+import src.CustomerDelivery.ShortestPath;
+import src.CustomerDelivery.Tsp;
+import src.Knapsack.KnapsackMain;
+import src.SelectionSort.SelectionSort;
+
 public class Main extends JFrame {
     private JLabel Welcome;
     private JPanel MainPanel;
@@ -19,7 +25,13 @@ public class Main extends JFrame {
     }
 
     public static void main(String[] args) {
-        new Main();
+        //new Main();
+        KnapsackMain knapsackMain = new KnapsackMain();
+        SelectionSort selectionSort = new SelectionSort();
+        Tsp tsp = new Tsp();
+        AddressSearchOption addressSearchOption = new AddressSearchOption();
+        
+        
     }
 
 }
