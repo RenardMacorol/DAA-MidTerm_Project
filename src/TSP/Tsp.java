@@ -11,6 +11,8 @@ public class Tsp {
     Scanner s = new Scanner(System.in);
 
     public Tsp() {
+        System.out.println("Enter your Name: ");
+        String name = s.nextLine();
 
         Graph graph = new Graph(5);
         ArrayList<String> locations = new ArrayList<>();
@@ -70,17 +72,21 @@ public class Tsp {
         ArrayList<Integer> minTour = new ArrayList<>();
         for (ArrayList<Integer> permutation : permutations) {
             double distance = tourDistance(permutation, graph.getMatrix());
+            
             if (distance < minDistance) {
+                
                 minDistance = distance;
                 minTour = permutation;
             }
         }
+        
 
         System.out.println("Minimum distance: " + minDistance);
         System.out.print("Optimal tour: " );
         minTour.forEach((i)->System.out.print(locationArr[i]+" "));
         
-
+        
+        
     }
 
     private static int factorial(int n) {
