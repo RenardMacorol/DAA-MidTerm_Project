@@ -66,11 +66,11 @@ public class MainApp extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new MainApp();
+        //new MainApp();
 
         // KnapsackMain knapsackMain = new KnapsackMain();
         // SelectionSort selectionSort = new SelectionSort();
-        // Tsp tsp = new Tsp();
+        Tsp tsp = new Tsp();
         // AddressSearchOption addressSearchOption = new AddressSearchOption();
 
     }
