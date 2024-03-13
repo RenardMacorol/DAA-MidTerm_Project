@@ -10,11 +10,11 @@ public class AddressSearchOption {
          //adds address to the list
          addresses.add("234 Bubble Gum Stree, Candy Kingdom, Land Of Ooo");
          addresses.add("154 Marceline Street, Candy Knigdom, Lnd of Ooo");
-         addresses.add("617, Fiin Street, Farmworlds, Land of Ooo);
+         addresses.add("617, Fiin Street, Farmworlds, Land of Ooo");
          addresses.add("192, Ice King Street, Ice Kindom, Land of Ooo");
          addresses.add("808, Jake Street, Beautopia, Land of Ooo");
  
-         // creates an instance of AddressSearch, passing the list of addresses
+         //creates an instance of AddressSearch, passing the list of addresses
          AddressSearch addressSearch = new AddressSearch(addresses);
  
          // get user input
