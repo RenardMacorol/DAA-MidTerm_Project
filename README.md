@@ -6,6 +6,12 @@ Project for Miterm requirement for DAA
 - 2.Selection Sort
 - 3.Customer's Delivery / aka TSP
 - 4.String Matching
+## Design Principle
+<strong>S</strong>ingle responsilbity principle 
+<strong>O</strong>pen closed principle
+<strong>L</strong>iskov subsitution principle
+<strong>I</strong>nterface Segregation Principle
+<strong>D</strong>ependency Inversion Principle
 >[!Caution]
 ># Deadline 
 > # March 16 2024
