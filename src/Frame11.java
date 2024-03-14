@@ -31,7 +31,7 @@ public class Frame11 extends JFrame {
         JLabel wonka = new JLabel("Renard B. Macorol");
         wonka.setVerticalAlignment(JLabel.CENTER);
         wonka.setHorizontalAlignment(JLabel.CENTER);
-        JLabel juls = new JLabel("Juliana Mancera");
+        JLabel juls = new JLabel("Juliana R. Mancera");
         juls.setVerticalAlignment(JLabel.CENTER);
         juls.setHorizontalAlignment(JLabel.CENTER);
         JLabel thoby = new JLabel("Thoby Jim R. Ralleta");
@@ -49,7 +49,7 @@ public class Frame11 extends JFrame {
         JLabel course = new JLabel("Design and Analysis of Algorithms");
         course.setVerticalAlignment(JLabel.CENTER);
         course.setHorizontalAlignment(JLabel.LEFT);
-        JLabel proffersor = new JLabel("Prof.Mary Jane  V. Lima");
+        JLabel proffersor = new JLabel("Prof. Mary Jane  V. Lima");
         proffersor.setVerticalAlignment(JLabel.CENTER);
         proffersor.setHorizontalAlignment(JLabel.LEFT);
         creditsMembersPanel.add(programmers);
