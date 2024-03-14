@@ -3,8 +3,7 @@ package src.Knapsack;
 import java.util.Scanner;
 
 public class KnapsackMain {
-    public static void main(String[] args) {
-
+    public KnapsackMain(){
         Operations op = new Operations();
         op.printChoices();
 
@@ -17,4 +16,5 @@ public class KnapsackMain {
 
         sc.close();
     }
+
 }
