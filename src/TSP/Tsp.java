@@ -13,8 +13,9 @@ public class Tsp {
     int shortestDistance= Integer.MAX_VALUE;
     int[] shortestDistanceValues = new int[5];
     int[] shortestPath = new int[5];
+    int input;
     public Tsp(int input) {
-    
+        this.input = input;
         String[] locationArr = { "Tree House", "Candy Kingdom", "Farm World", "Ice Kingdom", "Beutopia" };
 
         
@@ -39,10 +40,10 @@ public class Tsp {
         graph.addEdge(3, 2, 380);
         graph.addEdge(3, 4, 127);
 
-        graph.addEdge(4, 1, 425);
-        graph.addEdge(4, 2, 315);
-        graph.addEdge(4, 3, 261);
-        graph.addEdge(4, 0, 127);
+        graph.addEdge(4, 0, 425);
+        graph.addEdge(4, 1, 315);
+        graph.addEdge(4, 2, 261);
+        graph.addEdge(4, 3, 127);
         
         
         int[] node ={0,1,2,3,4};
@@ -66,6 +67,13 @@ public class Tsp {
            
         }
         str.append(locationArr[shortestPath[0]]);
+        System.out.println("debug");
+        for(int i = 0;i <shortestDistanceValues.length;i++){
+
+            System.out.println(shortestPath[i]);
+            System.out.println(shortestDistanceValues[i]);
+        }
+        
         
         output = str.toString();
        
@@ -91,14 +99,22 @@ public class Tsp {
     private void compare(int[] arr) {
         int  tempDistance=0;
         int[] distanceArr= new int[5];
+        int lastvalue=0;
         for(int i=0;i<=arr.length-2;i++){
                 tempDistance+=graph.getMatrix()[arr[i]][arr[i+1]];
                 distanceArr[i]=graph.getMatrix()[arr[i]][arr[i+1]];
                 //System.out.println(arr[i]+" "+arr[i+1]);
                 //System.out.println(graph.getMatrix()[arr[i]][arr[i+1]]);
+                lastvalue=i;
         }
-        tempDistance+=graph.getMatrix()[arr.length-1][0];
-        distanceArr[arr.length-1]=graph.getMatrix()[arr.length-1][0];
+        if(input==lastvalue){
+            lastvalue-=2;
+        }
+        System.out.println("Debug"+input+" "+lastvalue);
+        
+        tempDistance+=graph.getMatrix()[input][lastvalue];
+        distanceArr[arr.length-1]=graph.getMatrix()[input][lastvalue];
+        
         if(shortestDistance>tempDistance){
             shortestDistance=tempDistance;
             shortestPath= arr.clone();
@@ -133,4 +149,5 @@ public class Tsp {
         locationArr[l] = locationArr[i];
         locationArr[i] = temp;
     }
+   
 }

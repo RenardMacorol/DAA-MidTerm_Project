@@ -25,7 +25,7 @@ public class Frame1 extends JFrame implements ActionListener {
         startPanel.setBounds(0, 0, 500, 500);
 
         //Image 
-        ImageIcon attitudeIcon = new ImageIcon("resources/attitude.png");
+        ImageIcon attitudeIcon = new ImageIcon("resources/attitude_icon.png");
         JLabel attitudeLabel = new JLabel();
         attitudeLabel.setIcon(attitudeIcon);
         attitudeLabel.setPreferredSize(new Dimension(20, 20));

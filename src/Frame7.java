@@ -37,11 +37,17 @@ public class Frame7 extends JFrame implements ActionListener {
         // All buttons locations should be here
         JLabel buttonsLabel = new JLabel();
         buttonsLabel.setLayout(new FlowLayout());
+        ImageIcon candyKingdomIcon = new ImageIcon();
+        ImageIcon farmWorldIcon = new ImageIcon();
+        ImageIcon treeHouseIcon = new ImageIcon();
+        ImageIcon iceKingdomIcon = new ImageIcon();
+        ImageIcon beutopiaIcon = new ImageIcon();
         this.candyKingdomButton = new JButton("Candy Kingdom");
-        this.farmWorldButton = new JButton("FarmWorld");
+        this.farmWorldButton = new JButton("Farm World");
         this.treeHouseButton = new JButton("Tree House");
-        this.iceKinggdomButton = new JButton("Ice Kingdom");
+        this.iceKinggdomButton = new JButton("Ice King");
         this.beutopiaButton = new JButton("Beutopia");
+        
         candyKingdomButton.addActionListener(this);
         farmWorldButton.addActionListener(this);
         treeHouseButton.addActionListener(this);
