@@ -26,7 +26,7 @@ public class Frame5 extends JFrame implements ActionListener{
         guysIconLabel.setVerticalAlignment(JLabel.CENTER);
         guysIconLabel.setHorizontalAlignment(JLabel.CENTER);
 
-        //
+        //input label
         JLabel guyInput = new JLabel("Guy");
         guyInput.setVerticalAlignment(JLabel.CENTER);
         guyInput.setHorizontalAlignment(JLabel.CENTER);
