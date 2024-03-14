@@ -271,7 +271,7 @@ public class Operation {
             }
             // Remove trailing comma and space
             String productName = productNameBuilder.toString().trim();
-            productNames.add(productName.substring(0, productName.length() - 2));
+            productNames.add(productName.substring(0, productName.length() - 1));
         }
     
         // Perform selection sort
