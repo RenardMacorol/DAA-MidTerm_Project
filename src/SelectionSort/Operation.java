@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Comparator;
 
 public class Operation {
 
@@ -261,20 +262,17 @@ public class Operation {
     }
 
     public void printSort() {
+        // Sort by product names (already implemented)
         List<String> productNames = new ArrayList<>();
-    
-        // Extract product names from feasibleList
         for (List<Items> itemList : feasibleList) {
             StringBuilder productNameBuilder = new StringBuilder();
             for (Items item : itemList) {
                 productNameBuilder.append(item.getProductName()).append(", ");
             }
-            // Remove trailing comma and space
             String productName = productNameBuilder.toString().trim();
             productNames.add(productName.substring(0, productName.length() - 1));
         }
-    
-        // Perform selection sort
+        // Selection sort by product names
         for (int i = 0; i < productNames.size() - 1; i++) {
             int minIndex = i;
             for (int j = i + 1; j < productNames.size(); j++) {
@@ -294,106 +292,49 @@ public class Operation {
                 feasibleList.set(minIndex, tempSubset);
             }
         }
+         // Print sorted feasibleList
+         System.out.println("\nSorted by items:");
+         System.out.println("ITEM/S\t\t\t\t\t\t\t       WEIGHTS   \t\t\t\tVALUES");
+         for (int i = 0; i < productNames.size(); i++) {
+             List<Items> itemList = feasibleList.get(i);
+             double totalWeight = computeWeight(itemList);
+             double totalValue = computeValue(itemList);
+ 
+             // Adjust spacing for better alignment
+             System.out.printf("%2d%s%-60s", i + 1, ".) ", productNames.get(i)); // Increase width for product name
+             System.out.printf("%-40.1f", totalWeight);
+             System.out.printf("%-30.1f%n", totalValue);
+         }
+        // Sort by weight in ascending order
+        feasibleList.sort(Comparator.comparingDouble(itemsList -> computeWeight(itemsList)));
     
-        // Print sorted feasibleList
-        System.out.println("\nSorted feasible list:");
+        // Print sorted list by weight
+        System.out.println("\nSorted by weight (ascending):");
         System.out.println("ITEM/S\t\t\t\t\t\t\t       WEIGHTS   \t\t\t\tVALUES");
-        for (int i = 0; i < productNames.size(); i++) {
+        for (int i = 0; i < feasibleList.size(); i++) {
             List<Items> itemList = feasibleList.get(i);
             double totalWeight = computeWeight(itemList);
             double totalValue = computeValue(itemList);
+            System.out.printf("%2d%s%-60s", i + 1, ".) ", printProductName(itemList));
+            System.out.printf("%-40.1f", totalWeight);
+            System.out.printf("%-30.1f%n", totalValue);
+        }
     
-            // Adjust spacing for better alignment
-            System.out.printf("%2d%s%-60s", i + 1, ".) ", productNames.get(i)); // Increase width for product name
+        // Sort by value in ascending order
+        feasibleList.sort(Comparator.comparingDouble(itemsList -> computeValue(itemsList)));
+
+    
+        // Print sorted list by value
+        System.out.println("\nSorted by value (ascending):");
+        System.out.println("ITEM/S\t\t\t\t\t\t\t       WEIGHTS   \t\t\t\tVALUES");
+        for (int i = 0; i < feasibleList.size(); i++) {
+            List<Items> itemList = feasibleList.get(i);
+            double totalWeight = computeWeight(itemList);
+            double totalValue = computeValue(itemList);
+            System.out.printf("%2d%s%-60s", i + 1, ".) ", printProductName(itemList));
             System.out.printf("%-40.1f", totalWeight);
             System.out.printf("%-30.1f%n", totalValue);
         }
     }
     
 }
-//
-/**public class Operations {
-    private List<List<Items>> subsetList;
-
-    public Operations() {
-        Items cannedGoods = new Items();
-        cannedGoods.setProductName("Canned Goods");
-        cannedGoods.setWeight(5);
-        cannedGoods.setValue(450);
-
-        Items cookingOil = new Items();
-        cookingOil.setProductName("Cooking Oil");
-        cookingOil.setWeight(3);
-        cookingOil.setValue(725);
-
-        Items noodles = new Items();
-        noodles.setProductName("Noodles");
-        noodles.setWeight(2.5);
-        noodles.setValue(375);
-
-        Items soap = new Items();
-        soap.setProductName("Soap");
-        soap.setWeight(7);
-        soap.setValue(500);
-
-        Items[] itemArray = {cannedGoods, cookingOil, noodles, soap};
-        subsetList = generateOutcomes(itemArray);
-    }
-
-    private List<List<Items>> generateOutcomes(Items[] item) {
-        List<List<Items>> outcomes = new ArrayList<>();
-        arrangeOutcomes(item, 0, new ArrayList<>(), outcomes);
-        return outcomes;
-    }
-
-    private void arrangeOutcomes(Items[] set, int index, List<Items> current, List<List<Items>> outcomes) {
-        outcomes.add(new ArrayList<>(current));
-        for (int i = index; i < set.length; i++) {
-            current.add(set[i]);
-            arrangeOutcomes(set, i + 1, current, outcomes);
-            current.remove(current.size() - 1);
-        }
-    }
-
-    public void printAllCombinationStrings() {
-        System.out.println("All Combinations as Strings with Weight and Value:");
-        int count = 1;
-        for (int i = 0; i < subsetList.size(); i++) {
-            List<Items> combination = subsetList.get(i);
-            if (combination.isEmpty()) continue; // Skip empty combination
-            double weight = computeWeight(combination);
-            double value = computeValue(combination);
-            String productName = printProductName(combination);
-            if (weight <= 10 && value >= 350) { // Feasibility condition
-                System.out.printf("%d.) %-50s%8.1f%16.1f%n", count++, productName, weight, value);
-            }
-        }
-    }
-
-    public static String printProductName(List<Items> outcome) {
-        StringBuilder builder = new StringBuilder();
-        for (Items i : outcome) {
-            builder.append(i.getProductName()).append(", ");
-        }
-        if (builder.length() > 2) {
-            builder.setLength(builder.length() - 2); // Remove the last ", "
-        }
-        return builder.toString();
-    }
-
-    public static double computeValue(List<Items> outcome) {
-        double total = 0;
-        for (Items i : outcome) {
-            total += i.getValue();
-        }
-        return total;
-    }
-
-    public static double computeWeight(List<Items> outcome) {
-        double total = 0;
-        for (Items i : outcome) {
-            total += i.getWeight();
-        }
-        return total;
-    }
-}*/
