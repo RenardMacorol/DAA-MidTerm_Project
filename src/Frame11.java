@@ -31,7 +31,7 @@ public class Frame11 extends JFrame {
         JLabel wonka = new JLabel("Renard B. Macorol");
         wonka.setVerticalAlignment(JLabel.CENTER);
         wonka.setHorizontalAlignment(JLabel.CENTER);
-        JLabel juls = new JLabel("Juliana Mancera");
+        JLabel juls = new JLabel("Juliana R. Mancera");
         juls.setVerticalAlignment(JLabel.CENTER);
         juls.setHorizontalAlignment(JLabel.CENTER);
         JLabel thoby = new JLabel("Thoby Jim R. Ralleta");
