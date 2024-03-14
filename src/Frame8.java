@@ -1,6 +1,7 @@
 package src;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -13,10 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Frame8 extends JFrame implements ActionListener {
-    Frame8() {
+    Frame8(String input, int shortestDistance) {
         // panel itself
         JPanel outputPanel = new JPanel();
-        outputPanel.setLayout(new GridLayout(3, 0));
+        outputPanel.setLayout(new GridLayout(4, 0));
         outputPanel.setBounds(0, 0, 500, 500);
 
         // top message
@@ -30,20 +31,26 @@ public class Frame8 extends JFrame implements ActionListener {
 
         // shot output
         JLabel outputLabel = new JLabel();
-        outputLabel.setText("Route Route etc");
+        outputLabel.setText(input);
         outputLabel.setVerticalAlignment(JLabel.CENTER);
         outputLabel.setHorizontalAlignment(JLabel.CENTER);
-        
+        outputLabel.setFont(new Font("DM SANS", Font.BOLD, 17));
+        JLabel outputShortestLabel = new JLabel();
+        outputShortestLabel.setText("Shortest Distance" + " " + shortestDistance);
+        outputShortestLabel.setFont(new Font("DM SANS", Font.BOLD, 17));
+        outputShortestLabel.setVerticalAlignment(JLabel.CENTER);
+        outputShortestLabel.setHorizontalAlignment(JLabel.CENTER);
 
         // Button send invoice
         JButton invoicebButton = new JButton("Send Invoice");
         invoicebButton.addActionListener(this);
-        //all components
+        // all components
         outputPanel.add(messageLabel);
         outputPanel.add(outputLabel);
+        outputPanel.add(outputShortestLabel);
         outputPanel.add(invoicebButton);
 
-        //frame settings
+        // frame settings
         setTitle("Midterm Project");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1000, 563);

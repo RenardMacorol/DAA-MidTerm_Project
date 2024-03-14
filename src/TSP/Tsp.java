@@ -8,12 +8,13 @@ import java.util.Scanner;
 import java.util.function.Function;
 
 public class Tsp {
-    Scanner s = new Scanner(System.in);
+    String output;
     Graph graph = new Graph(5); 
     int shortestDistance= Integer.MAX_VALUE;
     int[] shortestDistanceValues = new int[5];
     int[] shortestPath = new int[5];
-    public Tsp() {
+    public Tsp(int input) {
+    
         String[] locationArr = { "Tree House", "Candy Kingdom", "Farm World", "Ice Kingdom", "Beutopia" };
 
         
@@ -45,9 +46,7 @@ public class Tsp {
         
         
         int[] node ={0,1,2,3,4};
-        graph.print(locationArr);
-        System.out.println("Enter Number of location you want to start: ");
-        int input = s.nextInt()-1;
+        StringBuilder str = new StringBuilder();
         ArrayList<int[]> res = permute(node);
         for (int[] x : res) {
             if(x[0]==input){
@@ -63,17 +62,20 @@ public class Tsp {
             
         }
         for(int i=0;i<locationArr.length;i++){
-            
-            System.out.print(locationArr[shortestPath[i]]+" "+shortestDistanceValues[i]+" "+" > ");
-            
+            str.append(locationArr[shortestPath[i]]+" "+shortestDistanceValues[i]+" "+" > ");
+           
         }
-        System.out.print(locationArr[shortestPath[0]]);
-        System.out.println("Total Distance "+ shortestDistance);
+        str.append(locationArr[shortestPath[0]]);
         
+        output = str.toString();
        
     }
-    
-    
+    public String getOuput(){
+        return output;
+    }
+    public int getShortestDistance(){
+        return shortestDistance;
+    }
     
 
     private ArrayList<int[]> permute(int[] locationArr) {

@@ -14,11 +14,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Frame7 extends JFrame implements ActionListener{
+import src.TSP.Tsp;
+
+public class Frame7 extends JFrame implements ActionListener {
+    JButton candyKingdomButton, farmWorldButton, treeHouseButton, iceKinggdomButton,beutopiaButton;
+    Tsp tsp;
     Frame7() {
-        //panel itself
+        // panel itself
         JPanel locationPanel = new JPanel();
-        locationPanel.setLayout(new GridLayout(2,0));
+        locationPanel.setLayout(new GridLayout(2, 0));
         locationPanel.setBounds(0, 0, 500, 500);
 
         // top image/msg
@@ -33,25 +37,27 @@ public class Frame7 extends JFrame implements ActionListener{
         // All buttons locations should be here
         JLabel buttonsLabel = new JLabel();
         buttonsLabel.setLayout(new FlowLayout());
-        JButton candyKingdomButton = new JButton("Candy Kingdom");
-        JButton farmWorldButton = new JButton("FarmWorld");
-        JButton treeHouseButton = new JButton("Beutopia");
-        JButton iceKinggdomButton = new JButton("Ice Kingdom");
+        this.candyKingdomButton = new JButton("Candy Kingdom");
+        this.farmWorldButton = new JButton("FarmWorld");
+        this.treeHouseButton = new JButton("Tree House");
+        this.iceKinggdomButton = new JButton("Ice Kingdom");
+        this.beutopiaButton = new JButton("Beutopia");
         candyKingdomButton.addActionListener(this);
         farmWorldButton.addActionListener(this);
         treeHouseButton.addActionListener(this);
         iceKinggdomButton.addActionListener(this);
+        beutopiaButton.addActionListener(this);
 
         buttonsLabel.add(candyKingdomButton);
         buttonsLabel.add(farmWorldButton);
         buttonsLabel.add(treeHouseButton);
         buttonsLabel.add(iceKinggdomButton);
-
-        //all components
+        buttonsLabel.add(beutopiaButton);
+        // all components
         locationPanel.add(messageLabel);
         locationPanel.add(buttonsLabel);
 
-        //frame settings
+        // frame settings
         setTitle("Midterm Project");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1000, 563);
@@ -63,6 +69,22 @@ public class Frame7 extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         dispose();
-        Frame8 frame8 = new Frame8();
+        if(e.getSource()==treeHouseButton){
+           tsp = new Tsp(0);
+        }
+        if(e.getSource()==candyKingdomButton){
+            tsp = new Tsp(1);
+        }
+        if(e.getSource()==farmWorldButton){
+            tsp = new Tsp(2);
+        }
+        if(e.getSource()==iceKinggdomButton){
+            tsp = new Tsp(3);
+        }
+        if(e.getSource()==beutopiaButton){
+            tsp = new Tsp(4);
+        }
+
+        Frame8 frame8 = new Frame8(tsp.getOuput(),tsp.getShortestDistance());
     }
 }
