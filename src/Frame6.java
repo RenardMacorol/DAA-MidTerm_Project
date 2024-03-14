@@ -35,7 +35,9 @@ public class Frame6 extends JFrame implements ActionListener{
         JLabel findtext1 = new JLabel("Tunog stree");
         JLabel findtext2 = new JLabel("lima stree");
         JButton button1 = new JButton("Pick");
+        button1.addActionListener(this);
         JButton button2 = new JButton("Pick");
+        button2.addActionListener(this);
         findsLabel.add(findtext1);
         findsLabel.add(button1);
         findsLabel.add(findtext2);
