@@ -78,10 +78,22 @@ public class Frame6 extends JFrame implements ActionListener {
             System.out.println("click");
             AddressSearchOption addressSearchOption = new AddressSearchOption(userAddress.getText()); // Create an instance of AddressSearchOption
             String searchResult = addressSearchOption.getPass();
+
+            searchResult = formatSearchResult(searchResult);
+
             output.setText(searchResult);
         }
         
     }
-
+    private String formatSearchResult(String searchResult) {
+        // Replace newline characters with HTML line breaks, wooh research 
+        searchResult = searchResult.replaceAll("\n", "<br>");
+    
+        // Wrap the entire result in HTML tags
+        searchResult = "<html>" + searchResult + "</html>";
+    
+        return searchResult;
+    }
+    
     
 }

@@ -22,8 +22,8 @@ class AddressSearch {
         int totalMatches = 0;
         StringBuilder foundMatches = new StringBuilder();
         // Print search header
-        foundMatches.append("\nSearch Address: " + userInput+"\n");
-        foundMatches.append("Matched Address:"+"\n");
+        //foundMatches.append("\nSearch Address: " + userInput+"\n");
+        foundMatches.append("\nMatched Address:\n");
 
         // Loop through each address
         for (String address : addresses) {
@@ -40,12 +40,12 @@ class AddressSearch {
 
                 // Print the address only for the first occurrence to avoid repetition
                 if (occurrences == 1) {
-                    foundMatches.append("  - " + address+"\n");
+                    foundMatches.append("  - - - " + address+"\n");
                 }
 
                 // Print searched position and occurrence
-                foundMatches.append("      Searched position: at position " + position+"\n");
-                foundMatches.append("      Number of occurrences: " + occurrences+"\n");
+                foundMatches.append("            Searched position: at position " + position+"\n");
+                foundMatches.append("            Number of occurrences: " + occurrences+"\n");
 
                 // Proceed to the next occurrence
                 index = lowerCaseAddress.indexOf(userInput, index + 1);
@@ -61,7 +61,7 @@ class AddressSearch {
         if (totalMatches > 0) {
             foundMatches.append("\n" + totalMatches + " address found."+"\n");
         } else {
-            foundMatches.append("\nNo matches found."+"\n");
+            foundMatches.append("\n\nNo matches found."+"\n");
         }
         output= foundMatches.toString();
     }
