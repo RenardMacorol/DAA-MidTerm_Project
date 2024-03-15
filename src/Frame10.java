@@ -59,15 +59,18 @@ public class Frame10 extends JFrame implements ActionListener {
         buttonPanel.setBackground(Color.WHITE);
         buttonPanel.setBounds(0, 1000, 1000, 100);
 
+        //yes button
         RoundedButton yes = new RoundedButton("YES", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 22);
         yes.setBounds(350, 50, 95, 49); 
         yes.addActionListener(this);
         buttonPanel.add(yes);
 
+        //Or image
         ImageIcon orIcon = new ImageIcon("resources/page10/4panel-or_static.png");
         JLabel orLabel = new JLabel(orIcon);
         orLabel.setBounds(400,50,50,50);
 
+        //rest BUTTON
         RoundedButton rest = new RoundedButton("REST", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 22);
         rest.setBounds(550, 50, 95, 49); 
         rest.addActionListener(this);
