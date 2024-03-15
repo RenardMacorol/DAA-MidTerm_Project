@@ -3,8 +3,6 @@ package src;
 import java.awt.Color;
 
 import java.awt.Dimension;
-import java.awt.Font;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -22,7 +20,7 @@ public class Frame10 extends JFrame implements ActionListener {
         guyPanel.setBounds(0, -10, 1000, 346);
         guyPanel.setBackground(Color.decode("#FDFDFD"));
 
-        
+       
         ImageIcon guyIcon5 = new ImageIcon("resources/page10/guy-5star.png");
         ImageIcon guyIcon4 = new ImageIcon("resources/page10/guy-4star.png");
         ImageIcon guyIcon3 = new ImageIcon("resources/page10/guy-3star.png");
@@ -42,7 +40,7 @@ public class Frame10 extends JFrame implements ActionListener {
         guyPanel.add(guyLabel1);
 
 
-        // Panel 2 - rate 
+        // Panel 2 - rate 'to
         JPanel ratePanel = new JPanel();
         ratePanel.setBounds(0, 315, 1000, 110);
         ratePanel.setBackground(Color.decode("#FDFDFD"));
@@ -102,6 +100,7 @@ public class Frame10 extends JFrame implements ActionListener {
         add(buttonPanel);
 
         // Frame settings
+
 
         setTitle("This Guy Needs Some Attitude");
         setDefaultCloseOperation(EXIT_ON_CLOSE);

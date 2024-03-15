@@ -215,6 +215,28 @@ public class Operation {
         }
     }
 
+    public void findFeasible(int cart) {
+        
+        List<Double> w = new ArrayList<>();
+        List<Double> v = new ArrayList<>();
+        List<List<Items>> l = new ArrayList<>();
+        int n = 0;
+        int c = 0;
+        for (List<Items> i : getSubsetList()) {
+            double weightTotal = computeWeight(i);
+            if (weightTotal <= cart && weightTotal != 0) {
+                n++;
+                c++;
+                w.add(computeWeight(i));
+                v.add(computeValue(i));
+                l.add(i);
+            }
+        }
+        setFeasibleList(l);
+        setWTotal(w);
+        setVTotal(v);
+    }
+
     public void printChoices() {
 
         System.out.println("ITEM/S                 WEIGHTS              VALUES");
@@ -226,7 +248,33 @@ public class Operation {
             n++;
         }
     }
-    
+
+    public String printChoicestoUI() {
+        String x ="";
+        x += String.format("%-40s%-20s%-20s%n","ITEM/S",  "WEIGHTS", "VALUES");
+        int n = 1;
+        for (Items i : getItemArray()) {
+            x += String.format("%-2d%-3s%-35s", n, ".) ", i.getProductName());
+            x += String.format("%-20s", i.getWeight());
+            x += String.format("%-20s%n", i.getValue());
+            n++;
+        }
+
+        return x;
+    }
+
+    public String haveProductName(List<Items> outcome) {
+
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < outcome.size(); i++) {
+            builder.append(outcome.get(i).getProductName());
+            if (i < outcome.size() - 1) {
+                builder.append(", ");
+            }
+
+        }
+        return builder.toString();
+    }
 
     private List<List<Items>> feasibleList;
 
@@ -346,7 +394,26 @@ byWeight=forWeight.toString();
     byValue=forValue.toString();
 }
 
+
+
+
+ public void sorting (){
+ feasibleList.sort(Comparator.comparingDouble(itemsList -> computeValue(itemsList)));
+ }
+ 
+ public void sorted (){
+    feasibleList.sort(Comparator.comparingDouble(itemsList -> computeWeight(itemsList)));
+    }
+
+    public void sorty() {
+        feasibleList.sort((list1, list2) -> {
+         String productName1 = printProductName(list1);
+         String productName2 = printProductName(list2);
+         return productName1.compareTo(productName2);
+     });
+    }
 }
+
 
     
 

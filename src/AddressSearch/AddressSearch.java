@@ -4,6 +4,7 @@ import java.util.List;
 
 // Class for searching addresses
 class AddressSearch {
+    private String output;
     private List<String> addresses; // List of addresses
 
     // Constructor to initialize the list of addresses
@@ -11,14 +12,18 @@ class AddressSearch {
         this.addresses = addresses;
     }
 
+    public String getOutput(){
+        return output;
+    }
+
     // Method to search for occurrences of user input in addresses
     public void search(String userInput) {
         userInput = userInput.toLowerCase(); // Convert user input to lowercase for case-insensitive search
         int totalMatches = 0;
-
+        StringBuilder foundMatches = new StringBuilder();
         // Print search header
-        System.out.println("\nSearch Address: " + userInput);
-        System.out.println("Matched Address:");
+        foundMatches.append("\nSearch Address: " + userInput+"\n");
+        foundMatches.append("Matched Address:"+"\n");
 
         // Loop through each address
         for (String address : addresses) {
@@ -35,12 +40,12 @@ class AddressSearch {
 
                 // Print the address only for the first occurrence to avoid repetition
                 if (occurrences == 1) {
-                    System.out.println("  - " + address);
+                    foundMatches.append("  - " + address+"\n");
                 }
 
                 // Print searched position and occurrence
-                System.out.println("      Searched position: at position " + position);
-                System.out.println("      Number of occurrences: " + occurrences);
+                foundMatches.append("      Searched position: at position " + position+"\n");
+                foundMatches.append("      Number of occurrences: " + occurrences+"\n");
 
                 // Proceed to the next occurrence
                 index = lowerCaseAddress.indexOf(userInput, index + 1);
@@ -54,10 +59,11 @@ class AddressSearch {
 
         // Print the total number of matching addresses or "No matches found."
         if (totalMatches > 0) {
-            System.out.println("\n" + totalMatches + " address found.");
+            foundMatches.append("\n" + totalMatches + " address found."+"\n");
         } else {
-            System.out.println("\nNo matches found.");
+            foundMatches.append("\nNo matches found."+"\n");
         }
+        output= foundMatches.toString();
     }
 
     // Helper method to count spaces in a string
