@@ -21,7 +21,7 @@ public class Frame5 extends JFrame implements ActionListener{
 
         //Label in the top 
         ImageIcon guyIcon = new ImageIcon();
-        JLabel guysIconLabel = new JLabel("Name this nigga");
+        JLabel guysIconLabel = new JLabel("Name this Man");
         guysIconLabel.setIcon(guyIcon);
         guysIconLabel.setVerticalAlignment(JLabel.CENTER);
         guysIconLabel.setHorizontalAlignment(JLabel.CENTER);
