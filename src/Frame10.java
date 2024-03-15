@@ -22,47 +22,21 @@ public class Frame10 extends JFrame implements ActionListener {
 
        
         ImageIcon guyIcon5 = new ImageIcon("resources/page10/guy-5star.png");
-        ImageIcon guyIcon4 = new ImageIcon("resources/page10/guy-4star.png");
-        ImageIcon guyIcon3 = new ImageIcon("resources/page10/guy-3star.png");
-        ImageIcon guyIcon2 = new ImageIcon("resources/page10/guy-2star.png");
-        ImageIcon guyIcon1 = new ImageIcon("resources/page10/guy-1star.png");
-
-        JLabel guyLabel5 = new JLabel(guyIcon5);
-        JLabel guyLabel4 = new JLabel(guyIcon4);
-        JLabel guyLabel3 = new JLabel(guyIcon3);
-        JLabel guyLabel2 = new JLabel(guyIcon2);
-        JLabel guyLabel1 = new JLabel(guyIcon1);
        
+        JLabel guyLabel5 = new JLabel(guyIcon5);
+        
         guyPanel.add(guyLabel5);
-        guyPanel.add(guyLabel4);
-        guyPanel.add(guyLabel3);
-        guyPanel.add(guyLabel2);
-        guyPanel.add(guyLabel1);
-
-
-        // Panel 2 - rate 'to
+    
+        // Panel 2 - rate 
         JPanel ratePanel = new JPanel();
         ratePanel.setBounds(0, 315, 1000, 110);
         ratePanel.setBackground(Color.decode("#FDFDFD"));
 
-
         ImageIcon rateIcon5 = new ImageIcon("resources/page10/5star-rate.png");
-        ImageIcon rateIcon4 = new ImageIcon("resources/page10/4star-rate.png");
-        ImageIcon rateIcon3 = new ImageIcon("resources/page10/3star-rate.png");
-        ImageIcon rateIcon2 = new ImageIcon("resources/page10/2star-rate.png");
-        ImageIcon rateIcon1 = new ImageIcon("resources/page10/1star-rate.png");
 
         JLabel rateLabel5 = new JLabel(rateIcon5);
-        JLabel rateLabel4 = new JLabel(rateIcon4);
-        JLabel rateLabel3 = new JLabel(rateIcon3);
-        JLabel rateLabel2 = new JLabel(rateIcon2);
-        JLabel rateLabel1 = new JLabel(rateIcon1);
 
         ratePanel.add(rateLabel5);
-        ratePanel.add(rateLabel4);
-        ratePanel.add(rateLabel3);
-        ratePanel.add(rateLabel2);
-        ratePanel.add(rateLabel1);
 
 
         // Panel 3 - question 
@@ -113,7 +87,10 @@ public class Frame10 extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) 
+    {
+
+        
         if (e.getActionCommand().equals("YES")) {
             dispose();
             Frame1 frame1 = new Frame1(); // Open new frame
