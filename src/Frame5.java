@@ -1,52 +1,69 @@
 package src;
 
 
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.*;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class Frame5 extends JFrame implements ActionListener{
 
     Frame5(){
         // Panel for this
         JPanel guyPanel = new JPanel();
-        guyPanel.setLayout(new GridLayout(3,0));
-        guyPanel.setBounds(0, 0, 500, 500);
+        guyPanel.setBounds(0, 0, 1000, 342);
 
         //Label in the top 
-        ImageIcon guyIcon = new ImageIcon();
-        JLabel guysIconLabel = new JLabel("Name this Man");
-        guysIconLabel.setIcon(guyIcon);
-        guysIconLabel.setVerticalAlignment(JLabel.CENTER);
-        guysIconLabel.setHorizontalAlignment(JLabel.CENTER);
+        ImageIcon wonder = new ImageIcon("resources/page5/Wonder.png");
+        JLabel guysIconLabel = new JLabel();
+        guysIconLabel.setIcon(wonder);
 
-        //input label
-        JLabel guyInput = new JLabel("Guy");
-        guyInput.setVerticalAlignment(JLabel.CENTER);
-        guyInput.setHorizontalAlignment(JLabel.CENTER);
+        guyPanel.add(guysIconLabel);
 
-        JButton proceed = new JButton("Proceed");
-        proceed.setBounds(425, 370, 100, 100);
+        //
+        JPanel guyName = new JPanel();
+        guyName.setBounds(0, 342, 1000, 208);
+        guyName.setBackground(Color.WHITE);
+
+        JFormattedTextField choose = new JFormattedTextField();
+        choose.setPreferredSize(new Dimension(250,200));
+        choose.setFont(new Font("Arial", Font.PLAIN, 50));
+        choose.setForeground(Color.GRAY);
+        choose.setBackground(Color.WHITE);
+        choose.setCaretColor(Color.decode("#242323"));
+        choose.setText("##");
+        choose.setBorder(null);
+
+        guyName.add(choose);
+
+        //Proceed button
+        RoundedButton proceed = new RoundedButton("PROCEED", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 20);
         proceed.addActionListener(this);
 
-        //import all components
-        guyPanel.add(guysIconLabel);
-        guyPanel.add(guyInput);
-        guyPanel.add(proceed);
+        //Panel only one for this
+        JPanel proceedBottom = new JPanel();
+        proceedBottom.setBounds(0,550,1000,157);
+        proceedBottom.setBackground(Color.WHITE);
+        
+        //Import those componets in Panel
+        proceedBottom.add(proceed);
 
         //frame settings
-        setTitle("Midterm Project");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(1000, 563);
-        setVisible(true);
-        setResizable(false);
-        this.add(guyPanel);
+        ImageIcon icon = new ImageIcon("resources/MainIcon.png");
+       setIconImage(icon.getImage());
+       setLayout(null);
+       setTitle("This Guy Needs Some Attitude");
+       setDefaultCloseOperation(EXIT_ON_CLOSE);
+       setSize(1000, 707);
+       setVisible(true);
+       setResizable(false);
+       setLocationRelativeTo(null);
+
+       this.add(guyPanel);
+       this.add(guyName);
+       this.add(proceedBottom);
+
     }
    
     @Override

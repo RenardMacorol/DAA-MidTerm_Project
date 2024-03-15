@@ -1,53 +1,53 @@
 package src;
 
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.Color;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Frame2 extends JFrame implements ActionListener{
     Frame2(){
-        //Panel only one for this
+        //Panel only for this
         JPanel proceedPanel = new JPanel();
-        proceedPanel.setLayout(new BorderLayout());
-        proceedPanel.setBounds(0,0,500,500);
+        proceedPanel.setBounds(0,0,1000,550);
 
         //Image UI itself
-        ImageIcon messageIcon = new ImageIcon();
-        JLabel messageLabel = new JLabel("404");
+        ImageIcon messageIcon = new ImageIcon("resources/page2/Choices.png");
+        JLabel messageLabel = new JLabel();
         messageLabel.setIcon(messageIcon);
-        messageLabel.setPreferredSize(new Dimension(20, 20));
-        messageLabel.setBounds(0,500,500,500);
-        messageLabel.setVerticalAlignment(JLabel.CENTER);
-        messageLabel.setHorizontalAlignment(JLabel.CENTER);
-
-        //Proceed button
-        JButton proceed = new JButton("Proceed");
-        proceed.setBounds(425, 370, 100, 100);
-        proceed.addActionListener(this);
 
         //Import those componets in Panel
-        proceedPanel.add(proceed,BorderLayout.CENTER);
-        proceedPanel.add(messageLabel,BorderLayout.CENTER);
-        //Frame settings
-        setTitle("Midterm Project");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(1000, 563);
-        setVisible(true);
-        setResizable(false);
+        proceedPanel.add(messageLabel);
+
+        //Proceed button
+        RoundedButton proceed = new RoundedButton("PROCEED", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 20);
+        proceed.addActionListener(this);
+
+        //Panel only one for this
+        JPanel proceedBottom = new JPanel();
+        proceedBottom.setBounds(0,550,1000,157);
+        proceedBottom.setBackground(Color.WHITE);
+        
+        //Import those componets in Panel
+        proceedBottom.add(proceed);
+       
+        //Frame again
+       ImageIcon icon = new ImageIcon("resources/MainIcon.png");
+       setIconImage(icon.getImage());
+       setLayout(null);
+       setTitle("This Guy Needs Some Attitude");
+       setDefaultCloseOperation(EXIT_ON_CLOSE);
+       setSize(1000, 707);
+       setVisible(true);
+       setResizable(false);
+       setLocationRelativeTo(null);
+
         //add int the frame
         this.add(proceedPanel);
-
-
-
+        this.add(proceedBottom);
 
     }
 
