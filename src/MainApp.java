@@ -2,7 +2,11 @@ package src;
 
 public class MainApp {
     public static void main(String[] args) {
+
         Frame1 start = new Frame1();
+
+        Frame10 startFrame10 = new Frame10();
+
        
     }
 }
