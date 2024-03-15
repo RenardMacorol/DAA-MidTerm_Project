@@ -49,15 +49,16 @@ public class Frame6 extends JFrame implements ActionListener{
         searchPanel.add(findsLabel);
 
         //frame settings
-        setTitle("This Guy Needs Some Attitude");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(1000, 707);
-        ImageIcon logo = new ImageIcon("resources//AttitudeIcon.png");
-        setIconImage(logo.getImage());
-        setLocationRelativeTo(null);//center the window to screen when run
-        setSize(1000, 707);
-        setVisible(true);
-        setResizable(false);
+       ImageIcon icon = new ImageIcon("resources/MainIcon.png");
+       setIconImage(icon.getImage());
+       setLayout(null);
+       setTitle("This Guy Needs Some Attitude");
+       setDefaultCloseOperation(EXIT_ON_CLOSE);
+       setSize(1000, 707);
+       setVisible(true);
+       setResizable(false);
+       setLocationRelativeTo(null);
+
         this.add(searchPanel);
     }
 
