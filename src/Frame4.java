@@ -33,6 +33,7 @@ public class Frame4 extends JFrame implements ActionListener {
     RoundedButton weight;
     RoundedButton value;
     RoundedButton proceed;
+    JFormattedTextField choose;
 
     Frame4(int input){
         
@@ -116,7 +117,7 @@ public class Frame4 extends JFrame implements ActionListener {
         proceed.addActionListener(this);
         proceed.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        JFormattedTextField choose = new JFormattedTextField();
+        choose = new JFormattedTextField();
         choose.setPreferredSize(new Dimension(50,75));
         choose.setFont(new Font("Arial", Font.PLAIN, 30));
         choose.setForeground(Color.GRAY);
@@ -164,6 +165,7 @@ public class Frame4 extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == attitude) {
+            int c = 0;
             Operation op = new Operation();
             op.findFeasible(input);
             op.sorty();
@@ -183,10 +185,12 @@ public class Frame4 extends JFrame implements ActionListener {
                     blue.setValueAt(op.getVTotal().get(i), i,3);  
                     blue.setValueAt(" ", i,4); 
                 }
+                c++;
             }  
             
         }
         if(e.getSource() == value) {
+            int c = 0;
             Operation op = new Operation();
             op.findFeasible(input);
             op.sorting();
@@ -206,9 +210,11 @@ public class Frame4 extends JFrame implements ActionListener {
                     blue.setValueAt(op.getVTotal().get(i), i,3);  
                     blue.setValueAt(" ", i,4); 
                 }
+                c++;
             }  
         }
         if(e.getSource() == weight) {
+            int c = 0;
             Operation op = new Operation();
             op.findFeasible(input);
             op.sorted();
@@ -228,9 +234,13 @@ public class Frame4 extends JFrame implements ActionListener {
                     blue.setValueAt(op.getVTotal().get(i), i,3);  
                     blue.setValueAt(" ", i,4); 
                 }
+                c++;
             }  
         }
         if(e.getSource() == proceed) {
+            String k = choose.getText();
+            int n = Integer.parseInt(k);
+            if(n>=1 && n <= 15){}
             dispose();
             Frame5 frame5 = new Frame5(); 
         }
