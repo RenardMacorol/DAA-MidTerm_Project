@@ -1,12 +1,9 @@
 package src;
 
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,105 +11,80 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Frame10 extends JFrame implements ActionListener {
-    JButton yes,rest;
-    Frame10() {
-        JPanel ratingPanel = new JPanel();
-        ratingPanel.setLayout(new GridLayout(4, 0));
-        ratingPanel.setBounds(100, 400, 1000 , 500);
+    private JButton yes, rest;
 
-        // Upper area 5
-        JLabel topMessage = new JLabel();
-        topMessage.setLayout(new FlowLayout());
-        topMessage.setVerticalAlignment(JLabel.CENTER);
-        topMessage.setHorizontalAlignment(JLabel.CENTER);
+    public Frame10() {
+        // Panel 1 - guy
+        JPanel guyPanel = new JPanel();
+        guyPanel.setBounds(0, -10, 1000, 346);
+        guyPanel.setBackground(Color.decode("#FDFDFD"));
 
         ImageIcon guyIcon = new ImageIcon("resources/page10/guy-5star.png");
-        JLabel guyLabel = new JLabel();
-        guyLabel.setVerticalAlignment(JLabel.CENTER);
-        guyLabel.setHorizontalAlignment(JLabel.CENTER);
-        guyLabel.setIcon(guyIcon);
-        JLabel congratsMesLabel = new JLabel();
-        congratsMesLabel.setVerticalAlignment(JLabel.CENTER);
-        congratsMesLabel.setHorizontalAlignment(JLabel.CENTER);
-        topMessage.add(guyLabel);
-        topMessage.add(congratsMesLabel);
+        JLabel guyLabel = new JLabel(guyIcon);
+        guyPanel.add(guyLabel);
 
+        // Panel 2 - rate 'to
+        JPanel ratePanel = new JPanel();
+        ratePanel.setBounds(0, 315, 1000, 110);
+        ratePanel.setBackground(Color.decode("#FDFDFD"));
 
-        // rating
-        ImageIcon ratingIcon = new ImageIcon("resources/page10/5star-rate.png");
-        setIconImage(ratingIcon.getImage());
-        JLabel ratingLable = new JLabel();
-        ratingLable.setIcon(ratingIcon);
-        ratingLable.setVerticalAlignment(JLabel.CENTER);
-        ratingLable.setHorizontalAlignment(JLabel.CENTER);
+        ImageIcon rateIcon = new ImageIcon("resources/page10/5star-rate.png");
+        JLabel rateLabel = new JLabel(rateIcon);
+        ratePanel.add(rateLabel);
 
+        // Panel 3 - question hays
+        JPanel questionPanel = new JPanel();
+        questionPanel.setBounds(0, 426, 1000, 137);
+        questionPanel.setBackground(Color.decode("#FDFDFD"));
 
-        // questiong label
         ImageIcon questionIcon = new ImageIcon("resources/page10/3panel_static.png");
-        setIconImage(questionIcon.getImage());
-        JLabel questionLabel = new JLabel();
-        questionLabel.setIcon(questionIcon);
-        questionLabel.setVerticalAlignment(JLabel.CENTER);
-        questionLabel.setHorizontalAlignment(JLabel.CENTER);
+        JLabel questionLabel = new JLabel(questionIcon);
+        questionPanel.add(questionLabel);
 
-        JPanel buttonPanel = new JPanel(null);
-        buttonPanel.setBackground(Color.WHITE);
-        buttonPanel.setBounds(0, 1, 1000, 100);
+        // Panel 4 - button
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setBounds(0, 553, 1000, 114);
+        buttonPanel.setBackground(Color.decode("#FDFDFD"));
 
-        RoundedButton yes = new RoundedButton("YES", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 22);
-        yes.setBounds(350, 50, 95, 49); 
-        yes.addActionListener(this);
-        buttonPanel.add(yes);
+        // Button - RoundedButton implementation
+        RoundedButton yesButton = new RoundedButton("YES", Color.decode("#242323"), Color.WHITE, 30, 0, 0, "Arial", 22);
+        yesButton.addActionListener(this);
+        buttonPanel.add(yesButton);
 
-        ImageIcon orIcon = new ImageIcon("resources/page10/4panel-or_static.png");
-        JLabel orLabel = new JLabel(orIcon);
-        orLabel.setBounds(400,50,50,50);
+        JLabel orLabel = new JLabel(new ImageIcon("resources/page10/4panel-or_static.png"));
+        buttonPanel.add(orLabel);
 
-        RoundedButton rest = new RoundedButton("REST", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 22);
-        rest.setBounds(550, 50, 95, 49); 
-        rest.addActionListener(this);
-        buttonPanel.add(rest);
+        RoundedButton restButton = new RoundedButton("REST", Color.decode("#242323"), Color.WHITE, 30, 0, 0, "Arial", 22);
+        restButton.addActionListener(this);
+        buttonPanel.add(restButton);
 
-        JLabel optionLabel = new JLabel();
-        optionLabel.setVerticalAlignment(JLabel.CENTER);
-        optionLabel.setHorizontalAlignment(JLabel.CENTER);
-        optionLabel.setLayout(new FlowLayout());
-        /**this.yes = new JButton("Yes");
-        yes.addActionListener(this);
-        JLabel or = new JLabel("OR");
-        this.rest = new JButton("Rest");
-        rest.addActionListener(this);
-        optionLabel.add(yes);
-        optionLabel.add(or);
-        optionLabel.add(rest);*/
+        // Add components to frame
+        setLayout(null); // Use null layout
+        add(guyPanel);
+        add(ratePanel);
+        add(questionPanel);
+        add(buttonPanel);
 
-        // Componets
-        ratingPanel.add(topMessage);
-        ratingPanel.add(ratingLable);
-        ratingPanel.add(questionLabel);
-        ratingPanel.add(buttonPanel, orLabel);
-
-        // frame settings
+        // Frame settings
         setTitle("This Guy Needs Some Attitude");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1000, 707);
-        ImageIcon logo = new ImageIcon("resources//AttitudeIcon.png");
+        ImageIcon logo = new ImageIcon("resources/AttitudeIcon.png");
         setIconImage(logo.getImage());
-        setLocationRelativeTo(null);//center the window to screen when run
+        setLocationRelativeTo(null); // Center the window to screen when run
         setVisible(true);
         setResizable(false);
-        this.add(ratingPanel);
-
-        
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        dispose();
-        if (e.getSource()==yes) {
-            Frame1 frame1 = new Frame1();
-        }else{
-            Frame11 frame11 = new Frame11();
+        if (e.getActionCommand().equals("YES")) {
+            dispose();
+            Frame1 frame1 = new Frame1(); // Open new frame
+        } else if (e.getActionCommand().equals("REST")) {
+            dispose();
+            Frame11 frame11 = new Frame11(); // Open new frame
         }
     }
+    
 }
