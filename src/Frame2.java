@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
 public class Frame2 extends JFrame implements ActionListener{
     Frame2(){
         //Panel only for this
@@ -54,6 +55,7 @@ public class Frame2 extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         dispose();
+        KnapsackMain knap = new KnapsackMain();
         Frame3 frame3 = new Frame3();
     }
 
