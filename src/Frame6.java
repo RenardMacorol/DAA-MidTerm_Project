@@ -1,72 +1,78 @@
 package src;
 
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import src.AddressSearch.AddressSearchOption;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+// Class for the main frame
+public class Frame6 extends JFrame implements ActionListener {
+    private JFormattedTextField userAddress; // Text field for user address input
 
-public class Frame6 extends JFrame implements ActionListener{
-    Frame6(){
-        JPanel searchPanel = new JPanel();
-        searchPanel.setLayout(new GridLayout(3,0));
-        searchPanel.setBounds(0, 0, 500, 500);
+    // Constructor to initialize the frame and UI components
+    Frame6() {
+        JPanel searchPanel = new JPanel(); // Panel for search components
+        searchPanel.setBounds(0, 0, 1000, 315);
+        searchPanel.setBackground(Color.decode("#FDFDFD"));
 
-        //label top
-        ImageIcon messageIcon = new ImageIcon();
-        JLabel topMessageLabel = new JLabel("find this guy?");
-        topMessageLabel.setIcon(messageIcon);
-        topMessageLabel.setVerticalAlignment(JLabel.CENTER);
-        topMessageLabel.setHorizontalAlignment(JLabel.CENTER);
+        // Icon for search panel
+        ImageIcon messageIcon = new ImageIcon("resources/page6/1pane_static.png");
+        JLabel messageIconLabel = new JLabel(messageIcon);
+        searchPanel.add(messageIconLabel);
 
-        JLabel guyInput = new JLabel("Text field here for search");
-        guyInput.setVerticalAlignment(JLabel.CENTER);
-        guyInput.setHorizontalAlignment(JLabel.CENTER);
+        // Panel for user input components
+        JPanel userInputPanel = new JPanel();
+        userInputPanel.setBounds(0, 315, 1000, 43);
+        userInputPanel.setBackground(Color.decode("#FDFDFD"));
+        userInputPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-        JLabel findsLabel = new JLabel();
-        //gawa kayo variable na may mag pass ng rowss and coll dine
-        findsLabel.setLayout(new GridLayout(2,2));
-        //user for loop instead
-        JLabel findtext1 = new JLabel("Tunog stree");
-        JLabel findtext2 = new JLabel("lima stree");
-        JButton button1 = new JButton("Pick");
-        button1.addActionListener(this);
-        JButton button2 = new JButton("Pick");
-        button2.addActionListener(this);
-        findsLabel.add(findtext1);
-        findsLabel.add(button1);
-        findsLabel.add(findtext2);
-        findsLabel.add(button2);
+        userAddress = new JFormattedTextField(); // Text field for user address input
+        userAddress.setPreferredSize(new Dimension(200, 43));
+        userAddress.setFont(new Font("Arial", Font.PLAIN, 20));
+        userAddress.setForeground(Color.GRAY);
+        userAddress.setBackground(Color.WHITE);
+        userAddress.setCaretColor(Color.decode("#242323"));
+        userAddress.setText("Type Address Here");
+        userAddress.setBorder(null);
 
-        //import all label in panel
-        searchPanel.add(topMessageLabel);
-        searchPanel.add(guyInput);
-        searchPanel.add(findsLabel);
+        // Button for initiating search
+        RoundedButton proceedButton = new RoundedButton("Search", Color.decode("#242323"), Color.WHITE, 30, 0, 0, "Arial", 20);
+        proceedButton.addActionListener(this);
 
-        //frame settings
-       ImageIcon icon = new ImageIcon("resources/MainIcon.png");
-       setIconImage(icon.getImage());
-       setLayout(null);
-       setTitle("This Guy Needs Some Attitude");
-       setDefaultCloseOperation(EXIT_ON_CLOSE);
-       setSize(1000, 707);
-       setVisible(true);
-       setResizable(false);
-       setLocationRelativeTo(null);
 
-        this.add(searchPanel);
+        // Panel for organizing address field and button
+        JPanel addressPanel = new JPanel(new BorderLayout());
+        addressPanel.add(userAddress, BorderLayout.CENTER);
+        addressPanel.add(proceedButton, BorderLayout.EAST);
+
+        userInputPanel.add(addressPanel);
+        searchPanel.add(userInputPanel);
+
+        JPanel printPanel = new JPanel();
+        printPanel.setBounds(0, 358, 1000, 349);
+        printPanel.setBackground(Color.decode("#FDFDFD"));
+
+        setTitle("This Guy Needs Some Attitude"); // Set frame title
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(1000, 707); // Set frame size
+        ImageIcon logo = new ImageIcon("resources//AttitudeIcon.png");
+        setIconImage(logo.getImage()); // Set frame icon
+        setLocationRelativeTo(null); // Center the frame on the screen
+        setVisible(true); // Make the frame visible
+        setResizable(false); // Disable frame resizing
+        add(searchPanel); // Add search panel to the frame
+
     }
 
+    // ActionListener implementation for handling button click
     @Override
     public void actionPerformed(ActionEvent e) {
-        dispose();
-        Frame7 frame7 = new Frame7();
+        AddressSearchOption addressSearchOption = new AddressSearchOption(this); // Create an instance of AddressSearchOption
+        addressSearchOption.performSearch(); // Perform address search
     }
 
-
+    // Method to get user input from the address field
+    public String getUserInput() {
+        return userAddress.getText(); // Return the text entered by the user
+    }
 }
