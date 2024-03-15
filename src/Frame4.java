@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.table.DefaultTableModel;
 
 import src.KnapAndSort.KnapsackMain;
@@ -27,10 +28,16 @@ import src.KnapAndSort.KnapsackMain;
 public class Frame4 extends JFrame implements ActionListener {
     int input;
     KnapsackMain knapSack;
-    JTextArea textArea;
+    JTextPane textPane;
+    String output;
+    RoundedButton attitude;
+    RoundedButton weight;
+    RoundedButton value;
+    RoundedButton proceed;
     Frame4(int input){
+        this.input = input;
         System.out.println(input+"input Received");
-        new KnapsackMain(input);
+        knapSack = new KnapsackMain(input);
         
         //Panel for this
         JPanel givePanel = new JPanel();
@@ -53,21 +60,32 @@ public class Frame4 extends JFrame implements ActionListener {
         JLabel sortByText = new JLabel("Sort By:");
         sortByText.setFont(new Font("Arial", Font.PLAIN, 17));
 
-        RoundedButton attitude = new RoundedButton("Attitude", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
-        RoundedButton weight = new RoundedButton("Weight", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
-        RoundedButton value = new RoundedButton("Value", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
-        
+        attitude = new RoundedButton("Attitude", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
+        weight = new RoundedButton("Weight", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
+        value = new RoundedButton("Value", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
+        attitude.addActionListener(this);
+        weight.addActionListener(this);
+        value.addActionListener(this);
+
+
         sortPanel.add(sortByText);
         sortPanel.add(attitude);
         sortPanel.add(weight);
         sortPanel.add(value);
         
-        textArea= new JTextArea();
+        output=knapSack.getProduct();
+        output+=knapSack.getBestValue();
+        textPane= new JTextPane();
+        textPane.setContentType("text/plain");
+        textPane.setText(output);
+        
         JScrollPane tablePanel = new JScrollPane();
+        tablePanel.setViewportView(textPane);
         tablePanel.setBounds(0,175,1000,410);
         tablePanel.setBackground(Color.WHITE);
+
         
-        RoundedButton proceed = new RoundedButton("PROCEED", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 20);
+        proceed = new RoundedButton("PROCEED", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 20);
         proceed.addActionListener(this);
 
         JFormattedTextField choose = new JFormattedTextField();
@@ -111,11 +129,30 @@ public class Frame4 extends JFrame implements ActionListener {
        setResizable(false);
        setLocationRelativeTo(null);
     }
+    
+    
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        dispose();
-        Frame5 frame5 = new Frame5();
+        if(e.getSource() == attitude) {
+            updateTextPane(knapSack.getProduct());
+        }
+        if(e.getSource() == value) {
+            updateTextPane(knapSack.getValue());
+        }
+        if(e.getSource() == weight) {
+            updateTextPane(knapSack.getWeight());
+        }
+        if(e.getSource() == proceed) {
+            dispose();
+            Frame5 frame5 = new Frame5(); 
+        }
+        
     }
+    private void updateTextPane(String newText) {
+        textPane.setText(newText);
+    }
+    
 
 }

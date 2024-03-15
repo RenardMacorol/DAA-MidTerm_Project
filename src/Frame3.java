@@ -20,7 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.text.NumberFormatter;
-
+import src.KnapAndSort.KnapsackMain;
 public class Frame3 extends JFrame implements ActionListener {
     public int knapInput;
     public RoundedButton seeResults;
