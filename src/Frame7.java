@@ -1,5 +1,6 @@
 package src;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
@@ -8,6 +9,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -37,16 +39,17 @@ public class Frame7 extends JFrame implements ActionListener {
         // All buttons locations should be here
         JLabel buttonsLabel = new JLabel();
         buttonsLabel.setLayout(new FlowLayout());
-        ImageIcon candyKingdomIcon = new ImageIcon();
-        ImageIcon farmWorldIcon = new ImageIcon();
-        ImageIcon treeHouseIcon = new ImageIcon();
-        ImageIcon iceKingdomIcon = new ImageIcon();
-        ImageIcon beutopiaIcon = new ImageIcon();
-        this.candyKingdomButton = new JButton("Candy Kingdom");
-        this.farmWorldButton = new JButton("Farm World");
-        this.treeHouseButton = new JButton("Tree House");
-        this.iceKinggdomButton = new JButton("Ice King");
-        this.beutopiaButton = new JButton("Beutopia");
+        ImageIcon candyKingdomIcon = new ImageIcon("resources/page7/candy-kingdom_button.png");
+        ImageIcon farmWorldIcon = new ImageIcon("resources/page7/farm-world_button.png");
+        ImageIcon treeHouseIcon = new ImageIcon("resources/page7/tree-house_button.png");
+        ImageIcon iceKingdomIcon = new ImageIcon("resources/page7/ice-kingdom_button.png");
+        ImageIcon beutopiaIcon = new ImageIcon("resources/page7/beautopia_button.png");
+        this.candyKingdomButton = new JButton(candyKingdomIcon);
+        this.candyKingdomButton.setBorder(BorderFactory.createEmptyBorder(PROPERTIES, ALLBITS, ABORT, HEIGHT));
+        this.farmWorldButton = new JButton(farmWorldIcon);
+        this.treeHouseButton = new JButton(treeHouseIcon);
+        this.iceKinggdomButton = new JButton(iceKingdomIcon);
+        this.beutopiaButton = new JButton(beutopiaIcon);
         
         candyKingdomButton.addActionListener(this);
         farmWorldButton.addActionListener(this);
@@ -66,7 +69,7 @@ public class Frame7 extends JFrame implements ActionListener {
         // frame settings
         setTitle("Midterm Project");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(1000, 563);
+        setSize(1000, 707);
         setVisible(true);
         setResizable(false);
         this.add(locationPanel);

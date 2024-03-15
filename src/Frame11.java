@@ -72,6 +72,9 @@ public class Frame11 extends JFrame {
         setVisible(true);
         setResizable(false);
         this.add(creditsPanel);
+        
     }
+
+    
 
 }
