@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import java.awt.Cursor;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -165,77 +166,59 @@ public class Frame4 extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == attitude) {
-            int c = 0;
-            Operation op = new Operation();
-            op.findFeasible(input);
-            op.sorty();
-            for(int i = 0; i<op.getFeasibleList().size(); i++){            
-                if(op.getVTotal().get(i) == op.bestValue(input)){
-                    blue.setValueAt(i+1, i, 0);
-                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
-                    blue.setValueAt(op.getWTotal().get(i), i,2);  
-                    blue.setValueAt(op.getVTotal().get(i), i,3);  
-                    blue.setValueAt("BEST", i,4); 
+        JFrame att = new JFrame();
 
-                }
-                else{
-                    blue.setValueAt(i+1, i, 0);
-                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
-                    blue.setValueAt(op.getWTotal().get(i), i,2);  
-                    blue.setValueAt(op.getVTotal().get(i), i,3);  
-                    blue.setValueAt(" ", i,4); 
-                }
-                c++;
-            }  
-            
+       att.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+       att.setSize(1000, 500);
+       att.setVisible(true);
+       att.setResizable(false);
+       att.setLocationRelativeTo(null);
+        
+       JTextPane p = new JTextPane();
+       Operation op = new Operation();
+        op.findFeasible(input);
+        op.printSort();
+        String names = op.getProductName();
+        p.setText(names);
+
+        att.add(p);
+
+
         }
         if(e.getSource() == value) {
-            int c = 0;
-            Operation op = new Operation();
-            op.findFeasible(input);
-            op.sorting();
-            for(int i = 0; i<op.getFeasibleList().size(); i++){            
-                if(op.getVTotal().get(i) == op.bestValue(input)){
-                    blue.setValueAt(i+1, i, 0);
-                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
-                    blue.setValueAt(op.getWTotal().get(i), i,2);  
-                    blue.setValueAt(op.getVTotal().get(i), i,3);  
-                    blue.setValueAt("BEST", i,4); 
+            JFrame att = new JFrame();
 
-                }
-                else{
-                    blue.setValueAt(i+1, i, 0);
-                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
-                    blue.setValueAt(op.getWTotal().get(i), i,2);  
-                    blue.setValueAt(op.getVTotal().get(i), i,3);  
-                    blue.setValueAt(" ", i,4); 
-                }
-                c++;
-            }  
+            att.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            att.setSize(1000, 500);
+            att.setVisible(true);
+            att.setResizable(false);
+            att.setLocationRelativeTo(null);
+        
+       JTextPane p = new JTextPane();
+       Operation op = new Operation();
+        op.findFeasible(input);
+        op.printSort();
+        String names = op.getValue();
+        p.setText(names);
+        att.add(p);
+
         }
         if(e.getSource() == weight) {
-            int c = 0;
-            Operation op = new Operation();
-            op.findFeasible(input);
-            op.sorted();
-            for(int i = 0; i<op.getFeasibleList().size(); i++){            
-                if(op.getVTotal().get(i) == op.bestValue(input)){
-                    blue.setValueAt(i+1, i, 0);
-                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
-                    blue.setValueAt(op.getWTotal().get(i), i,2);  
-                    blue.setValueAt(op.getVTotal().get(i), i,3);  
-                    blue.setValueAt("BEST", i,4); 
+            JFrame att = new JFrame();
+            att.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            att.setSize(1000, 500);
+            att.setVisible(true);
+            att.setResizable(false);
+            att.setLocationRelativeTo(null);
+        
+       JTextArea p = new JTextArea();
+       Operation op = new Operation();
+        op.findFeasible(input);
+        op.printSort();
+        String names = op.getWeight();
+        p.setText(names);
+        att.add(p);
 
-                }
-                else{
-                    blue.setValueAt(i+1, i, 0);
-                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
-                    blue.setValueAt(op.getWTotal().get(i), i,2);  
-                    blue.setValueAt(op.getVTotal().get(i), i,3);  
-                    blue.setValueAt(" ", i,4); 
-                }
-                c++;
-            }  
         }
         if(e.getSource() == proceed) {
             String k = choose.getText();
@@ -246,9 +229,4 @@ public class Frame4 extends JFrame implements ActionListener {
         }
         
     }
-    private void updateTextPane(String newText) {
-        textPane.setText(newText);
-    }
-    
-
 }

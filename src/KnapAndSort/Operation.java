@@ -347,7 +347,7 @@ public class Operation {
 // Print sorted feasibleList by items
 StringBuilder forProduct = new StringBuilder();
 forProduct.append("\nSorted by items:");
-forProduct.append("ITEM/S\t\t\t\t\t\t\t       WEIGHTS   \t\t\t\tVALUES");
+forProduct.append("ITEM/S\t\tWEIGHTS\t\tVALUES\n");
 for (int i = 0; i < feasibleList.size(); i++) {
     List<Items> itemList = feasibleList.get(i);
     double totalWeight = computeWeight(itemList);
@@ -365,7 +365,7 @@ feasibleList.sort(Comparator.comparingDouble(itemsList -> computeWeight(itemsLis
 // Print sorted list by weight
 StringBuilder forWeight = new StringBuilder();
 forWeight.append("\nSorted by weight:");
-forWeight.append("ITEM/S\t\t\t\t\t\t\t       WEIGHTS   \t\t\t\tVALUES");
+forWeight.append("ITEM/S\t\t   WEIGHTS \t\tVALUES\n");
 for (int i = 0; i < feasibleList.size(); i++) {
     List<Items> itemList = feasibleList.get(i);
     double totalWeight = computeWeight(itemList);
@@ -382,7 +382,7 @@ byWeight=forWeight.toString();
     // Print sorted list by value
     StringBuilder forValue = new StringBuilder();
     forValue.append("\nSorted by value:");
-    forValue.append("ITEM/S\t\t\t\t\t\t\t       WEIGHTS   \t\t\t\tVALUES");
+    forValue.append("ITEM/S\t\tWEIGHTS \t\tVALUES\n");
     for (int i = 0; i < feasibleList.size(); i++) {
     List<Items> itemList = feasibleList.get(i);
     double totalWeight = computeWeight(itemList);
@@ -394,24 +394,6 @@ byWeight=forWeight.toString();
     byValue=forValue.toString();
 }
 
-
-
-
- public void sorting (){
- feasibleList.sort(Comparator.comparingDouble(itemsList -> computeValue(itemsList)));
- }
- 
- public void sorted (){
-    feasibleList.sort(Comparator.comparingDouble(itemsList -> computeWeight(itemsList)));
-    }
-
-    public void sorty() {
-        feasibleList.sort((list1, list2) -> {
-         String productName1 = printProductName(list1);
-         String productName2 = printProductName(list2);
-         return productName1.compareTo(productName2);
-     });
-    }
 }
 
 
