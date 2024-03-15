@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.ScrollPane;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.AbstractDocument;
 
 import src.KnapAndSort.KnapsackMain;
 import src.KnapAndSort.Operation;
@@ -36,8 +38,10 @@ public class Frame4 extends JFrame implements ActionListener {
     Frame4(int input){
         
         this.input = input;
-        System.out.println(input+"input Received");
+
         
+        knapSack = new KnapsackMain(input);
+        this.bestValue = knapSack.getBestValue();
         //Panel for this
         JPanel givePanel = new JPanel();
         givePanel.setBounds(0,0,1000,110);
@@ -71,6 +75,7 @@ public class Frame4 extends JFrame implements ActionListener {
         sortPanel.add(weight);
         sortPanel.add(value);
         
+
         DefaultTableModel blue = new NewTable();
         blue.addColumn("#");
         blue.addColumn("ATTITUDE/s");
@@ -90,6 +95,7 @@ public class Frame4 extends JFrame implements ActionListener {
                     op.getWTotal().get(i), op.getVTotal().get(i)," "});
             }
         }
+
 
         JTable tab = new JTable(blue);
         tab.setBorder(null);
@@ -163,13 +169,16 @@ public class Frame4 extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == attitude) {
-            updateTextPane(knapSack.getProduct());
+            String output = knapSack.getProduct()+bestValue;
+            updateTextPane(output);
         }
         if(e.getSource() == value) {
-            updateTextPane(knapSack.getValue());
+            String output = knapSack.getValue()+bestValue;
+            updateTextPane(output);
         }
         if(e.getSource() == weight) {
-            updateTextPane(knapSack.getWeight());
+            String output = knapSack.getWeight()+bestValue;
+            updateTextPane(output);
         }
         if(e.getSource() == proceed) {
             dispose();
