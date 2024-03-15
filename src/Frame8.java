@@ -44,6 +44,8 @@ public class Frame8 extends JFrame implements ActionListener {
         // Button send invoice
         JButton invoicebButton = new JButton("Send Invoice");
         invoicebButton.addActionListener(this);
+      
+       
         // all components
         outputPanel.add(messageLabel);
         outputPanel.add(outputLabel);
