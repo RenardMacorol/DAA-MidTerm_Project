@@ -1,6 +1,10 @@
 package src;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -13,40 +17,89 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Frame8 extends JFrame implements ActionListener {
-    Frame8() {
+    
+    ImageIcon messageIcon;
+
+    Frame8(String input, String string, int output) {
+        
         // panel itself
         JPanel outputPanel = new JPanel();
-        outputPanel.setLayout(new GridLayout(3, 0));
-        outputPanel.setBounds(0, 0, 500, 500);
+        outputPanel.setBackground(Color.WHITE);
+        outputPanel.setLayout(new GridBagLayout());
+        outputPanel.setBounds(0, 0, 50, 50);
 
         // top message
-        ImageIcon messageIcon = new ImageIcon();
-        JLabel messageLabel = new JLabel("Your best route");
-        messageLabel.setIcon(messageIcon);
-        messageLabel.setPreferredSize(new Dimension(20, 20));
-        messageLabel.setBounds(0, 500, 500, 500);
-        messageLabel.setVerticalAlignment(JLabel.CENTER);
+        messageIcon = display(output);
+        Image newImage = messageIcon.getImage();
+        Image resized = newImage.getScaledInstance(1000, 340, java.awt.Image.SCALE_SMOOTH);
+        JLabel messageLabel = new JLabel();
+
+        messageLabel.setIcon(new ImageIcon(resized));
+
+        messageLabel.setVerticalAlignment(JLabel.TOP);
         messageLabel.setHorizontalAlignment(JLabel.CENTER);
 
         // shot output
+        JPanel pathPanel = new JPanel();
+        pathPanel.setLayout(new GridLayout(4, 0));
+        pathPanel.setBackground(Color.WHITE);
+        JLabel shortPath = new JLabel("Shortest Route:");
+        shortPath.setFont(new Font("DM SANS", Font.BOLD, 17));
+        shortPath.setVerticalAlignment(JLabel.TOP);
+        shortPath.setHorizontalAlignment(JLabel.LEFT);
+        JLabel distance = new JLabel("Total Distance:");
+        distance.setFont(new Font("DM SANS", Font.BOLD, 17));
+        distance.setVerticalAlignment(JLabel.TOP);
+        distance.setHorizontalAlignment(JLabel.LEFT);
         JLabel outputLabel = new JLabel();
-        outputLabel.setText("Route Route etc");
-        outputLabel.setVerticalAlignment(JLabel.CENTER);
-        outputLabel.setHorizontalAlignment(JLabel.CENTER);
-        
+        outputLabel.setText(input);
+        outputLabel.setVerticalAlignment(JLabel.TOP);
+        outputLabel.setHorizontalAlignment(JLabel.LEFT);
+        outputLabel.setFont(new Font("DM SANS", Font.BOLD, 17));
+        JLabel outputShortestLabel = new JLabel();
+        outputShortestLabel.setText("Shortest Distance" + " " + string);
+        outputShortestLabel.setFont(new Font("DM SANS", Font.BOLD, 17));
+        outputShortestLabel.setVerticalAlignment(JLabel.TOP);
+        outputShortestLabel.setHorizontalAlignment(JLabel.LEFT);
+        pathPanel.add(shortPath);
+        pathPanel.add(outputLabel);
+        pathPanel.add(distance);
+        pathPanel.add(outputShortestLabel);
+
+      
 
         // Button send invoice
-        JButton invoicebButton = new JButton("Send Invoice");
+        ImageIcon invoice = new ImageIcon("resources/page8/1panel_static.png");
+        Image newImageInvoice = invoice.getImage();
+        Image resizedInVoice = newImageInvoice.getScaledInstance(450, 180, java.awt.Image.SCALE_SMOOTH);
+
+        
+
+        JButton invoicebButton = new JButton(new ImageIcon(resizedInVoice));
+        invoicebButton.setContentAreaFilled(false);
+        invoicebButton.setBorderPainted(false);
+        invoicebButton.setFocusable(false);
         invoicebButton.addActionListener(this);
-        //all components
-        outputPanel.add(messageLabel);
-        outputPanel.add(outputLabel);
-        outputPanel.add(invoicebButton);
+
+        // all components
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy=0;
+        outputPanel.add(messageLabel, gbc);
+        gbc.gridx=0;
+        gbc.gridy=1;
+        outputPanel.add(pathPanel,gbc);
+        gbc.gridx=0;
+        gbc.gridy=2;
+        outputPanel.add(invoicebButton,gbc);
 
         //frame settings
-        setTitle("Midterm Project");
+        setTitle("This Guy Needs Some Attitude");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(1000, 563);
+        setSize(1000, 707);
+        ImageIcon logo = new ImageIcon("resources//AttitudeIcon.png");
+        setIconImage(logo.getImage());
+        setLocationRelativeTo(null);//center the window to screen when run
         setVisible(true);
         setResizable(false);
         this.add(outputPanel);
@@ -57,5 +110,25 @@ public class Frame8 extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         dispose();
         Frame9 frame9 = new Frame9();
+    }
+
+    private ImageIcon display(int output) {
+        if (output == 0) {
+            return new ImageIcon("resources/page8/Case _Tree House.png");
+        }
+        if (output == 1) {
+            return new ImageIcon("resources/page8/Case _Candy Kingdom.png");
+        }
+        if (output == 2) {
+            return new ImageIcon("resources/page8/Case _Farm World.png");
+        }
+        if (output == 3) {
+            return new ImageIcon("resources/page8/Case _Ice Kingdom.png");
+        }
+        if (output == 4) {
+            return new ImageIcon("resources/page8/Case _Beautopia.png");
+        }
+      
+        return new ImageIcon();
     }
 }
