@@ -54,7 +54,7 @@ public class Frame9 extends JFrame implements ActionListener {
        setVisible(true);
        setResizable(false);
        setLocationRelativeTo(null);
-
+        this.add(invoicePanel);
     }
 
     @Override
