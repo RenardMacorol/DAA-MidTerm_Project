@@ -22,12 +22,16 @@ import javax.swing.JTextField;
 import javax.swing.text.NumberFormatter;
 
 public class Frame3 extends JFrame implements ActionListener {
+    public int knapInput;
+    public RoundedButton seeResults;
+    JTextField choose;
+
     Frame3() {
-       // Panel for this
+        // Panel for this
         JPanel but = new JPanel();
         but.setBounds(0, 0, 1000, 210);
-        
-        //Label in the top
+
+        // Label in the top
         ImageIcon butWaitIcon = new ImageIcon("resources/page3/ButWait.png");
         JLabel butWaitLabel = new JLabel();
         butWaitLabel.setIcon(butWaitIcon);
@@ -42,7 +46,7 @@ public class Frame3 extends JFrame implements ActionListener {
         butEnter.setBounds(0, 450, 755, 100);
         butEnter.setBackground(Color.WHITE);
 
-        //Enter your heart capacity with inputField
+        // Enter your heart capacity with inputField
         ImageIcon heart = new ImageIcon("resources/page3/Heart.png");
         JLabel input = new JLabel();
         input.setIcon(heart);
@@ -58,8 +62,9 @@ public class Frame3 extends JFrame implements ActionListener {
         nf.setMinimum(1);
         nf.setMaximum(15);
 
-        JTextField choose = new JTextField();
-        choose.setPreferredSize(new Dimension(50,75));
+        choose = new JTextField();
+
+        choose.setPreferredSize(new Dimension(50, 75));
         choose.setFont(new Font("Arial", Font.PLAIN, 20));
         choose.setForeground(Color.GRAY);
         choose.setBackground(Color.WHITE);
@@ -73,36 +78,40 @@ public class Frame3 extends JFrame implements ActionListener {
         butBot.setBounds(0, 550, 1000, 157);
         butBot.setBackground(Color.WHITE);
 
-        //See result Button
-        RoundedButton seeResults = new RoundedButton("ENTER", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 20);
+        // See result Button
+        seeResults = new RoundedButton("ENTER", Color.decode("#242323"), Color.WHITE, 30, 0, 0, "Arial",
+                20);
         seeResults.addActionListener(this);
 
         butBot.add(seeResults);
-    
-        
-        //frame settings
-       ImageIcon icon = new ImageIcon("resources/MainIcon.png");
-       setIconImage(icon.getImage());
-       setLayout(null);
-       setTitle("This Guy Needs Some Attitude");
-       setDefaultCloseOperation(EXIT_ON_CLOSE);
-       setSize(1000, 707);
-       setVisible(true);
-       setResizable(false);
-       setLocationRelativeTo(null);
 
-       this.add(but);
-       this.add(butTable);
-       this.add(butEnter);
-       this.add(butEnter2);
-       this.add(butBot);
-    
-       
+        // frame settings
+        ImageIcon icon = new ImageIcon("resources/MainIcon.png");
+        setIconImage(icon.getImage());
+        setLayout(null);
+        setTitle("This Guy Needs Some Attitude");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(1000, 707);
+        setVisible(true);
+        setResizable(false);
+        setLocationRelativeTo(null);
+
+        this.add(but);
+        this.add(butTable);
+        this.add(butEnter);
+        this.add(butEnter2);
+        this.add(butBot);
+
     }
 
     public void actionPerformed(ActionEvent e) {
         dispose();
-        Frame4 frame4 = new Frame4();
+        if (e.getSource() == seeResults) {
+
+            String textInput = choose.getText();
+            knapInput = Integer.parseInt(textInput);
+            Frame4 frame4 = new Frame4(knapInput);
+        }
 
     }
 }

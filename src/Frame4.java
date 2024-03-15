@@ -17,10 +17,21 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
-public class Frame4 extends JFrame implements ActionListener{
-    Frame4(){
+import src.KnapAndSort.KnapsackMain;
+
+public class Frame4 extends JFrame implements ActionListener {
+    int input;
+    KnapsackMain knapSack;
+    JTextArea textArea;
+    Frame4(int input){
+        System.out.println(input+"input Received");
+        new KnapsackMain(input);
+        
         //Panel for this
         JPanel givePanel = new JPanel();
         givePanel.setBounds(0,0,1000,110);
@@ -51,7 +62,8 @@ public class Frame4 extends JFrame implements ActionListener{
         sortPanel.add(weight);
         sortPanel.add(value);
         
-        JPanel tablePanel = new JPanel();
+        textArea= new JTextArea();
+        JScrollPane tablePanel = new JScrollPane();
         tablePanel.setBounds(0,175,1000,410);
         tablePanel.setBackground(Color.WHITE);
         
@@ -104,6 +116,6 @@ public class Frame4 extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         dispose();
         Frame5 frame5 = new Frame5();
-    }   
-    
+    }
+
 }
