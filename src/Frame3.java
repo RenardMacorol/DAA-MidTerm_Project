@@ -19,10 +19,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.text.NumberFormatter;
+import javax.swing.text.NumberFormatter;    
 
 public class Frame3 extends JFrame implements ActionListener {
+
     Frame3() {
+        
        // Panel for this
         JPanel but = new JPanel();
         but.setBounds(0, 0, 1000, 210);
@@ -99,6 +101,7 @@ public class Frame3 extends JFrame implements ActionListener {
     
        
     }
+    
 
     public void actionPerformed(ActionEvent e) {
         dispose();

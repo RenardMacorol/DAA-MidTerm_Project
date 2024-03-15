@@ -3,6 +3,7 @@ package src;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,54 +18,79 @@ public class Frame10 extends JFrame implements ActionListener {
     Frame10() {
         JPanel ratingPanel = new JPanel();
         ratingPanel.setLayout(new GridLayout(4, 0));
-        ratingPanel.setBounds(0, 0, 500, 500);
+        ratingPanel.setBounds(100, 400, 1000 , 500);
 
-        // Upper area
+        // Upper area 5
         JLabel topMessage = new JLabel();
         topMessage.setLayout(new FlowLayout());
         topMessage.setVerticalAlignment(JLabel.CENTER);
         topMessage.setHorizontalAlignment(JLabel.CENTER);
-        ImageIcon guyIcon = new ImageIcon();
-        JLabel guyLabel = new JLabel("May Icon dito eh");
+
+        ImageIcon guyIcon = new ImageIcon("resources/page10/guy-5star.png");
+        JLabel guyLabel = new JLabel();
         guyLabel.setVerticalAlignment(JLabel.CENTER);
         guyLabel.setHorizontalAlignment(JLabel.CENTER);
         guyLabel.setIcon(guyIcon);
-        JLabel congratsMesLabel = new JLabel("Congrats");
+        JLabel congratsMesLabel = new JLabel();
         congratsMesLabel.setVerticalAlignment(JLabel.CENTER);
         congratsMesLabel.setHorizontalAlignment(JLabel.CENTER);
         topMessage.add(guyLabel);
         topMessage.add(congratsMesLabel);
 
+
         // rating
-        ImageIcon ratingIcon = new ImageIcon();
-        JLabel ratingLable = new JLabel("Rating star star");
+        ImageIcon ratingIcon = new ImageIcon("resources/page10/5star-rate.png");
+        setIconImage(ratingIcon.getImage());
+        JLabel ratingLable = new JLabel();
         ratingLable.setIcon(ratingIcon);
         ratingLable.setVerticalAlignment(JLabel.CENTER);
         ratingLable.setHorizontalAlignment(JLabel.CENTER);
 
+
         // questiong label
-        JLabel questionLabel = new JLabel("May question here");
+        ImageIcon questionIcon = new ImageIcon("resources/page10/3panel_static.png");
+        setIconImage(questionIcon.getImage());
+        JLabel questionLabel = new JLabel();
+        questionLabel.setIcon(questionIcon);
         questionLabel.setVerticalAlignment(JLabel.CENTER);
         questionLabel.setHorizontalAlignment(JLabel.CENTER);
+
+        JPanel buttonPanel = new JPanel(null);
+        buttonPanel.setBackground(Color.WHITE);
+        buttonPanel.setBounds(0, 1, 1000, 100);
+
+        RoundedButton yes = new RoundedButton("YES", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 22);
+        yes.setBounds(350, 50, 95, 49); 
+        yes.addActionListener(this);
+        buttonPanel.add(yes);
+
+        ImageIcon orIcon = new ImageIcon("resources/page10/4panel-or_static.png");
+        JLabel orLabel = new JLabel(orIcon);
+        orLabel.setBounds(400,50,50,50);
+
+        RoundedButton rest = new RoundedButton("REST", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 22);
+        rest.setBounds(550, 50, 95, 49); 
+        rest.addActionListener(this);
+        buttonPanel.add(rest);
 
         JLabel optionLabel = new JLabel();
         optionLabel.setVerticalAlignment(JLabel.CENTER);
         optionLabel.setHorizontalAlignment(JLabel.CENTER);
         optionLabel.setLayout(new FlowLayout());
-        this.yes = new JButton("Yes");
+        /**this.yes = new JButton("Yes");
         yes.addActionListener(this);
         JLabel or = new JLabel("OR");
         this.rest = new JButton("Rest");
         rest.addActionListener(this);
         optionLabel.add(yes);
         optionLabel.add(or);
-        optionLabel.add(rest);
+        optionLabel.add(rest);*/
 
         // Componets
         ratingPanel.add(topMessage);
         ratingPanel.add(ratingLable);
         ratingPanel.add(questionLabel);
-        ratingPanel.add(optionLabel);
+        ratingPanel.add(buttonPanel, orLabel);
 
         // frame settings
         setTitle("This Guy Needs Some Attitude");
@@ -76,8 +102,10 @@ public class Frame10 extends JFrame implements ActionListener {
         setVisible(true);
         setResizable(false);
         this.add(ratingPanel);
-    }
 
+        
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         dispose();
@@ -86,6 +114,5 @@ public class Frame10 extends JFrame implements ActionListener {
         }else{
             Frame11 frame11 = new Frame11();
         }
-        
     }
 }
