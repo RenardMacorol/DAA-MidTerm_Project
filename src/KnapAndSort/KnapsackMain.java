@@ -2,19 +2,38 @@ package src.KnapAndSort;
 import java.util.Scanner;
 
 public class KnapsackMain {
-    KnapsackMain(int input){
+    String outProduct;
+    String outValue;
+    String outWeight;
+    String bestValue;
+    public KnapsackMain(int input){
         
         Operation op = new Operation();
         op.printChoices();
-
-        Scanner sc = new Scanner(System.in);
-        System.out.println("\nEnter your cart size: ");
-        int cart = sc.nextInt();
-
-        op.printFeasible(cart);
+        op.printFeasible(input);
         op.printSort();
 
-        sc.close();
+        
+        this.outProduct=op.getProductName();
+        this.outValue=op.getValue();
+        this.outWeight=op.getWeight();
+        this.bestValue=op.getBestValue();
+
+       
+      
+    }
+
+    public String getProduct(){
+        return outProduct;
+    }
+    public String getValue(){
+        return outValue;
+    }
+    public String getWeight(){
+        return outWeight;
+    }
+    public String getBestValue(){
+        return bestValue;
     }
 
 

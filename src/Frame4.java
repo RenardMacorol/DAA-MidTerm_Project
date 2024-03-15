@@ -12,12 +12,30 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.text.AbstractDocument;
 
-import java.awt.Cursor;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.table.DefaultTableModel;
 
-public class Frame4 extends JFrame implements ActionListener{
-    Frame4(){
+
+import src.KnapAndSort.KnapsackMain;
+
+public class Frame4 extends JFrame implements ActionListener {
+    int input;
+    KnapsackMain knapSack;
+    JTextPane textPane;
+    String output;
+    RoundedButton attitude;
+    RoundedButton weight;
+    RoundedButton value;
+    RoundedButton proceed;
+    Frame4(int input){
+        this.input = input;
+        System.out.println(input+"input Received");
+        knapSack = new KnapsackMain(input);
+        
         //Panel for this
         JPanel givePanel = new JPanel();
         givePanel.setBounds(0,0,1000,110);
@@ -39,24 +57,36 @@ public class Frame4 extends JFrame implements ActionListener{
         JLabel sortByText = new JLabel("Sort By:");
         sortByText.setFont(new Font("DM SANS", Font.PLAIN, 17));
 
-        RoundedButton attitude = new RoundedButton("ATTITUDE", Color.decode("#242323"), Color.WHITE, 30,0,0, "DM SANS", 16);
-        RoundedButton weight = new RoundedButton("WEIGHT", Color.decode("#242323"), Color.WHITE, 30,0,0, "DM SANS", 16);
-        RoundedButton value = new RoundedButton("VALUE", Color.decode("#242323"), Color.WHITE, 30,0,0, "DM SANS", 16);
-        
-        attitude.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        weight.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        value.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        attitude = new RoundedButton("Attitude", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
+        weight = new RoundedButton("Weight", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
+        value = new RoundedButton("Value", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
+        attitude.addActionListener(this);
+        weight.addActionListener(this);
+        value.addActionListener(this);
+
+
 
         sortPanel.add(sortByText);
         sortPanel.add(attitude);
         sortPanel.add(weight);
         sortPanel.add(value);
         
-        JPanel tablePanel = new JPanel();
-        tablePanel.setBounds(0,175,1000,410);
-        tablePanel.setBackground(Color.decode("#FDFDFD"));
+        output=knapSack.getProduct();
+        output+=knapSack.getBestValue();
+        textPane= new JTextPane();
+        textPane.setContentType("text/plain");
+        textPane.setText(output);
         
-        RoundedButton proceed = new RoundedButton("PROCEED", Color.decode("#242323"), Color.WHITE, 30,0,0, "DM SANS", 20);
+        JScrollPane tablePanel = new JScrollPane();
+        tablePanel.setViewportView(textPane);
+        tablePanel.setBounds(0,175,1000,410);
+
+        tablePanel.setBackground(Color.WHITE);
+
+        
+        proceed = new RoundedButton("PROCEED", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 20);
+
         proceed.addActionListener(this);
         proceed.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
@@ -102,11 +132,30 @@ public class Frame4 extends JFrame implements ActionListener{
        setResizable(false);
        setLocationRelativeTo(null);
     }
+    
+    
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        dispose();
-        Frame5 frame5 = new Frame5();
-    }   
+        if(e.getSource() == attitude) {
+            updateTextPane(knapSack.getProduct());
+        }
+        if(e.getSource() == value) {
+            updateTextPane(knapSack.getValue());
+        }
+        if(e.getSource() == weight) {
+            updateTextPane(knapSack.getWeight());
+        }
+        if(e.getSource() == proceed) {
+            dispose();
+            Frame5 frame5 = new Frame5(); 
+        }
+        
+    }
+    private void updateTextPane(String newText) {
+        textPane.setText(newText);
+    }
     
+
 }

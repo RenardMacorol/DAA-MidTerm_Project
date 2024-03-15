@@ -7,7 +7,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.Cursor;
+
+import src.KnapAndSort.*;
 
 
 public class Frame2 extends JFrame implements ActionListener{
@@ -57,7 +58,7 @@ public class Frame2 extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         dispose();
-        KnapsackMain knap = new KnapsackMain();
+        
         Frame3 frame3 = new Frame3();
     }
 
