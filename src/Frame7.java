@@ -22,6 +22,7 @@ import src.TSP.Tsp;
 public class Frame7 extends JFrame implements ActionListener {
     JButton candyKingdomButton, farmWorldButton, treeHouseButton, iceKinggdomButton, beutopiaButton;
     Tsp tsp;
+    Frame8 outPutFrame;
 
     Frame7() {
         // panel itself
@@ -106,21 +107,26 @@ public class Frame7 extends JFrame implements ActionListener {
         dispose();
         if (e.getSource() == treeHouseButton) {
             tsp = new Tsp(0);
+            new Frame8(tsp.getOuput(), tsp.getShortestDistance(),1);
         }
         if (e.getSource() == candyKingdomButton) {
             tsp = new Tsp(1);
+            new Frame8(tsp.getOuput(), tsp.getShortestDistance(),1);
         }
         if (e.getSource() == farmWorldButton) {
             tsp = new Tsp(2);
+            new Frame8(tsp.getOuput(), tsp.getShortestDistance(),2);
         }
         if (e.getSource() == iceKinggdomButton) {
             tsp = new Tsp(3);
+            new Frame8(tsp.getOuput(), tsp.getShortestDistance(),3);
         }
         if (e.getSource() == beutopiaButton) {
             tsp = new Tsp(4);
+            new Frame8(tsp.getOuput(), tsp.getShortestDistance(),4);
         }
 
-        Frame8 frame8 = new Frame8(tsp.getOuput(), tsp.getShortestDistance());
+       
     }
 
     public static void main(String[] args) {
