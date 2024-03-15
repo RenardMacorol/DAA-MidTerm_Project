@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.Cursor;
 
 public class Frame2 extends JFrame implements ActionListener{
     Frame2(){
@@ -23,13 +24,14 @@ public class Frame2 extends JFrame implements ActionListener{
         proceedPanel.add(messageLabel);
 
         //Proceed button
-        RoundedButton proceed = new RoundedButton("PROCEED", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 20);
+        RoundedButton proceed = new RoundedButton("PROCEED", Color.decode("#242323"), Color.WHITE, 30,0,0, "DM Sans", 20);
         proceed.addActionListener(this);
+        proceed.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         //Panel only one for this
         JPanel proceedBottom = new JPanel();
         proceedBottom.setBounds(0,550,1000,157);
-        proceedBottom.setBackground(Color.WHITE);
+        proceedBottom.setBackground(Color.decode("#FDFDFD"));
         
         //Import those componets in Panel
         proceedBottom.add(proceed);
