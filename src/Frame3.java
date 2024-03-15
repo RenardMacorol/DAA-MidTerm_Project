@@ -10,11 +10,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.AbstractDocument;
-import java.awt.Cursor;
 
-import src.KnapAndSort.KnapsackMain;
+import src.KnapAndSort.Operation;
+
+import java.awt.Cursor;
 
 public class Frame3 extends JFrame implements ActionListener {
     public int knapInput;
@@ -24,7 +27,8 @@ public class Frame3 extends JFrame implements ActionListener {
     Frame3() {
         // Panel for this
         JPanel but = new JPanel();
-        but.setBounds(0, 0, 1000, 210);
+        but.setBounds(0, 0, 1000, 220);
+        but.setBackground(Color.decode("#FDFDFD"));
 
         // Label in the top
         ImageIcon butWaitIcon = new ImageIcon("resources/page3/ButWait.png");
@@ -34,9 +38,39 @@ public class Frame3 extends JFrame implements ActionListener {
         but.add(butWaitLabel);
 
         JPanel butTable = new JPanel();
-        butTable.setBounds(0, 210, 1000, 240);
+        butTable.setBounds(0, 220, 1000, 240);
         butTable.setBackground(Color.decode("#FDFDFD"));
 
+        DefaultTableModel blue = new DefaultTableModel();
+        blue.addColumn("#");
+        blue.addColumn("ATTITUDE");
+        blue.addColumn("WEIGHT");
+        blue.addColumn("VALUE");
+
+        Operation op = new Operation();
+        blue.addRow(new Object[]{blue.getColumnName(0), blue.getColumnName(1), 
+                                blue.getColumnName(2), blue.getColumnName(3)});
+        for(int i = 0; i<op.getItemArray().length; i++){
+            blue.addRow(new Object[]{i+1, op.getItemArray()[i].getProductName(), 
+                                    op.getItemArray()[i].getWeight(), op.getItemArray()[i].getValue()});
+        }
+
+        JTable tab = new JTable(blue);
+        tab.setBorder(null);
+        tab.setBackground(Color.decode("#FDFDFD"));
+        tab.setFont(new Font("DM SANS", Font.PLAIN, 25));
+        tab.setShowGrid(false);
+        tab.setShowHorizontalLines(false);
+        tab.setShowVerticalLines(false);
+        tab.setIntercellSpacing(new Dimension(0,0));
+        tab.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tab.getColumnModel().getColumn(1).setPreferredWidth(230);
+        tab.getColumnModel().getColumn(2).setPreferredWidth(200);
+        tab.getColumnModel().getColumn(3).setPreferredWidth(150);
+        tab.setRowHeight(35);
+
+        butTable.add(tab);
+    
         JPanel butEnter = new JPanel();
         butEnter.setBounds(0, 450, 755, 100);
         butEnter.setBackground(Color.decode("#FDFDFD"));
@@ -55,7 +89,7 @@ public class Frame3 extends JFrame implements ActionListener {
         choose = new JTextField();
 
         choose.setPreferredSize(new Dimension(50, 75));
-        choose.setFont(new Font("Arial", Font.PLAIN, 20));
+        choose.setFont(new Font("Arial", Font.PLAIN, 50));
 
         choose.setForeground(Color.GRAY);
         choose.setBackground(Color.decode("#FDFDFD"));
@@ -99,12 +133,14 @@ public class Frame3 extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        dispose();
         if (e.getSource() == seeResults) {
-
             String textInput = choose.getText();
             knapInput = Integer.parseInt(textInput);
-            Frame4 frame4 = new Frame4(knapInput);
+            if (knapInput>=1 && knapInput <= 15){
+                dispose();
+                Frame4 frame4 = new Frame4(knapInput);
+            }
+            
         }
 
     }
