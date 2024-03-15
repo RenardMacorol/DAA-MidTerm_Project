@@ -20,7 +20,7 @@ public class Frame8 extends JFrame implements ActionListener {
     
     ImageIcon messageIcon;
 
-    Frame8(String input, int shortestDistance, int output) {
+    Frame8(String input, String string, int output) {
         
         // panel itself
         JPanel outputPanel = new JPanel();
@@ -57,7 +57,7 @@ public class Frame8 extends JFrame implements ActionListener {
         outputLabel.setHorizontalAlignment(JLabel.LEFT);
         outputLabel.setFont(new Font("DM SANS", Font.BOLD, 17));
         JLabel outputShortestLabel = new JLabel();
-        outputShortestLabel.setText("Shortest Distance" + " " + shortestDistance);
+        outputShortestLabel.setText("Shortest Distance" + " " + string);
         outputShortestLabel.setFont(new Font("DM SANS", Font.BOLD, 17));
         outputShortestLabel.setVerticalAlignment(JLabel.TOP);
         outputShortestLabel.setHorizontalAlignment(JLabel.LEFT);
@@ -65,6 +65,8 @@ public class Frame8 extends JFrame implements ActionListener {
         pathPanel.add(outputLabel);
         pathPanel.add(distance);
         pathPanel.add(outputShortestLabel);
+
+      
 
         // Button send invoice
         JButton invoicebButton = new JButton("Send Invoice");

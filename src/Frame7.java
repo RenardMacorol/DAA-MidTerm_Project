@@ -108,26 +108,26 @@ public class Frame7 extends JFrame implements ActionListener {
         dispose();
         if (e.getSource() == treeHouseButton) {
             tsp = new Tsp(0);
-            new Frame8(tsp.getOuput(), tsp.getShortestDistance(),0);
+            new Frame8(tsp.getOuput(), tsp.getOutputDistance(),0);
         }
         if (e.getSource() == candyKingdomButton) {
             tsp = new Tsp(1);
-            new Frame8(tsp.getOuput(), tsp.getShortestDistance(),1);
+            new Frame8(tsp.getOuput(), tsp.getOutputDistance(),1);
         }
         if (e.getSource() == farmWorldButton) {
             tsp = new Tsp(2);
-            new Frame8(tsp.getOuput(), tsp.getShortestDistance(),2);
+            new Frame8(tsp.getOuput(), tsp.getOutputDistance(),2);
         }
         if (e.getSource() == iceKinggdomButton) {
             tsp = new Tsp(3);
-            new Frame8(tsp.getOuput(), tsp.getShortestDistance(),3);
+            new Frame8(tsp.getOuput(), tsp.getOutputDistance(),3);
         }
         if (e.getSource() == beutopiaButton) {
             tsp = new Tsp(4);
-            new Frame8(tsp.getOuput(), tsp.getShortestDistance(),4);
+            new Frame8(tsp.getOuput(), tsp.getOutputDistance(),4);
         }
 
-       
+        
     }
 
     public static void main(String[] args) {
