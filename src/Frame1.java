@@ -3,6 +3,7 @@ package src;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Cursor;
 
 import javax.swing.*;
 
@@ -25,8 +26,9 @@ public class Frame1 extends JFrame implements ActionListener {
         startPanel.add(title);
 
         // Only one button only one yieee
-        RoundedButton start = new RoundedButton("START", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 20);
+        RoundedButton start = new RoundedButton("START", Color.decode("#242323"), Color.WHITE, 30,0,0, "DM SANS", 20);
         start.addActionListener(this);
+        start.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         //add to the panel
         //startPanel.add(start,BorderLayout.CENTER);
@@ -37,7 +39,7 @@ public class Frame1 extends JFrame implements ActionListener {
         JPanel startBot = new JPanel();
         startBot.setBounds(0, 550, 1000, 207);
         startBot.add(start);
-        startBot.setBackground(Color.WHITE);
+        startBot.setBackground(Color.decode("#FDFDFD"));
        
         //frame again
         ImageIcon icon = new ImageIcon("resources/MainIcon.png");
