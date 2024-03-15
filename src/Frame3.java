@@ -104,6 +104,7 @@ public class Frame3 extends JFrame implements ActionListener {
         this.add(butBot);
 
     }
+    
 
     public void actionPerformed(ActionEvent e) {
         dispose();
