@@ -27,7 +27,7 @@ public class Frame7 extends JFrame implements ActionListener {
     Frame7() {
         // panel itself
         JPanel locationPanel = new JPanel();
-        locationPanel.setLayout(new GridLayout(2, 0));
+        locationPanel.setLayout(new GridLayout(2,0));
         locationPanel.setBackground(Color.WHITE);
 
         // top image/msg
@@ -89,6 +89,7 @@ public class Frame7 extends JFrame implements ActionListener {
         buttonsLabel.add(iceKinggdomButton);
         buttonsLabel.add(beutopiaButton);
         // all components
+        
         locationPanel.add(messageLabel);
         locationPanel.add(buttonsLabel);
 
@@ -130,5 +131,8 @@ public class Frame7 extends JFrame implements ActionListener {
 
         
     }
-
+    
+    public static void main(String[] args) {
+        Frame7 frame = new Frame7();
+    }
 }

@@ -31,7 +31,7 @@ public class Frame8 extends JFrame implements ActionListener {
         // top message
         messageIcon = display(output);
         Image newImage = messageIcon.getImage();
-        Image resized = newImage.getScaledInstance(1000, 500, java.awt.Image.SCALE_SMOOTH);
+        Image resized = newImage.getScaledInstance(1000, 340, java.awt.Image.SCALE_SMOOTH);
         JLabel messageLabel = new JLabel();
 
         messageLabel.setIcon(new ImageIcon(resized));
@@ -69,7 +69,16 @@ public class Frame8 extends JFrame implements ActionListener {
       
 
         // Button send invoice
-        JButton invoicebButton = new JButton("Send Invoice");
+        ImageIcon invoice = new ImageIcon("resources/page8/1panel_static.png");
+        Image newImageInvoice = invoice.getImage();
+        Image resizedInVoice = newImageInvoice.getScaledInstance(450, 180, java.awt.Image.SCALE_SMOOTH);
+
+        
+
+        JButton invoicebButton = new JButton(new ImageIcon(resizedInVoice));
+        invoicebButton.setContentAreaFilled(false);
+        invoicebButton.setBorderPainted(false);
+        invoicebButton.setFocusable(false);
         invoicebButton.addActionListener(this);
 
         // all components
@@ -105,23 +114,21 @@ public class Frame8 extends JFrame implements ActionListener {
 
     private ImageIcon display(int output) {
         if (output == 0) {
-            return new ImageIcon("resources/page8/1panel_static.png");
+            return new ImageIcon("resources/page8/Case _Tree House.png");
         }
         if (output == 1) {
-            return new ImageIcon("resources/page8/1panel_static.png");
+            return new ImageIcon("resources/page8/Case _Candy Kingdom.png");
         }
         if (output == 2) {
-            return new ImageIcon("resources/page8/1panel_static.png");
+            return new ImageIcon("resources/page8/Case _Farm World.png");
         }
         if (output == 3) {
-            return new ImageIcon("resources/page8/1panel_static.png");
+            return new ImageIcon("resources/page8/Case _Ice Kingdom.png");
         }
         if (output == 4) {
-            return new ImageIcon("resources/page8/1panel_static.png");
+            return new ImageIcon("resources/page8/Case _Beautopia.png");
         }
-        if (output == 5) {
-            return new ImageIcon("resources/page8/1panel_static.png");
-        }
+      
         return new ImageIcon();
     }
 }
