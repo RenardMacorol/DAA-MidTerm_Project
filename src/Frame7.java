@@ -1,6 +1,7 @@
 package src;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
@@ -44,22 +45,32 @@ public class Frame7 extends JFrame implements ActionListener {
         ImageIcon treeHouseIcon = new ImageIcon("resources/page7/tree-house_button.png");
         ImageIcon iceKingdomIcon = new ImageIcon("resources/page7/ice-kingdom_button.png");
         ImageIcon beutopiaIcon = new ImageIcon("resources/page7/beautopia_button.png");
-        this.candyKingdomButton = new JButton(candyKingdomIcon);
-        this.candyKingdomButton.setBorder(BorderFactory.createEmptyBorder(PROPERTIES, ALLBITS, ABORT, HEIGHT));
-        this.farmWorldButton = new JButton(farmWorldIcon);
         this.treeHouseButton = new JButton(treeHouseIcon);
+        treeHouseButton.setContentAreaFilled(false);
+        treeHouseButton.setBorderPainted(false);;
+       
+        this.candyKingdomButton = new JButton(candyKingdomIcon);
+        candyKingdomButton.setContentAreaFilled(false);
+        candyKingdomButton.setBorderPainted(false);;
+        this.farmWorldButton = new JButton(farmWorldIcon); 
+        farmWorldButton.setContentAreaFilled(false);
+        farmWorldButton.setBorderPainted(false);;       
         this.iceKinggdomButton = new JButton(iceKingdomIcon);
+        iceKinggdomButton.setContentAreaFilled(false);
+        iceKinggdomButton.setBorderPainted(false);;
         this.beutopiaButton = new JButton(beutopiaIcon);
+        beutopiaButton.setContentAreaFilled(false);
+        beutopiaButton.setBorderPainted(false);;
         
+        treeHouseButton.addActionListener(this);
         candyKingdomButton.addActionListener(this);
         farmWorldButton.addActionListener(this);
-        treeHouseButton.addActionListener(this);
         iceKinggdomButton.addActionListener(this);
         beutopiaButton.addActionListener(this);
 
-        buttonsLabel.add(candyKingdomButton);
-        buttonsLabel.add(farmWorldButton);
         buttonsLabel.add(treeHouseButton);
+        buttonsLabel.add(farmWorldButton);
+        buttonsLabel.add(candyKingdomButton);
         buttonsLabel.add(iceKinggdomButton);
         buttonsLabel.add(beutopiaButton);
         // all components
@@ -70,6 +81,8 @@ public class Frame7 extends JFrame implements ActionListener {
         setTitle("Midterm Project");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1000, 707);
+        setBackground(Color.WHITE);
+       
         setVisible(true);
         setResizable(false);
         this.add(locationPanel);

@@ -25,7 +25,7 @@ public class Frame11 extends JFrame {
         this.add(thankJLabel);
         
     }
-
+    
    
     
 
