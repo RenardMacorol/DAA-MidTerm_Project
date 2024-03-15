@@ -10,7 +10,8 @@ import java.util.function.Function;
 import src.Test.SpeedAnalysis;
 
 public class Tsp {
-    String output;
+    String outputPath;
+    String outputDistance;
     Graph graph = new Graph(5);
     int shortestDistance = Integer.MAX_VALUE;
     int[] shortestDistanceValues = new int[5];
@@ -49,7 +50,8 @@ public class Tsp {
 
         // graph.print(locationArr);
         int[] node = { 0, 1, 2, 3, 4 };
-        StringBuilder str = new StringBuilder();
+        StringBuilder locations = new StringBuilder();
+        StringBuilder distanceString = new StringBuilder();
         ArrayList<int[]> res = permute(node);
         for (int[] x : res) {
             if (x[0] == input) {
@@ -68,23 +70,32 @@ public class Tsp {
             System.out.print(shortestPath[i]);
         }
         for (int i = 0; i < locationArr.length; i++) {
-            str.append(locationArr[shortestPath[i]] + " " + shortestDistanceValues[i] + " " + " > ");
+            locations.append(locationArr[shortestPath[i]] + " " + " -> ");
+            if(i==locationArr.length-1){
+                distanceString.append(shortestDistanceValues[i]+" ");
+            }else{
+                distanceString.append(shortestDistanceValues[i]+" + ");
+            }
+            
 
         }
-        str.append(locationArr[shortestPath[0]]);
+        locations.append(locationArr[shortestPath[0]]);
+        distanceString.append(" = "+shortestDistance+" units ");
 
-        output = str.toString();
-        System.out.print(str.toString());
-        System.out.println("Shortes Distance" + shortestDistance);
+
+        outputPath = locations.toString();
+        outputDistance = distanceString.toString();
+        System.out.print(locations.toString());
+        System.out.println(+shortestDistance);
 
     }
 
     public String getOuput() {
-        return output;
+        return outputPath;
     }
 
-    public int getShortestDistance() {
-        return shortestDistance;
+    public String getOutputDistance() {
+        return outputDistance;
     }
 
     private ArrayList<int[]> permute(int[] locationArr) {
