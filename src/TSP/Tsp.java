@@ -1,27 +1,25 @@
 package src.TSP;
 
-
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Function;
 
+import src.Test.SpeedAnalysis;
+
 public class Tsp {
-    Scanner s = new Scanner(System.in);
+    String output;
+    Graph graph = new Graph(5);
+    int shortestDistance = Integer.MAX_VALUE;
+    int[] shortestDistanceValues = new int[5];
+    int[] shortestPath = new int[5];
+    int input;
 
-    public Tsp() {
-
-        Graph graph = new Graph(5);
-        ArrayList<String> locations = new ArrayList<>();
-        locations.add("Tree House");
-        locations.add("Candy Kingdom");
-        locations.add("Farm World");
-        locations.add("Land of OO");
-        locations.add("Beutopia");
-        String[] locationArr = { "Tree House", "Candy Kingdom", "Farm World", "Land of OO", "Beutopia" };
-
-        int input = 0;
+    public Tsp(int input) {
+        this.input = input;
+        String[] locationArr = { "Tree House", "Candy Kingdom", "Farm World", "Ice Kingdom", "Beutopia" };
 
         /* */
         graph.addEdge(0, 1, 200);
@@ -44,81 +42,112 @@ public class Tsp {
         graph.addEdge(3, 2, 380);
         graph.addEdge(3, 4, 127);
 
-        graph.addEdge(4, 1, 425);
-        graph.addEdge(4, 2, 315);
-        graph.addEdge(4, 3, 261);
-        graph.addEdge(4, 0, 127);
-        graph.print(locationArr);
+        graph.addEdge(4, 0, 425);
+        graph.addEdge(4, 1, 315);
+        graph.addEdge(4, 2, 261);
+        graph.addEdge(4, 3, 127);
 
-        int n = graph.getSize();
-        ArrayList<Integer> points = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            points.add(i);
+        //graph.print(locationArr);
+        int[] node = { 0, 1, 2, 3, 4 };
+        StringBuilder str = new StringBuilder();
+        ArrayList<int[]> res = permute(node);
+        for (int[] x : res) {
+            if (x[0] == input) {
+                int[] arr = new int[locationArr.length];
+                for (int y : x) {
+
+                    arr[y] = x[y];
+                    // System.out.print(y + " ");
+                }
+                // System.out.println();
+                compare(arr);
+            }
+
         }
-        System.out.println("Choose the location you want to start");
-
-        System.out.println("Locations:");
         for (int i = 0; i < locationArr.length; i++) {
-            System.out.print(i + 1 + " " + locationArr[i] + " " + " ");
+            str.append(locationArr[shortestPath[i]] + " " + shortestDistanceValues[i] + " " + " > ");
 
         }
-        input = s.nextInt();
-        System.out.println();
-        ArrayList<ArrayList<Integer>> permutations = new ArrayList<>();
-        generatePermutations(permutations, points, input-1);
-        double minDistance = Double.MAX_VALUE;
-        ArrayList<Integer> minTour = new ArrayList<>();
-        for (ArrayList<Integer> permutation : permutations) {
-            double distance = tourDistance(permutation, graph.getMatrix());
-            if (distance < minDistance) {
-                minDistance = distance;
-                minTour = permutation;
-            }
-        }
+        str.append(locationArr[shortestPath[0]]);
 
-        System.out.println("Minimum distance: " + minDistance);
-        System.out.print("Optimal tour: " );
-        minTour.forEach((i)->System.out.print(locationArr[i]+" "));
-        
+
+        output = str.toString();
+        System.out.print(str.toString());
+        System.out.println("Shortes Distance"+shortestDistance);
 
     }
 
-    private static int factorial(int n) {
-        if (n <= 1)
-            return 1;
-        else
-            return n * factorial(n - 1);
+    public String getOuput() {
+        return output;
     }
 
-    //
-    // Function to calculate total distance of the tour
-    private static double tourDistance(ArrayList<Integer> tour, int[][] distances) {
-        double distance = 0;
-        for (int i = 0; i < tour.size() - 1; i++) {
-            distance += distances[tour.get(i)][tour.get(i + 1)];
-        }
-        distance += distances[tour.get(tour.size() - 1)][tour.get(0)]; // Returning to the starting point
-        return distance;
+    public int getShortestDistance() {
+        return shortestDistance;
     }
 
-    // Function to generate all possible permutations of a given list
-    private static void generatePermutations(ArrayList<ArrayList<Integer>> permutations,
-            ArrayList<Integer> points, int start) {
-        if (start == points.size() - 1) {
-            permutations.add(new ArrayList<>(points));
-        } else {
-            for (int i = start; i < points.size(); i++) {
-                // Swap elements
-                int temp = points.get(start);
-                points.set(start, points.get(i));
-                points.set(i, temp);
-                // Recursively generate permutations
-                generatePermutations(permutations, points, start + 1);
-                // Swap elements back
-                temp = points.get(start);
-                points.set(start, points.get(i));
-                points.set(i, temp);
-            }
+    private ArrayList<int[]> permute(int[] locationArr) {
+        ArrayList<int[]> res = new ArrayList<int[]>();
+        int x = locationArr.length - 1;
+
+        // Calling permutations for the first
+        // time by passing l
+        // as 0 and h = nums.size()-1
+        permutations(res, locationArr, 0, x);
+        return res;
+    }
+
+    private void compare(int[] arr) {
+        int tempDistance = 0;
+        int[] distanceArr = new int[5];
+        int lastvalue = 0;
+        for (int i = 0; i <= arr.length - 2; i++) {
+            tempDistance += graph.getMatrix()[arr[i]][arr[i + 1]];
+            distanceArr[i] = graph.getMatrix()[arr[i]][arr[i + 1]];
+            // System.out.println(arr[i]+" "+arr[i+1]);
+            // System.out.println(graph.getMatrix()[arr[i]][arr[i+1]]);
+            lastvalue = i;
+        }
+        if (input == lastvalue) {
+            lastvalue -= 2;
+        }
+        //System.out.println("Debug" + input + " " + lastvalue);
+
+        tempDistance += graph.getMatrix()[input][lastvalue];
+        distanceArr[arr.length - 1] = graph.getMatrix()[input][lastvalue];
+
+        if (shortestDistance > tempDistance) {
+            shortestDistance = tempDistance;
+            shortestPath = arr.clone();
+            shortestDistanceValues = distanceArr.clone();
         }
     }
+
+    private void permutations(ArrayList<int[]> res, int[] locationArr, int l, int h) {
+        // Base case
+        // Add the array to result and return
+        if (l == h) {
+            res.add(Arrays.copyOf(locationArr, locationArr.length));
+            return;
+        }
+
+        // Permutations made
+        for (int i = l; i <= h; i++) {
+            // Swapping
+            swap(locationArr, l, i);
+
+            // Calling permutations for
+            // next greater value of l
+            permutations(res, locationArr, l + 1, h);
+
+            // Backtracking
+            swap(locationArr, l, i);
+        }
+    }
+
+    private void swap(int[] locationArr, int l, int i) {
+        int temp = locationArr[l];
+        locationArr[l] = locationArr[i];
+        locationArr[i] = temp;
+    }
+
 }
