@@ -55,6 +55,7 @@ public class Frame6 extends JFrame implements ActionListener{
         ImageIcon logo = new ImageIcon("resources//AttitudeIcon.png");
         setIconImage(logo.getImage());
         setLocationRelativeTo(null);//center the window to screen when run
+        setSize(1000, 707);
         setVisible(true);
         setResizable(false);
         this.add(searchPanel);
