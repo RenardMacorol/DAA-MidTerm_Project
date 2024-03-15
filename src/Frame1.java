@@ -42,7 +42,7 @@ public class Frame1 extends JFrame implements ActionListener {
         startPanel.add(attitudeLabel, BorderLayout.CENTER);
         setTitle("Midterm Project");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(1000, 563);
+        setSize(1000, 707);
         setVisible(true);
         setResizable(false);
         // add into the frame

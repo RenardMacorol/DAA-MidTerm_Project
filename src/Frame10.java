@@ -69,7 +69,7 @@ public class Frame10 extends JFrame implements ActionListener {
         // frame settings
         setTitle("Midterm Project");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(1000, 563);
+        setSize(1000, 707);
         setVisible(true);
         setResizable(false);
         this.add(ratingPanel);
