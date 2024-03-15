@@ -130,7 +130,4 @@ public class Frame7 extends JFrame implements ActionListener {
         
     }
 
-    public static void main(String[] args) {
-        Frame7 test = new Frame7();
-    }
 }
