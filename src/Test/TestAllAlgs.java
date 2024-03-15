@@ -1,6 +1,6 @@
 package src.Test;
 
-import src.KnapAndSort.*;
+
 import src.TSP.Tsp;
 
 public class TestAllAlgs {
