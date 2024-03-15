@@ -2,29 +2,29 @@ package src;
 
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.ScrollPane;
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import javax.swing.text.AbstractDocument;
 import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import java.awt.Cursor;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.JTable;
 import javax.swing.JTextPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.AbstractDocument;
-
 
 import src.KnapAndSort.KnapsackMain;
+import src.KnapAndSort.Operation;
 
 public class Frame4 extends JFrame implements ActionListener {
+    
+    DefaultTableModel blue;
     int input;
     KnapsackMain knapSack;
     JTextPane textPane;
@@ -33,12 +33,13 @@ public class Frame4 extends JFrame implements ActionListener {
     RoundedButton weight;
     RoundedButton value;
     RoundedButton proceed;
-    String bestValue;
+    JFormattedTextField choose;
+
     Frame4(int input){
-        this.input = input;
         
-        knapSack = new KnapsackMain(input);
-        this.bestValue = knapSack.getBestValue();
+        this.input = input;
+        System.out.println(input+"input Received");
+        
         //Panel for this
         JPanel givePanel = new JPanel();
         givePanel.setBounds(0,0,1000,110);
@@ -60,40 +61,63 @@ public class Frame4 extends JFrame implements ActionListener {
         JLabel sortByText = new JLabel("Sort By:");
         sortByText.setFont(new Font("DM SANS", Font.PLAIN, 17));
 
-
-        attitude = new RoundedButton("Attitude", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
-        weight = new RoundedButton("Weight", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
-        value = new RoundedButton("Value", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
+        attitude = new RoundedButton("ATTITUDE", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
+        weight = new RoundedButton("WEIGHT", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
+        value = new RoundedButton("VALUE", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
         attitude.addActionListener(this);
         weight.addActionListener(this);
         value.addActionListener(this);
-
-
 
         sortPanel.add(sortByText);
         sortPanel.add(attitude);
         sortPanel.add(weight);
         sortPanel.add(value);
         
-        output=knapSack.getProduct();
-        output+=bestValue;
-        textPane= new JTextPane();
-        textPane.setContentType("text/plain");
-        textPane.setText(output);
-        
-        JScrollPane tablePanel = new JScrollPane();
-        tablePanel.setViewportView(textPane);
+        blue = new NewTable();
+        blue.addColumn("#");
+        blue.addColumn("ATTITUDE/s");
+        blue.addColumn("WEIGHT");
+        blue.addColumn("VALUE");
+        blue.addColumn("REMARK");
+
+        Operation op = new Operation();
+        op.findFeasible(input);
+        for(int i = 0; i<op.getFeasibleList().size(); i++){            
+            if(op.getVTotal().get(i) == op.bestValue(input)){
+                blue.addRow(new Object[]{i+1, op.haveProductName(op.getFeasibleList().get(i)), 
+                    op.getWTotal().get(i), op.getVTotal().get(i),"BEST"});
+            }
+            else{
+                blue.addRow(new Object[]{i+1, op.haveProductName(op.getFeasibleList().get(i)), 
+                    op.getWTotal().get(i), op.getVTotal().get(i)," "});
+            }
+        }
+
+        JTable tab = new JTable(blue);
+        tab.setBorder(null);
+        tab.setBackground(Color.decode("#FDFDFD"));
+        tab.setFont(new Font("DM SANS", Font.PLAIN, 14));
+        tab.setShowGrid(false);
+        tab.setShowHorizontalLines(false);
+        tab.setShowVerticalLines(false);
+        tab.setIntercellSpacing(new Dimension(0,0));
+        tab.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tab.getColumnModel().getColumn(1).setPreferredWidth(230);
+        tab.getColumnModel().getColumn(2).setPreferredWidth(200);
+        tab.getColumnModel().getColumn(3).setPreferredWidth(150);
+        tab.getColumnModel().getColumn(3).setPreferredWidth(50);
+        tab.setRowHeight(25);
+        tab.setAlignmentX(JTable.CENTER_ALIGNMENT);
+
+        JScrollPane tablePanel = new JScrollPane(tab);
         tablePanel.setBounds(0,175,1000,410);
-
-        tablePanel.setBackground(Color.WHITE);
-
-        
+        tablePanel.setBackground(Color.decode("#FDFDFD"));
+    
         proceed = new RoundedButton("PROCEED", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 20);
-
         proceed.addActionListener(this);
         proceed.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        JFormattedTextField choose = new JFormattedTextField();
+        choose = new JFormattedTextField();
         choose.setPreferredSize(new Dimension(50,75));
         choose.setFont(new Font("Arial", Font.PLAIN, 30));
         choose.setForeground(Color.GRAY);
@@ -105,8 +129,7 @@ public class Frame4 extends JFrame implements ActionListener {
 
         JLabel instruct = new JLabel("Choose a combination to proceed: ");
         instruct.setForeground(Color.decode("#242323"));
-        instruct.setFont(new Font("Arial", Font.PLAIN, 17));
-
+        instruct.setFont(new Font("DM SANS", Font.PLAIN, 17));
 
         JPanel giveBot = new JPanel();
         giveBot.setLayout(new FlowLayout());
@@ -142,18 +165,82 @@ public class Frame4 extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == attitude) {
-            String output = knapSack.getProduct()+bestValue;
-            updateTextPane(output);
+            int c = 0;
+            Operation op = new Operation();
+            op.findFeasible(input);
+            op.sorty();
+            for(int i = 0; i<op.getFeasibleList().size(); i++){            
+                if(op.getVTotal().get(i) == op.bestValue(input)){
+                    blue.setValueAt(i+1, i, 0);
+                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
+                    blue.setValueAt(op.getWTotal().get(i), i,2);  
+                    blue.setValueAt(op.getVTotal().get(i), i,3);  
+                    blue.setValueAt("BEST", i,4); 
+
+                }
+                else{
+                    blue.setValueAt(i+1, i, 0);
+                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
+                    blue.setValueAt(op.getWTotal().get(i), i,2);  
+                    blue.setValueAt(op.getVTotal().get(i), i,3);  
+                    blue.setValueAt(" ", i,4); 
+                }
+                c++;
+            }  
+            
         }
         if(e.getSource() == value) {
-            String output = knapSack.getValue()+bestValue;
-            updateTextPane(output);
+            int c = 0;
+            Operation op = new Operation();
+            op.findFeasible(input);
+            op.sorting();
+            for(int i = 0; i<op.getFeasibleList().size(); i++){            
+                if(op.getVTotal().get(i) == op.bestValue(input)){
+                    blue.setValueAt(i+1, i, 0);
+                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
+                    blue.setValueAt(op.getWTotal().get(i), i,2);  
+                    blue.setValueAt(op.getVTotal().get(i), i,3);  
+                    blue.setValueAt("BEST", i,4); 
+
+                }
+                else{
+                    blue.setValueAt(i+1, i, 0);
+                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
+                    blue.setValueAt(op.getWTotal().get(i), i,2);  
+                    blue.setValueAt(op.getVTotal().get(i), i,3);  
+                    blue.setValueAt(" ", i,4); 
+                }
+                c++;
+            }  
         }
         if(e.getSource() == weight) {
-            String output = knapSack.getWeight()+bestValue;
-            updateTextPane(output);
+            int c = 0;
+            Operation op = new Operation();
+            op.findFeasible(input);
+            op.sorted();
+            for(int i = 0; i<op.getFeasibleList().size(); i++){            
+                if(op.getVTotal().get(i) == op.bestValue(input)){
+                    blue.setValueAt(i+1, i, 0);
+                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
+                    blue.setValueAt(op.getWTotal().get(i), i,2);  
+                    blue.setValueAt(op.getVTotal().get(i), i,3);  
+                    blue.setValueAt("BEST", i,4); 
+
+                }
+                else{
+                    blue.setValueAt(i+1, i, 0);
+                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
+                    blue.setValueAt(op.getWTotal().get(i), i,2);  
+                    blue.setValueAt(op.getVTotal().get(i), i,3);  
+                    blue.setValueAt(" ", i,4); 
+                }
+                c++;
+            }  
         }
         if(e.getSource() == proceed) {
+            String k = choose.getText();
+            int n = Integer.parseInt(k);
+            if(n>=1 && n <= 15){}
             dispose();
             Frame5 frame5 = new Frame5(); 
         }
