@@ -3,6 +3,7 @@ package src;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.AbstractDocument;
 
 
 import src.KnapAndSort.KnapsackMain;
@@ -31,11 +33,12 @@ public class Frame4 extends JFrame implements ActionListener {
     RoundedButton weight;
     RoundedButton value;
     RoundedButton proceed;
+    String bestValue;
     Frame4(int input){
         this.input = input;
-        System.out.println(input+"input Received");
-        knapSack = new KnapsackMain(input);
         
+        knapSack = new KnapsackMain(input);
+        this.bestValue = knapSack.getBestValue();
         //Panel for this
         JPanel givePanel = new JPanel();
         givePanel.setBounds(0,0,1000,110);
@@ -73,7 +76,7 @@ public class Frame4 extends JFrame implements ActionListener {
         sortPanel.add(value);
         
         output=knapSack.getProduct();
-        output+=knapSack.getBestValue();
+        output+=bestValue;
         textPane= new JTextPane();
         textPane.setContentType("text/plain");
         textPane.setText(output);
@@ -139,13 +142,16 @@ public class Frame4 extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == attitude) {
-            updateTextPane(knapSack.getProduct());
+            String output = knapSack.getProduct()+bestValue;
+            updateTextPane(output);
         }
         if(e.getSource() == value) {
-            updateTextPane(knapSack.getValue());
+            String output = knapSack.getValue()+bestValue;
+            updateTextPane(output);
         }
         if(e.getSource() == weight) {
-            updateTextPane(knapSack.getWeight());
+            String output = knapSack.getWeight()+bestValue;
+            updateTextPane(output);
         }
         if(e.getSource() == proceed) {
             dispose();

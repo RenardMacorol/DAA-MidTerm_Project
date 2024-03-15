@@ -82,7 +82,7 @@ public class Frame10 extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         dispose();
         if (e.getSource()==yes) {
-            Frame1 frame = new Frame1();
+            Frame1 frame1 = new Frame1();
         }else{
             Frame11 frame11 = new Frame11();
         }
