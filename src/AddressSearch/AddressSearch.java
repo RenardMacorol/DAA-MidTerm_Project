@@ -44,8 +44,7 @@ class AddressSearch {
                 }
 
                 // Print searched position and occurrence
-                foundMatches.append("            Searched position: at position " + position+"\n");
-                foundMatches.append("            Number of occurrences: " + occurrences+"\n");
+                foundMatches.append("            occurence number " + occurrences + ", at position " + position + "\n");
 
                 // Proceed to the next occurrence
                 index = lowerCaseAddress.indexOf(userInput, index + 1);
