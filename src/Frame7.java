@@ -40,6 +40,7 @@ public class Frame7 extends JFrame implements ActionListener {
         // All buttons locations should be here
         JLabel buttonsLabel = new JLabel();
         buttonsLabel.setLayout(new FlowLayout());
+
         ImageIcon candyKingdomIcon = new ImageIcon("resources/page7/candy-kingdom_button.png");
         ImageIcon farmWorldIcon = new ImageIcon("resources/page7/farm-world_button.png");
         ImageIcon treeHouseIcon = new ImageIcon("resources/page7/tree-house_button.png");
@@ -48,7 +49,6 @@ public class Frame7 extends JFrame implements ActionListener {
         this.treeHouseButton = new JButton(treeHouseIcon);
         treeHouseButton.setContentAreaFilled(false);
         treeHouseButton.setBorderPainted(false);;
-       
         this.candyKingdomButton = new JButton(candyKingdomIcon);
         candyKingdomButton.setContentAreaFilled(false);
         candyKingdomButton.setBorderPainted(false);;
