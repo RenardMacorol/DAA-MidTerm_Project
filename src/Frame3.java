@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.text.AbstractDocument;
-import javax.swing.text.NumberFormatter;
+import java.awt.Cursor;
 
 import src.KnapAndSort.KnapsackMain;
 
@@ -51,12 +51,6 @@ public class Frame3 extends JFrame implements ActionListener {
         JPanel butEnter2 = new JPanel(new BorderLayout());
         butEnter2.setBounds(755, 450, 245, 100);
         butEnter2.setBackground(Color.decode("#FDFDFD"));
-
-        NumberFormatter nf = new NumberFormatter();
-        nf.setValueClass(Integer.class);
-        nf.setMinimum(1);
-        nf.setMaximum(15);
-
 
         choose = new JTextField();
 
