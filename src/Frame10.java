@@ -1,7 +1,11 @@
 package src;
 
 import java.awt.Color;
+
+import java.awt.Dimension;
+=======
 import java.awt.Font;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -19,18 +23,23 @@ public class Frame10 extends JFrame implements ActionListener {
         guyPanel.setBounds(0, -10, 1000, 346);
         guyPanel.setBackground(Color.decode("#FDFDFD"));
 
+        
         ImageIcon guyIcon = new ImageIcon("resources/page10/guy-5star.png");
+
         JLabel guyLabel = new JLabel(guyIcon);
         guyPanel.add(guyLabel);
+
 
         // Panel 2 - rate 'to
         JPanel ratePanel = new JPanel();
         ratePanel.setBounds(0, 315, 1000, 110);
         ratePanel.setBackground(Color.decode("#FDFDFD"));
 
+
         ImageIcon rateIcon = new ImageIcon("resources/page10/5star-rate.png");
         JLabel rateLabel = new JLabel(rateIcon);
         ratePanel.add(rateLabel);
+
 
         // Panel 3 - question hays
         JPanel questionPanel = new JPanel();
@@ -38,6 +47,7 @@ public class Frame10 extends JFrame implements ActionListener {
         questionPanel.setBackground(Color.decode("#FDFDFD"));
 
         ImageIcon questionIcon = new ImageIcon("resources/page10/3panel_static.png");
+
         JLabel questionLabel = new JLabel(questionIcon);
         questionPanel.add(questionLabel);
 
@@ -66,6 +76,7 @@ public class Frame10 extends JFrame implements ActionListener {
         add(buttonPanel);
 
         // Frame settings
+
         setTitle("This Guy Needs Some Attitude");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1000, 707);
