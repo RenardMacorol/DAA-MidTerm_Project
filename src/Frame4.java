@@ -57,6 +57,7 @@ public class Frame4 extends JFrame implements ActionListener{
         choicePanel.add(sortedTable);
         choicePanel.add(comboProceed);
         choicePanel.add(proceed);
+        
         //frame settings
         setTitle("This Guy Needs Some Attitude");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
