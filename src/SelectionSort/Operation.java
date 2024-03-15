@@ -44,27 +44,32 @@ public class Operation {
 
 
     public Operation() {
-        Items cannedGoods = new Items();
-        cannedGoods.setProductName("Canned Goods");
-        cannedGoods.setWeight(5);
-        cannedGoods.setValue(450);
+        Items courage = new Items();
+        courage.setProductName("Courage");
+        courage.setWeight(7);
+        courage.setValue(500);
 
-        Items cookingOil = new Items();
-        cookingOil.setProductName("Cooking Oil");
-        cookingOil.setWeight(3);
-        cookingOil.setValue(725);
+        Items humbleness = new Items();
+        humbleness.setProductName("Humbleness");
+        humbleness.setWeight(2.5);
+        humbleness.setValue(375);
 
-        Items noodles = new Items();
-        noodles.setProductName("Noodles");
-        noodles.setWeight(2.5);
-        noodles.setValue(375);
+        Items patience = new Items();
+        patience.setProductName("Patience");
+        patience.setWeight(4.5);
+        patience.setValue(525);
 
-        Items soap = new Items();
-        soap.setProductName("Soap");
-        soap.setWeight(7);
-        soap.setValue(500);
+        Items perseverance = new Items();
+        perseverance.setProductName("Perseverance");
+        perseverance.setWeight(3);
+        perseverance.setValue(725);
 
-        setItemArray(new Items[]{cannedGoods, cookingOil, noodles, soap});
+        Items sincerity = new Items();
+        sincerity.setProductName("Sincerity");
+        sincerity.setWeight(5);
+        sincerity.setValue(450);
+
+        setItemArray(new Items[]{courage, humbleness, patience, perseverance, sincerity});
         setSubsetList(generateOutcomes(itemArray));
     }
 
@@ -74,7 +79,6 @@ public class Operation {
         return outcomes;
     }
 
-    //arrangement of elements per subset
     private static void arrangeOutcomes(Items[] set, int index, List<Items> current, List<List<Items>> outcomes) {
         outcomes.add(new ArrayList<>(current));
         for (int i = index; i < set.length; i++) {
@@ -85,21 +89,17 @@ public class Operation {
     }
 
     public static String printProductName(List<Items> outcome) {
-        double total = 0;
-        int n = 0;
         StringBuilder builder = new StringBuilder();
-        for (Items i : outcome) {
-            builder.append(i.getProductName());
-            if (n < outcome.size() - 1) {
+        for (int i = 0; i < outcome.size(); i++) {
+            builder.append(outcome.get(i).getProductName());
+            if (i < outcome.size() - 1) {
                 builder.append(", ");
             }
-            n++;
         }
         return builder.toString();
     }
 
     public static String printValue(List<Items> outcome) {
-        double total = 0;
         int n = 0;
         StringBuilder builder = new StringBuilder();
         for (Items i : outcome) {
@@ -148,7 +148,7 @@ public class Operation {
     }
 
     public void printAll(List<List<Items>> outcome) {
-        System.out.printf("%n%-55s%-40s%-30s%n", "ITEM/S", "WEIGHTS", "VALUES");
+        System.out.printf("%n%-55s%-40s%-35s%n", "ITEM/S", "WEIGHTS", "VALUES");
         int n = 0;
         for (List<Items> i : outcome) {
             System.out.printf("%2d%s%-50s", n + 1, ".) ", printProductName(i));
@@ -196,14 +196,16 @@ public class Operation {
     }
 
     public void printChoices() {
-        System.out.printf("%-25s%-10s%-5s%n", "ITEM/S", "WEIGHTS", "VALUES");
+        System.out.println("ITEM/S                 WEIGHTS              VALUES");
         int n = 0;
         for (Items i : getItemArray()) {
-            System.out.printf("%2d%s%-20s", n + 1, ".) ", i.getProductName());
-            System.out.printf("%-20s", i.getWeight());
-            System.out.printf("%-5s%n", i.getValue());
+            System.out.print(String.format("%2d%s%-20s", n + 1, ".) ", i.getProductName()));
+            System.out.print(String.format("%-20s", i.getWeight()));
+            System.out.println(String.format("%-10s", i.getValue()));
+            n++;
         }
     }
+    
     private List<List<Items>> feasibleList;
 
     public List<List<Items>> getFeasibleList() {
@@ -262,54 +264,33 @@ public class Operation {
     }
 
     public void printSort() {
-        // Sort by product names (already implemented)
-        List<String> productNames = new ArrayList<>();
-        for (List<Items> itemList : feasibleList) {
-            StringBuilder productNameBuilder = new StringBuilder();
-            for (Items item : itemList) {
-                productNameBuilder.append(item.getProductName()).append(", ");
-            }
-            String productName = productNameBuilder.toString().trim();
-            productNames.add(productName.substring(0, productName.length() - 1));
-        }
-        // Selection sort by product names
-        for (int i = 0; i < productNames.size() - 1; i++) {
-            int minIndex = i;
-            for (int j = i + 1; j < productNames.size(); j++) {
-                if (productNames.get(j).compareTo(productNames.get(minIndex)) < 0) {
-                    minIndex = j;
-                }
-            }
-            if (minIndex != i) {
-                // Swap product names
-                String temp = productNames.get(i);
-                productNames.set(i, productNames.get(minIndex));
-                productNames.set(minIndex, temp);
+        // Sort by product names alphabetically
+        feasibleList.sort((list1, list2) -> {
+            String productName1 = printProductName(list1);
+            String productName2 = printProductName(list2);
+            return productName1.compareTo(productName2);
+        });
     
-                // Swap corresponding subsets in feasibleList
-                List<Items> tempSubset = feasibleList.get(i);
-                feasibleList.set(i, feasibleList.get(minIndex));
-                feasibleList.set(minIndex, tempSubset);
-            }
+        
+        // Print sorted feasibleList by items
+        System.out.println("\nSorted by items:");
+        System.out.println("ITEM/S\t\t\t\t\t\t\t       WEIGHTS   \t\t\t\tVALUES");
+        for (int i = 0; i < feasibleList.size(); i++) {
+            List<Items> itemList = feasibleList.get(i);
+            double totalWeight = computeWeight(itemList);
+            double totalValue = computeValue(itemList);
+    
+            // Adjust spacing for better alignment
+            System.out.printf("%2d%s%-60s", i + 1, ".) ", printProductName(itemList));
+            System.out.printf("%-40.1f", totalWeight);
+            System.out.printf("%-30.1f%n", totalValue);
         }
-         // Print sorted feasibleList
-         System.out.println("\nSorted by items:");
-         System.out.println("ITEM/S\t\t\t\t\t\t\t       WEIGHTS   \t\t\t\tVALUES");
-         for (int i = 0; i < productNames.size(); i++) {
-             List<Items> itemList = feasibleList.get(i);
-             double totalWeight = computeWeight(itemList);
-             double totalValue = computeValue(itemList);
- 
-             // Adjust spacing for better alignment
-             System.out.printf("%2d%s%-60s", i + 1, ".) ", productNames.get(i)); // Increase width for product name
-             System.out.printf("%-40.1f", totalWeight);
-             System.out.printf("%-30.1f%n", totalValue);
-         }
+    
         // Sort by weight in ascending order
         feasibleList.sort(Comparator.comparingDouble(itemsList -> computeWeight(itemsList)));
     
         // Print sorted list by weight
-        System.out.println("\nSorted by weight (ascending):");
+        System.out.println("\nSorted by weight:");
         System.out.println("ITEM/S\t\t\t\t\t\t\t       WEIGHTS   \t\t\t\tVALUES");
         for (int i = 0; i < feasibleList.size(); i++) {
             List<Items> itemList = feasibleList.get(i);
@@ -325,7 +306,7 @@ public class Operation {
 
     
         // Print sorted list by value
-        System.out.println("\nSorted by value (ascending):");
+        System.out.println("\nSorted by value:");
         System.out.println("ITEM/S\t\t\t\t\t\t\t       WEIGHTS   \t\t\t\tVALUES");
         for (int i = 0; i < feasibleList.size(); i++) {
             List<Items> itemList = feasibleList.get(i);
@@ -336,5 +317,4 @@ public class Operation {
             System.out.printf("%-30.1f%n", totalValue);
         }
     }
-    
 }
