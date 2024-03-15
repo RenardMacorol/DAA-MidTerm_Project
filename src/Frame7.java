@@ -28,6 +28,7 @@ public class Frame7 extends JFrame implements ActionListener {
         // panel itself
         JPanel locationPanel = new JPanel();
         locationPanel.setLayout(new GridLayout(2, 0));
+        locationPanel.setBackground(Color.WHITE);
 
         // top image/msg
         ImageIcon messageIcon = new ImageIcon("resources/page7/1panel_static.png");
@@ -107,7 +108,7 @@ public class Frame7 extends JFrame implements ActionListener {
         dispose();
         if (e.getSource() == treeHouseButton) {
             tsp = new Tsp(0);
-            new Frame8(tsp.getOuput(), tsp.getShortestDistance(),1);
+            new Frame8(tsp.getOuput(), tsp.getShortestDistance(),0);
         }
         if (e.getSource() == candyKingdomButton) {
             tsp = new Tsp(1);

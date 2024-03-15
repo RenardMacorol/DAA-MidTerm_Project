@@ -1,5 +1,6 @@
 package src;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -16,18 +17,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Frame8 extends JFrame implements ActionListener {
-    int output;
+    
     ImageIcon messageIcon;
 
     Frame8(String input, int shortestDistance, int output) {
-        this.output = output;
+        
         // panel itself
         JPanel outputPanel = new JPanel();
+        outputPanel.setBackground(Color.WHITE);
         outputPanel.setLayout(new GridBagLayout());
         outputPanel.setBounds(0, 0, 50, 50);
 
         // top message
-        messageIcon = new ImageIcon(display());
+        messageIcon = display(output);
         Image newImage = messageIcon.getImage();
         Image resized = newImage.getScaledInstance(1000, 500, java.awt.Image.SCALE_SMOOTH);
         JLabel messageLabel = new JLabel();
@@ -40,6 +42,7 @@ public class Frame8 extends JFrame implements ActionListener {
         // shot output
         JPanel pathPanel = new JPanel();
         pathPanel.setLayout(new GridLayout(4, 0));
+        pathPanel.setBackground(Color.WHITE);
         JLabel shortPath = new JLabel("Shortest Route:");
         shortPath.setFont(new Font("DM SANS", Font.BOLD, 17));
         shortPath.setVerticalAlignment(JLabel.TOP);
@@ -95,25 +98,25 @@ public class Frame8 extends JFrame implements ActionListener {
         Frame9 frame9 = new Frame9();
     }
 
-    private String display() {
+    private ImageIcon display(int output) {
         if (output == 0) {
-            return "NONE";
+            return new ImageIcon("resources/page8/1panel_static.png");
         }
         if (output == 1) {
-            return "resources/page8/1panel_static.png";
+            return new ImageIcon("resources/page8/1panel_static.png");
         }
         if (output == 2) {
-            return "NONE";
+            return new ImageIcon("resources/page8/1panel_static.png");
         }
         if (output == 3) {
-            return "NONE";
+            return new ImageIcon("resources/page8/1panel_static.png");
         }
         if (output == 4) {
-            return "NONE";
+            return new ImageIcon("resources/page8/1panel_static.png");
         }
         if (output == 5) {
-            return "NONE";
+            return new ImageIcon("resources/page8/1panel_static.png");
         }
-        return "not Found";
+        return new ImageIcon();
     }
 }
