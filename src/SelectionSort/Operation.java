@@ -317,5 +317,4 @@ public class Operation {
             System.out.printf("%-30.1f%n", totalValue);
         }
     }
-    
 }
