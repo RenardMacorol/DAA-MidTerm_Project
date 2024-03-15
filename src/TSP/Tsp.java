@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Function;
 
-
+import src.Test.SpeedAnalysis;
 
 public class Tsp {
     String outputPath;
