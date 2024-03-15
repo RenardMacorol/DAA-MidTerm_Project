@@ -39,6 +39,7 @@ public class Frame6 extends JFrame implements ActionListener {
         RoundedButton proceedButton = new RoundedButton("Search", Color.decode("#242323"), Color.WHITE, 30, 0, 0, "Arial", 20);
         proceedButton.addActionListener(this);
 
+
         // Panel for organizing address field and button
         JPanel addressPanel = new JPanel(new BorderLayout());
         addressPanel.add(userAddress, BorderLayout.CENTER);
@@ -60,6 +61,7 @@ public class Frame6 extends JFrame implements ActionListener {
         setVisible(true); // Make the frame visible
         setResizable(false); // Disable frame resizing
         add(searchPanel); // Add search panel to the frame
+
     }
 
     // ActionListener implementation for handling button click
