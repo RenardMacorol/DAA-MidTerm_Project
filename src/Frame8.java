@@ -18,7 +18,7 @@ public class Frame8 extends JFrame implements ActionListener {
         // panel itself
         JPanel outputPanel = new JPanel();
         outputPanel.setLayout(new GridLayout(4, 0));
-        outputPanel.setBounds(0, 0, 500, 500);
+        outputPanel.setBounds(0, 0, 50, 50);
 
         // top message
         ImageIcon messageIcon = new ImageIcon();
@@ -26,20 +26,20 @@ public class Frame8 extends JFrame implements ActionListener {
         messageLabel.setIcon(messageIcon);
         messageLabel.setPreferredSize(new Dimension(20, 20));
         messageLabel.setBounds(0, 500, 500, 500);
-        messageLabel.setVerticalAlignment(JLabel.CENTER);
+        messageLabel.setVerticalAlignment(JLabel.TOP);
         messageLabel.setHorizontalAlignment(JLabel.CENTER);
 
         // shot output
         JLabel outputLabel = new JLabel();
         outputLabel.setText(input);
-        outputLabel.setVerticalAlignment(JLabel.CENTER);
-        outputLabel.setHorizontalAlignment(JLabel.CENTER);
+        outputLabel.setVerticalAlignment(JLabel.BOTTOM);
+        outputLabel.setHorizontalAlignment(JLabel.LEFT);
         outputLabel.setFont(new Font("DM SANS", Font.BOLD, 17));
         JLabel outputShortestLabel = new JLabel();
         outputShortestLabel.setText("Shortest Distance" + " " + shortestDistance);
         outputShortestLabel.setFont(new Font("DM SANS", Font.BOLD, 17));
-        outputShortestLabel.setVerticalAlignment(JLabel.CENTER);
-        outputShortestLabel.setHorizontalAlignment(JLabel.CENTER);
+        outputShortestLabel.setVerticalAlignment(JLabel.TOP);
+        outputShortestLabel.setHorizontalAlignment(JLabel.LEFT);
 
         // Button send invoice
         JButton invoicebButton = new JButton("Send Invoice");
