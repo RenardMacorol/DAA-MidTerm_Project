@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 public class Frame11 extends JFrame {
     Frame11() {
-        ImageIcon thankyouIcon = new ImageIcon("resources\\Thank You.png");
+        ImageIcon thankyouIcon = new ImageIcon("resources\\Last Page TY.png");
         JLabel thankJLabel = new JLabel();
         thankJLabel.setIcon(thankyouIcon);
         
