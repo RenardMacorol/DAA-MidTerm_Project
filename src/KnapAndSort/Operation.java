@@ -394,7 +394,26 @@ byWeight=forWeight.toString();
     byValue=forValue.toString();
 }
 
+
+
+
+ public void sorting (){
+ feasibleList.sort(Comparator.comparingDouble(itemsList -> computeValue(itemsList)));
+ }
+ 
+ public void sorted (){
+    feasibleList.sort(Comparator.comparingDouble(itemsList -> computeWeight(itemsList)));
+    }
+
+    public void sorty() {
+        feasibleList.sort((list1, list2) -> {
+         String productName1 = printProductName(list1);
+         String productName2 = printProductName(list2);
+         return productName1.compareTo(productName2);
+     });
+    }
 }
+
 
     
 

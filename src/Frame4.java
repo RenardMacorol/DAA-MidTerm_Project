@@ -24,6 +24,7 @@ import src.KnapAndSort.Operation;
 
 public class Frame4 extends JFrame implements ActionListener {
     
+    DefaultTableModel blue;
     int input;
     KnapsackMain knapSack;
     JTextPane textPane;
@@ -71,7 +72,7 @@ public class Frame4 extends JFrame implements ActionListener {
         sortPanel.add(weight);
         sortPanel.add(value);
         
-        DefaultTableModel blue = new NewTable();
+        blue = new NewTable();
         blue.addColumn("#");
         blue.addColumn("ATTITUDE/s");
         blue.addColumn("WEIGHT");
@@ -163,13 +164,71 @@ public class Frame4 extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == attitude) {
-            updateTextPane(knapSack.getProduct());
+            Operation op = new Operation();
+            op.findFeasible(input);
+            op.sorty();
+            for(int i = 0; i<op.getFeasibleList().size(); i++){            
+                if(op.getVTotal().get(i) == op.bestValue(input)){
+                    blue.setValueAt(i+1, i, 0);
+                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
+                    blue.setValueAt(op.getWTotal().get(i), i,2);  
+                    blue.setValueAt(op.getVTotal().get(i), i,3);  
+                    blue.setValueAt("BEST", i,4); 
+
+                }
+                else{
+                    blue.setValueAt(i+1, i, 0);
+                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
+                    blue.setValueAt(op.getWTotal().get(i), i,2);  
+                    blue.setValueAt(op.getVTotal().get(i), i,3);  
+                    blue.setValueAt(" ", i,4); 
+                }
+            }  
+            
         }
         if(e.getSource() == value) {
-            updateTextPane(knapSack.getValue());
+            Operation op = new Operation();
+            op.findFeasible(input);
+            op.sorting();
+            for(int i = 0; i<op.getFeasibleList().size(); i++){            
+                if(op.getVTotal().get(i) == op.bestValue(input)){
+                    blue.setValueAt(i+1, i, 0);
+                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
+                    blue.setValueAt(op.getWTotal().get(i), i,2);  
+                    blue.setValueAt(op.getVTotal().get(i), i,3);  
+                    blue.setValueAt("BEST", i,4); 
+
+                }
+                else{
+                    blue.setValueAt(i+1, i, 0);
+                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
+                    blue.setValueAt(op.getWTotal().get(i), i,2);  
+                    blue.setValueAt(op.getVTotal().get(i), i,3);  
+                    blue.setValueAt(" ", i,4); 
+                }
+            }  
         }
         if(e.getSource() == weight) {
-            updateTextPane(knapSack.getWeight());
+            Operation op = new Operation();
+            op.findFeasible(input);
+            op.sorted();
+            for(int i = 0; i<op.getFeasibleList().size(); i++){            
+                if(op.getVTotal().get(i) == op.bestValue(input)){
+                    blue.setValueAt(i+1, i, 0);
+                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
+                    blue.setValueAt(op.getWTotal().get(i), i,2);  
+                    blue.setValueAt(op.getVTotal().get(i), i,3);  
+                    blue.setValueAt("BEST", i,4); 
+
+                }
+                else{
+                    blue.setValueAt(i+1, i, 0);
+                    blue.setValueAt(op.haveProductName(op.getFeasibleList().get(i)), i,1); 
+                    blue.setValueAt(op.getWTotal().get(i), i,2);  
+                    blue.setValueAt(op.getVTotal().get(i), i,3);  
+                    blue.setValueAt(" ", i,4); 
+                }
+            }  
         }
         if(e.getSource() == proceed) {
             dispose();
