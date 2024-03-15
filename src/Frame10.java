@@ -3,8 +3,12 @@ package src;
 import java.awt.Color;
 
 import java.awt.Dimension;
-=======
+
+
+import java.awt.Dimension;
+
 import java.awt.Font;
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +29,7 @@ public class Frame10 extends JFrame implements ActionListener {
 
         
         ImageIcon guyIcon = new ImageIcon("resources/page10/guy-5star.png");
+
 
         JLabel guyLabel = new JLabel(guyIcon);
         guyPanel.add(guyLabel);
@@ -76,6 +81,7 @@ public class Frame10 extends JFrame implements ActionListener {
         add(buttonPanel);
 
         // Frame settings
+
 
         setTitle("This Guy Needs Some Attitude");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
