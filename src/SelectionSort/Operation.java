@@ -3,7 +3,6 @@ import java.util.List;
 
 import java.util.Comparator;
 
-
 public class Operation {
 
     public void setItemArray(Items[] itemArray) {
@@ -44,7 +43,6 @@ public class Operation {
         return subsetList;
     }
 
-
     public Operation() {
 
         Items courage = new Items();
@@ -81,7 +79,6 @@ public class Operation {
         arrangeOutcomes(item, 0, new ArrayList<>(), outcomes);
         return outcomes;
     }
-
 
     private static void arrangeOutcomes(Items[] set, int index, List<Items> current, List<List<Items>> outcomes) {
         outcomes.add(new ArrayList<>(current));
@@ -193,7 +190,6 @@ public class Operation {
         setFeasibleList(l);
         setWTotal(w);
         setVTotal(v);
-
 
         if (c==0){
             System.out.printf("%-55s%n", "No items are feasible");
@@ -333,6 +329,5 @@ for (int i = 0; i < feasibleList.size(); i++) {
 }
 
     
-
 
 

@@ -1,75 +1,103 @@
 package src;
 
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Frame4 extends JFrame implements ActionListener{
     Frame4(){
         //Panel for this
-        JPanel choicePanel = new JPanel();
-        choicePanel.setLayout(new GridLayout(5,0));
-        choicePanel.setBounds(0,0,500,500);
+        JPanel givePanel = new JPanel();
+        givePanel.setBounds(0,0,1000,110);
 
         //Label in the top
-        ImageIcon topMessage = new ImageIcon();
-        JLabel topMessageLabel = new JLabel("Here's what you can give:");
+        ImageIcon topMessage = new ImageIcon("resources/page4/Give.png");
+        JLabel topMessageLabel = new JLabel();
         topMessageLabel.setIcon(topMessage);
-        topMessageLabel.setHorizontalAlignment(JLabel.CENTER);
-        topMessageLabel.setVerticalAlignment(JLabel.CENTER);
 
-        //Display flowlayout here
-        JLabel sortByLabel = new JLabel();
-        sortByLabel.setLayout(new FlowLayout());
-        JLabel sortByText = new JLabel("Sort By");
-        JButton attitudeButton = new JButton("Attitude");
-        JButton weigthButton = new JButton("Weight");
-        JButton valueButton = new JButton("Value");
-        sortByLabel.add(sortByText);
-        sortByLabel.add(attitudeButton);
-        sortByLabel.add(weigthButton);
-        sortByLabel.add(valueButton);
-        //Table here
-        JLabel sortedTable = new JLabel("There's a table here");
-        sortedTable.setHorizontalAlignment(JLabel.CENTER);
-        sortedTable.setVerticalAlignment(JLabel.CENTER);
-        //Text field here
-        JLabel comboProceed = new JLabel("There's a TextField here");
-        comboProceed.setHorizontalAlignment(JLabel.CENTER);
-        comboProceed.setVerticalAlignment(JLabel.CENTER);
+        givePanel.add(topMessageLabel);
+
+        //Panel for this
+        JPanel sortPanel = new JPanel();
+        sortPanel.setBounds(0,110,1000,65);
+        sortPanel.setLayout(new FlowLayout());
+        sortPanel.setBackground(Color.WHITE);
+
+        //Display flowlayout here;
+        JLabel sortByText = new JLabel("Sort By:");
+        sortByText.setFont(new Font("Arial", Font.PLAIN, 17));
+
+        RoundedButton attitude = new RoundedButton("Attitude", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
+        RoundedButton weight = new RoundedButton("Weight", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
+        RoundedButton value = new RoundedButton("Value", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
         
+        sortPanel.add(sortByText);
+        sortPanel.add(attitude);
+        sortPanel.add(weight);
+        sortPanel.add(value);
         
-        JButton proceed = new JButton("Proceed");
+        JPanel tablePanel = new JPanel();
+        tablePanel.setBounds(0,175,1000,410);
+        tablePanel.setBackground(Color.WHITE);
+        
+        RoundedButton proceed = new RoundedButton("PROCEED", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 20);
         proceed.addActionListener(this);
-        
+
+        JFormattedTextField choose = new JFormattedTextField();
+        choose.setPreferredSize(new Dimension(50,75));
+        choose.setFont(new Font("Arial", Font.PLAIN, 20));
+        choose.setForeground(Color.GRAY);
+        choose.setBackground(Color.WHITE);
+        choose.setCaretColor(Color.decode("#242323"));
+        choose.setText("##");
+        choose.setBorder(null);
+
+        JLabel instruct = new JLabel("Choose a combination to proceed: ");
+        instruct.setForeground(Color.decode("#242323"));
+        instruct.setFont(new Font("Arial", Font.PLAIN, 17));
+
+
+        JPanel giveBot = new JPanel();
+        giveBot.setLayout(new FlowLayout());
+        giveBot.setBounds(0, 585, 1000, 122);
+        giveBot.setBackground(Color.WHITE);
+
+        giveBot.add(instruct);
+        giveBot.add(choose);
+        giveBot.add(proceed);
+       
+
         //Import all components
-        choicePanel.add(topMessageLabel);
-        choicePanel.add(sortByLabel);
-        choicePanel.add(sortedTable);
-        choicePanel.add(comboProceed);
-        choicePanel.add(proceed);
+        this.add(givePanel);
+        this.add(sortPanel);
+        this.add(tablePanel);
+        this.add(giveBot);
         
         //frame settings
-        setTitle("This Guy Needs Some Attitude");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(1000, 707);
-        ImageIcon logo = new ImageIcon("resources//AttitudeIcon.png");
-        setIconImage(logo.getImage());
-        setLocationRelativeTo(null);//center the window to screen when run
-        setSize(1000, 707);
-        setVisible(true);
-        setResizable(false);
-        this.add(choicePanel);
-
+       ImageIcon icon = new ImageIcon("resources/MainIcon.png");
+       setIconImage(icon.getImage());
+       setLayout(null);
+       setTitle("This Guy Needs Some Attitude");
+       setDefaultCloseOperation(EXIT_ON_CLOSE);
+       setSize(1000, 707);
+       setVisible(true);
+       setResizable(false);
+       setLocationRelativeTo(null);
     }
 
     @Override
