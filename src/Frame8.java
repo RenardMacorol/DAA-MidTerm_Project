@@ -83,11 +83,12 @@ public class Frame8 extends JFrame implements ActionListener {
         outputPanel.add(invoicebButton,gbc);
 
         //frame settings
-        setTitle("This Guy Needs Some Attitude");
-        // frame settings
         setTitle("Midterm Project");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1000, 707);
+        ImageIcon logo = new ImageIcon("resources//AttitudeIcon.png");
+        setIconImage(logo.getImage());
+        setLocationRelativeTo(null);//center the window to screen when run
         setVisible(true);
         setResizable(false);
         this.add(outputPanel);
