@@ -2,25 +2,43 @@ package src;
 
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-public class Frame4 extends JFrame implements ActionListener{
-    Frame4(){
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.text.AbstractDocument;
+
+
+import src.KnapAndSort.KnapsackMain;
+
+public class Frame4 extends JFrame implements ActionListener {
+    int input;
+    KnapsackMain knapSack;
+    JTextPane textPane;
+    String output;
+    RoundedButton attitude;
+    RoundedButton weight;
+    RoundedButton value;
+    RoundedButton proceed;
+    String bestValue;
+    Frame4(int input){
+        this.input = input;
+        
+        knapSack = new KnapsackMain(input);
+        this.bestValue = knapSack.getBestValue();
         //Panel for this
         JPanel givePanel = new JPanel();
         givePanel.setBounds(0,0,1000,110);
@@ -36,36 +54,54 @@ public class Frame4 extends JFrame implements ActionListener{
         JPanel sortPanel = new JPanel();
         sortPanel.setBounds(0,110,1000,65);
         sortPanel.setLayout(new FlowLayout());
-        sortPanel.setBackground(Color.WHITE);
+        sortPanel.setBackground(Color.decode("#FDFDFD"));
 
         //Display flowlayout here;
         JLabel sortByText = new JLabel("Sort By:");
-        sortByText.setFont(new Font("Arial", Font.PLAIN, 17));
+        sortByText.setFont(new Font("DM SANS", Font.PLAIN, 17));
 
-        RoundedButton attitude = new RoundedButton("Attitude", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
-        RoundedButton weight = new RoundedButton("Weight", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
-        RoundedButton value = new RoundedButton("Value", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
-        
+
+        attitude = new RoundedButton("Attitude", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
+        weight = new RoundedButton("Weight", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
+        value = new RoundedButton("Value", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
+        attitude.addActionListener(this);
+        weight.addActionListener(this);
+        value.addActionListener(this);
+
+
+
         sortPanel.add(sortByText);
         sortPanel.add(attitude);
         sortPanel.add(weight);
         sortPanel.add(value);
         
-        JPanel tablePanel = new JPanel();
-        tablePanel.setBounds(0,175,1000,410);
-        tablePanel.setBackground(Color.WHITE);
+        output=knapSack.getProduct();
+        output+=bestValue;
+        textPane= new JTextPane();
+        textPane.setContentType("text/plain");
+        textPane.setText(output);
         
-        RoundedButton proceed = new RoundedButton("PROCEED", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 20);
+        JScrollPane tablePanel = new JScrollPane();
+        tablePanel.setViewportView(textPane);
+        tablePanel.setBounds(0,175,1000,410);
+
+        tablePanel.setBackground(Color.WHITE);
+
+        
+        proceed = new RoundedButton("PROCEED", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 20);
+
         proceed.addActionListener(this);
+        proceed.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         JFormattedTextField choose = new JFormattedTextField();
         choose.setPreferredSize(new Dimension(50,75));
-        choose.setFont(new Font("Arial", Font.PLAIN, 20));
+        choose.setFont(new Font("Arial", Font.PLAIN, 30));
         choose.setForeground(Color.GRAY);
-        choose.setBackground(Color.WHITE);
+        choose.setBackground(Color.decode("#FDFDFD"));
         choose.setCaretColor(Color.decode("#242323"));
         choose.setText("##");
         choose.setBorder(null);
+        ((AbstractDocument) choose.getDocument()).setDocumentFilter(new IntegerFilter());
 
         JLabel instruct = new JLabel("Choose a combination to proceed: ");
         instruct.setForeground(Color.decode("#242323"));
@@ -75,7 +111,7 @@ public class Frame4 extends JFrame implements ActionListener{
         JPanel giveBot = new JPanel();
         giveBot.setLayout(new FlowLayout());
         giveBot.setBounds(0, 585, 1000, 122);
-        giveBot.setBackground(Color.WHITE);
+        giveBot.setBackground(Color.decode("#FDFDFD"));
 
         giveBot.add(instruct);
         giveBot.add(choose);
@@ -99,11 +135,33 @@ public class Frame4 extends JFrame implements ActionListener{
        setResizable(false);
        setLocationRelativeTo(null);
     }
+    
+    
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        dispose();
-        Frame5 frame5 = new Frame5();
-    }   
+        if(e.getSource() == attitude) {
+            String output = knapSack.getProduct()+bestValue;
+            updateTextPane(output);
+        }
+        if(e.getSource() == value) {
+            String output = knapSack.getValue()+bestValue;
+            updateTextPane(output);
+        }
+        if(e.getSource() == weight) {
+            String output = knapSack.getWeight()+bestValue;
+            updateTextPane(output);
+        }
+        if(e.getSource() == proceed) {
+            dispose();
+            Frame5 frame5 = new Frame5(); 
+        }
+        
+    }
+    private void updateTextPane(String newText) {
+        textPane.setText(newText);
+    }
     
+
 }

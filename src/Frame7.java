@@ -1,16 +1,11 @@
 package src;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,57 +20,54 @@ public class Frame7 extends JFrame implements ActionListener {
     Frame8 outPutFrame;
 
     Frame7() {
-        // panel itself
-        JPanel locationPanel = new JPanel();
-        locationPanel.setLayout(new GridLayout(2, 0));
-        locationPanel.setBackground(Color.WHITE);
+        JPanel places = new JPanel();
+        places.setBounds(0,0,1000,490);
 
-        // top image/msg
-        ImageIcon messageIcon = new ImageIcon("resources/page7/1panel_static.png");
-        Image newImage = messageIcon.getImage();
-        Image resized = newImage.getScaledInstance(1000, 350, java.awt.Image.SCALE_SMOOTH);
-        JLabel messageLabel = new JLabel();
-        messageLabel.setIcon(new ImageIcon(resized));
+        ImageIcon map = new ImageIcon("resources/page7/places.png");
+        JLabel across = new JLabel();
+        across.setIcon(map);
 
-        // All buttons locations should be here
-        JLabel buttonsLabel = new JLabel();
-        buttonsLabel.setLayout(new FlowLayout());
-        int buttonSize = 150;
+        places.add(across);
+
+        JPanel point= new JPanel();
+        point.setLayout(new FlowLayout());
+        point.setBounds(0,490,1000,217);
+        point.setBackground(Color.decode("#FDFDFD"));
+
         ImageIcon candyKingdom = new ImageIcon("resources/page7/candy-kingdom_button.png");
-        Image candyIcon = candyKingdom.getImage();
-        Image candyResized = candyIcon.getScaledInstance(buttonSize, buttonSize, java.awt.Image.SCALE_SMOOTH);
+        this.candyKingdomButton = new JButton();
+        this.candyKingdomButton.setIcon(candyKingdom);
+        this.candyKingdomButton.setBorder(null);
+        this.candyKingdomButton.setFocusable(false);
+        this.candyKingdomButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
         ImageIcon farmWorld = new ImageIcon("resources/page7/farm-world_button.png");
-        Image farmIcon = farmWorld.getImage();
-        Image farmResized = farmIcon.getScaledInstance(buttonSize, buttonSize, java.awt.Image.SCALE_SMOOTH);
+        this.farmWorldButton = new JButton();
+        this.farmWorldButton.setIcon(farmWorld);
+        this.farmWorldButton.setBorder(null);
+        this.farmWorldButton.setFocusable(false);
+        this.farmWorldButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
         ImageIcon treeHouse = new ImageIcon("resources/page7/tree-house_button.png");
-        Image treeIcon = treeHouse.getImage();
-        Image treeResize = treeIcon.getScaledInstance(buttonSize, buttonSize, java.awt.Image.SCALE_SMOOTH);
+        this.treeHouseButton = new JButton();
+        this.treeHouseButton.setIcon(treeHouse);
+        this.treeHouseButton.setBorder(null);
+        this.treeHouseButton.setFocusable(false);
+        this.treeHouseButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
         ImageIcon iceKingdom = new ImageIcon("resources/page7/ice-kingdom_button.png");
-        Image iceIcon = iceKingdom.getImage();
-        Image iceResize = iceIcon.getScaledInstance(buttonSize, buttonSize, java.awt.Image.SCALE_SMOOTH);
-        ImageIcon beutopia = new ImageIcon("resources/page7/beautopia_button.png");
-        Image beuIcon = beutopia.getImage();
-        Image beuResize = beuIcon.getScaledInstance(buttonSize, buttonSize, java.awt.Image.SCALE_SMOOTH);
-        this.treeHouseButton = new JButton(new ImageIcon(treeResize));
-        treeHouseButton.setContentAreaFilled(false);
-        treeHouseButton.setBorderPainted(false);
-        ;
-        this.candyKingdomButton = new JButton(new ImageIcon(candyResized));
-        candyKingdomButton.setContentAreaFilled(false);
-        candyKingdomButton.setBorderPainted(false);
-        ;
-        this.farmWorldButton = new JButton(new ImageIcon(farmResized));
-        farmWorldButton.setContentAreaFilled(false);
-        farmWorldButton.setBorderPainted(false);
-        ;
-        this.iceKinggdomButton = new JButton(new ImageIcon(iceResize));
-        iceKinggdomButton.setContentAreaFilled(false);
-        iceKinggdomButton.setBorderPainted(false);
-        ;
-        this.beutopiaButton = new JButton(new ImageIcon(beuResize));
-        beutopiaButton.setContentAreaFilled(false);
-        beutopiaButton.setBorderPainted(false);
-        ;
+        this.iceKinggdomButton = new JButton();
+        this.iceKinggdomButton.setIcon(iceKingdom);
+        this.iceKinggdomButton.setBorder(null);
+        this.iceKinggdomButton.setFocusable(false);
+        this.iceKinggdomButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        ImageIcon beautopia = new ImageIcon("resources/page7/beautopia_button.png");
+        this.beutopiaButton = new JButton();
+        this.beutopiaButton.setIcon(beautopia);
+        this.beutopiaButton.setBorder(null);
+        this.beutopiaButton.setFocusable(false);
+        this.beutopiaButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         treeHouseButton.addActionListener(this);
         candyKingdomButton.addActionListener(this);
@@ -83,24 +75,25 @@ public class Frame7 extends JFrame implements ActionListener {
         iceKinggdomButton.addActionListener(this);
         beutopiaButton.addActionListener(this);
 
-        buttonsLabel.add(treeHouseButton);
-        buttonsLabel.add(farmWorldButton);
-        buttonsLabel.add(candyKingdomButton);
-        buttonsLabel.add(iceKinggdomButton);
-        buttonsLabel.add(beutopiaButton);
-        // all components
-        locationPanel.add(messageLabel);
-        locationPanel.add(buttonsLabel);
+        point.add(candyKingdomButton);
+        point.add(farmWorldButton);
+        point.add(treeHouseButton);
+        point.add(iceKinggdomButton);
+        point.add(beutopiaButton);
+       
+        this.add(places);
+        this.add(point);
 
         // frame settings
-        setTitle("Midterm Project");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(1000, 707);
-        setBackground(Color.WHITE);
-
-        setVisible(true);
-        setResizable(false);
-        this.add(locationPanel);
+       ImageIcon icon = new ImageIcon("resources/MainIcon.png");
+       setIconImage(icon.getImage());
+       setLayout(null);
+       setTitle("This Guy Needs Some Attitude");
+       setDefaultCloseOperation(EXIT_ON_CLOSE);
+       setSize(1000, 707);
+       setVisible(true);
+       setResizable(false);
+       setLocationRelativeTo(null);
     }
 
     @Override
@@ -126,11 +119,5 @@ public class Frame7 extends JFrame implements ActionListener {
             tsp = new Tsp(4);
             new Frame8(tsp.getOuput(), tsp.getOutputDistance(),4);
         }
-
-        
-    }
-
-    public static void main(String[] args) {
-        Frame7 test = new Frame7();
     }
 }

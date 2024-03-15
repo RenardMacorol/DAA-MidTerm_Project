@@ -1,6 +1,6 @@
-package src.Knapsack;
+package src.KnapAndSort;
 
-public class Items {
+class Items {
     private String productName;
     private double weight;
     private double value;
@@ -29,4 +29,3 @@ public class Items {
         this.value = value;
     }
 }
-
