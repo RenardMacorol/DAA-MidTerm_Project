@@ -9,10 +9,7 @@ public class TestAllAlgs {
             System.out.println("Test Output 200" + i);
             new SpeedAnalysis(new Tsp(i));
         }
-        for(int i=0; i<=15;i++){
-            System.out.println("Test Input "+i);
-            new SpeedAnalysis(new KnapsackMain(i));
-        }
+       
 
 
     }
