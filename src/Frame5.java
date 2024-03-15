@@ -41,9 +41,12 @@ public class Frame5 extends JFrame implements ActionListener{
         guyPanel.add(proceed);
 
         //frame settings
-        setTitle("Midterm Project");
+        setTitle("This Guy Needs Some Attitude");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(1000, 563);
+        setSize(1000, 707);
+        ImageIcon logo = new ImageIcon("resources//AttitudeIcon.png");
+        setIconImage(logo.getImage());
+        setLocationRelativeTo(null);//center the window to screen when run
         setVisible(true);
         setResizable(false);
         this.add(guyPanel);
