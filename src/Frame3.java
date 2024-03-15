@@ -52,8 +52,12 @@ public class Frame3 extends JFrame implements ActionListener {
         knapsackInputPanel.add(seeResult);
         
         //frame settings
-        setTitle("Midterm Project");
+        setTitle("This Guy Needs Some Attitude");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(1000, 707);
+        ImageIcon logo = new ImageIcon("resources//AttitudeIcon.png");
+        setIconImage(logo.getImage());
+        setLocationRelativeTo(null);//center the window to screen when run
         setSize(1000, 707);
         setVisible(true);
         setResizable(false);

@@ -36,13 +36,21 @@ public class Frame1 extends JFrame implements ActionListener {
         JButton start = new JButton("Start");
         start.setBounds(425, 370, 100, 100);
         start.addActionListener(this);
+        
+        //add to the panel
+        startPanel.add(start,BorderLayout.CENTER);
+        startPanel.add(attitudeLabel,BorderLayout.CENTER);
+        setTitle("This Guy Needs Some Attitude");
 
         // add to the panel
         startPanel.add(start, BorderLayout.CENTER);
         startPanel.add(attitudeLabel, BorderLayout.CENTER);
-        setTitle("Midterm Project");
+        setTitle("This Guy Needs Some Attitude");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1000, 707);
+        ImageIcon logo = new ImageIcon("resources//AttitudeIcon.png");
+        setIconImage(logo.getImage());
+        setLocationRelativeTo(null);//center the window to screen when run
         setVisible(true);
         setResizable(false);
         // add into the frame
