@@ -1,9 +1,9 @@
+package src.KnapAndSort;
 import java.util.Scanner;
 
 public class KnapsackMain {
-    public static void main(String[] args) {
-
-
+    KnapsackMain(int input){
+        
         Operation op = new Operation();
         op.printChoices();
 
@@ -16,6 +16,9 @@ public class KnapsackMain {
 
         sc.close();
     }
+
+
+    
 }
 
 
