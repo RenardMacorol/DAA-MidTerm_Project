@@ -1,21 +1,24 @@
+package src.KnapAndSort;
 import java.util.Scanner;
 
 public class KnapsackMain {
-    public static void main(String[] args) {
-
-
+    public KnapsackMain(int input){
+        
         Operation op = new Operation();
         op.printChoices();
 
-        Scanner sc = new Scanner(System.in);
+        
         System.out.println("\nEnter your cart size: ");
-        int cart = sc.nextInt();
+        
 
-        op.printFeasible(cart);
+        op.printFeasible(input);
         op.printSort();
 
-        sc.close();
+      
     }
+
+
+    
 }
 
 
