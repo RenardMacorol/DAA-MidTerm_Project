@@ -9,6 +9,7 @@ import javax.swing.*;
 public class Frame6 extends JFrame implements ActionListener {
     private JFormattedTextField userAddress; // Text field for user address input
     RoundedButton proceedButton;
+    JLabel output; 
     // Constructor to initialize the frame and UI components
     Frame6() {
         JPanel searchPanel = new JPanel(); // Panel for search components
@@ -45,12 +46,18 @@ public class Frame6 extends JFrame implements ActionListener {
         addressPanel.add(userAddress, BorderLayout.CENTER);
         addressPanel.add(proceedButton, BorderLayout.EAST);
 
-        userInputPanel.add(addressPanel);
-        searchPanel.add(userInputPanel);
-
+         //eto example naka attributes to pia ah need yan
         JPanel printPanel = new JPanel();
+        output =  new JLabel("Ouput Appear Here");
+        printPanel.add(output);
         printPanel.setBounds(0, 358, 1000, 349);
         printPanel.setBackground(Color.decode("#FDFDFD"));
+
+        userInputPanel.add(addressPanel);
+        searchPanel.add(userInputPanel);
+        searchPanel.add(printPanel);
+
+       
 
         setTitle("This Guy Needs Some Attitude"); // Set frame title
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -70,7 +77,8 @@ public class Frame6 extends JFrame implements ActionListener {
         if(e.getSource()==proceedButton){
             System.out.println("click");
             AddressSearchOption addressSearchOption = new AddressSearchOption(userAddress.getText()); // Create an instance of AddressSearchOption
-          
+            String searchResult = addressSearchOption.getPass();
+            output.setText(searchResult);
         }
         
     }

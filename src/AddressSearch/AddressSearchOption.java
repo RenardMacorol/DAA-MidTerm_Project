@@ -8,6 +8,7 @@ import java.util.List;
 public class AddressSearchOption {
     private List<String> addresses; // List of addresses
     private String input; // Reference to the Frame6 instance
+    private String pass;
 
     // Constructor to initialize the list of addresses and the frame
     public AddressSearchOption(String input) {
@@ -21,7 +22,11 @@ public class AddressSearchOption {
         addresses.add("808 Jake Street, Beautopia, Land of Ooo");
         AddressSearch addressSearch = new AddressSearch(addresses);
         addressSearch.search(input);
-      
+        pass=addressSearch.getOutput();
+        System.out.println(pass);
+    }
+    public String getPass(){
+        return pass;
     }
 
     
