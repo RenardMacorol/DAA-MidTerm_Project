@@ -97,7 +97,7 @@ public class Frame8 extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         dispose();
-        Frame9 frame9 = new Frame9();
+        Frame10 frame10 = new Frame10();
     }
 
     private ImageIcon display(int output) {

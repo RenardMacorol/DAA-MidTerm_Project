@@ -1,14 +1,18 @@
+//AddressSearOption.java Class
 package src.AddressSearch;
+
 
 import src.Frame6;
 import java.util.ArrayList;
 import java.util.List;
+
 
 // Class for handling address search options
 public class AddressSearchOption {
     private List<String> addresses; // List of addresses
     private String input; // Reference to the Frame6 instance
     private String pass;
+
 
     // Constructor to initialize the list of addresses and the frame
     public AddressSearchOption(String input) {
@@ -29,5 +33,6 @@ public class AddressSearchOption {
         return pass;
     }
 
-    
+
+   
 }

@@ -118,7 +118,7 @@ public class Frame4 extends JFrame implements ActionListener {
         proceed.addActionListener(this);
         proceed.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        choose = new JFormattedTextField();
+       /* choose = new JFormattedTextField();
         choose.setPreferredSize(new Dimension(50,75));
         choose.setFont(new Font("Arial", Font.PLAIN, 30));
         choose.setForeground(Color.GRAY);
@@ -131,14 +131,15 @@ public class Frame4 extends JFrame implements ActionListener {
         JLabel instruct = new JLabel("Choose a combination to proceed: ");
         instruct.setForeground(Color.decode("#242323"));
         instruct.setFont(new Font("DM SANS", Font.PLAIN, 17));
+         */
 
         JPanel giveBot = new JPanel();
         giveBot.setLayout(new FlowLayout());
         giveBot.setBounds(0, 585, 1000, 122);
         giveBot.setBackground(Color.decode("#FDFDFD"));
 
-        giveBot.add(instruct);
-        giveBot.add(choose);
+       // giveBot.add(instruct);
+        //giveBot.add(choose);
         giveBot.add(proceed);
        
 
@@ -221,9 +222,6 @@ public class Frame4 extends JFrame implements ActionListener {
 
         }
         if(e.getSource() == proceed) {
-            String k = choose.getText();
-            int n = Integer.parseInt(k);
-            if(n>=1 && n <= 15){}
             dispose();
             Frame5 frame5 = new Frame5(); 
         }
