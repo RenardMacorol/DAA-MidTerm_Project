@@ -47,7 +47,7 @@ public class Tsp {
         graph.addEdge(4, 2, 261);
         graph.addEdge(4, 3, 127);
 
-        //graph.print(locationArr);
+        // graph.print(locationArr);
         int[] node = { 0, 1, 2, 3, 4 };
         StringBuilder str = new StringBuilder();
         ArrayList<int[]> res = permute(node);
@@ -64,16 +64,18 @@ public class Tsp {
             }
 
         }
+        for (int i = 0; i < shortestPath.length; i++) {
+            System.out.print(shortestPath[i]);
+        }
         for (int i = 0; i < locationArr.length; i++) {
             str.append(locationArr[shortestPath[i]] + " " + shortestDistanceValues[i] + " " + " > ");
 
         }
         str.append(locationArr[shortestPath[0]]);
 
-
         output = str.toString();
         System.out.print(str.toString());
-        System.out.println("Shortes Distance"+shortestDistance);
+        System.out.println("Shortes Distance" + shortestDistance);
 
     }
 
@@ -100,6 +102,7 @@ public class Tsp {
         int tempDistance = 0;
         int[] distanceArr = new int[5];
         int lastvalue = 0;
+
         for (int i = 0; i <= arr.length - 2; i++) {
             tempDistance += graph.getMatrix()[arr[i]][arr[i + 1]];
             distanceArr[i] = graph.getMatrix()[arr[i]][arr[i + 1]];
@@ -107,13 +110,11 @@ public class Tsp {
             // System.out.println(graph.getMatrix()[arr[i]][arr[i+1]]);
             lastvalue = i;
         }
-        if (input == lastvalue) {
-            lastvalue -= 2;
-        }
-        //System.out.println("Debug" + input + " " + lastvalue);
 
-        tempDistance += graph.getMatrix()[input][lastvalue];
-        distanceArr[arr.length - 1] = graph.getMatrix()[input][lastvalue];
+        // System.out.println("Debug" + input + " " + lastvalue);
+
+        tempDistance += graph.getMatrix()[input][arr[arr.length-1]];
+        distanceArr[arr.length - 1] = graph.getMatrix()[input][arr[arr.length-1]];
 
         if (shortestDistance > tempDistance) {
             shortestDistance = tempDistance;
