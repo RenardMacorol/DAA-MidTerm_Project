@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -26,16 +27,15 @@ public class Frame10 extends JFrame implements ActionListener {
         topMessage.setVerticalAlignment(JLabel.CENTER);
         topMessage.setHorizontalAlignment(JLabel.CENTER);
 
+        
         ImageIcon guyIcon = new ImageIcon("resources/page10/guy-5star.png");
+        setIconImage(guyIcon.getImage());
         JLabel guyLabel = new JLabel();
-        guyLabel.setVerticalAlignment(JLabel.CENTER);
         guyLabel.setHorizontalAlignment(JLabel.CENTER);
+        guyLabel.setPreferredSize(new Dimension(1000, 346));
         guyLabel.setIcon(guyIcon);
-        JLabel congratsMesLabel = new JLabel();
-        congratsMesLabel.setVerticalAlignment(JLabel.CENTER);
-        congratsMesLabel.setHorizontalAlignment(JLabel.CENTER);
         topMessage.add(guyLabel);
-        topMessage.add(congratsMesLabel);
+       
 
 
         // rating
@@ -43,7 +43,7 @@ public class Frame10 extends JFrame implements ActionListener {
         setIconImage(ratingIcon.getImage());
         JLabel ratingLable = new JLabel();
         ratingLable.setIcon(ratingIcon);
-        ratingLable.setVerticalAlignment(JLabel.CENTER);
+        ratingLable.setVerticalAlignment(JLabel.BOTTOM);
         ratingLable.setHorizontalAlignment(JLabel.CENTER);
 
 
@@ -52,22 +52,25 @@ public class Frame10 extends JFrame implements ActionListener {
         setIconImage(questionIcon.getImage());
         JLabel questionLabel = new JLabel();
         questionLabel.setIcon(questionIcon);
-        questionLabel.setVerticalAlignment(JLabel.CENTER);
+        questionLabel.setVerticalAlignment(JLabel.BOTTOM);
         questionLabel.setHorizontalAlignment(JLabel.CENTER);
 
         JPanel buttonPanel = new JPanel(null);
         buttonPanel.setBackground(Color.WHITE);
-        buttonPanel.setBounds(0, 1, 1000, 100);
+        buttonPanel.setBounds(0, 1000, 1000, 100);
 
+        //yes button
         RoundedButton yes = new RoundedButton("YES", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 22);
         yes.setBounds(350, 50, 95, 49); 
         yes.addActionListener(this);
         buttonPanel.add(yes);
 
+        //Or image
         ImageIcon orIcon = new ImageIcon("resources/page10/4panel-or_static.png");
         JLabel orLabel = new JLabel(orIcon);
         orLabel.setBounds(400,50,50,50);
 
+        //rest BUTTON
         RoundedButton rest = new RoundedButton("REST", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 22);
         rest.setBounds(550, 50, 95, 49); 
         rest.addActionListener(this);
