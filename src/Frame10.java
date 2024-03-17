@@ -3,13 +3,6 @@ package src;
 import java.awt.Color;
 
 import java.awt.Dimension;
-
-
-import java.awt.Dimension;
-
-import java.awt.Font;
-
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -27,26 +20,26 @@ public class Frame10 extends JFrame implements ActionListener {
         guyPanel.setBounds(0, -10, 1000, 346);
         guyPanel.setBackground(Color.decode("#FDFDFD"));
 
+       
+        ImageIcon guyIcon5 = new ImageIcon("resources/page10/guy-5star.png");
+       
+        JLabel guyLabel5 = new JLabel(guyIcon5);
         
-        ImageIcon guyIcon = new ImageIcon("resources/page10/guy-5star.png");
-
-
-        JLabel guyLabel = new JLabel(guyIcon);
-        guyPanel.add(guyLabel);
-
-
-        // Panel 2 - rate 'to
+        guyPanel.add(guyLabel5);
+    
+        // Panel 2 - rate 
         JPanel ratePanel = new JPanel();
         ratePanel.setBounds(0, 315, 1000, 110);
         ratePanel.setBackground(Color.decode("#FDFDFD"));
 
+        ImageIcon rateIcon5 = new ImageIcon("resources/page10/5star-rate.png");
 
-        ImageIcon rateIcon = new ImageIcon("resources/page10/5star-rate.png");
-        JLabel rateLabel = new JLabel(rateIcon);
-        ratePanel.add(rateLabel);
+        JLabel rateLabel5 = new JLabel(rateIcon5);
+
+        ratePanel.add(rateLabel5);
 
 
-        // Panel 3 - question hays
+        // Panel 3 - question 
         JPanel questionPanel = new JPanel();
         questionPanel.setBounds(0, 426, 1000, 137);
         questionPanel.setBackground(Color.decode("#FDFDFD"));
@@ -94,7 +87,10 @@ public class Frame10 extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) 
+    {
+
+        
         if (e.getActionCommand().equals("YES")) {
             dispose();
             Frame1 frame1 = new Frame1(); // Open new frame
