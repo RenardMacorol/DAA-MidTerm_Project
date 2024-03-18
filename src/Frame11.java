@@ -22,12 +22,18 @@ public class Frame11 extends JFrame {
         
 
         // frame settings
-        setTitle("Midterm Project");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(1000, 707);
-        setVisible(true);
-        setResizable(false);
-        this.add(thankJLabel);
+       ImageIcon icon = new ImageIcon("resources/MainIcon.png");
+       setIconImage(icon.getImage());
+       setLayout(null);
+       setTitle("This Guy Needs Some Attitude");
+       setBackground(Color.decode("#FDFDFD"));
+       setDefaultCloseOperation(EXIT_ON_CLOSE);
+       setSize(1000, 707);
+       setVisible(true);
+       setBackground(Color.WHITE);
+       setResizable(false);
+       setLocationRelativeTo(null);
+       this.add(thankJLabel);
         
     }
     
