@@ -1,10 +1,11 @@
-package src.Knapsack;
-
+package src.KnapSort;
 import java.util.Scanner;
 
 public class KnapsackMain {
-    public KnapsackMain(){
-        Operations op = new Operations();
+    public static void main(String[] args) {
+
+
+        Operation op = new Operation();
         op.printChoices();
 
         Scanner sc = new Scanner(System.in);
@@ -12,6 +13,11 @@ public class KnapsackMain {
         int cart = sc.nextInt();
 
         op.printFeasible(cart);
-    }
+        op.printSort();
 
+        sc.close();
+    }
 }
+
+
+

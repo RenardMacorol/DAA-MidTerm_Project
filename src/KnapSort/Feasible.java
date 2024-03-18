@@ -1,3 +1,4 @@
+package src.KnapSort;
 import java.util.List;
 
 public class Feasible {
