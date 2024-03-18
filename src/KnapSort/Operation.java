@@ -4,7 +4,22 @@ import java.util.List;
 import java.util.Comparator;
 
 public class Operation {
-
+    String byProductName;
+    String byValue;
+    String byWeight;
+    String bestValue;
+    public String getBestValue(){
+        return bestValue;
+    }
+    public String getProductName(){
+        return byProductName;
+    }
+    public String getValue(){
+        return byValue;
+    }
+    public String getWeight(){
+        return byWeight;
+    }
     public void setItemArray(Items[] itemArray) {
         this.itemArray = itemArray;
     }
@@ -302,73 +317,32 @@ public class Operation {
     }
 
     public void printBestValue(int cart){
-
-        System.out.print("\nBEST VALUE FOR YOU:");
-        System.out.printf("%n%-55s%-40s%-40s%n", "ITEM/S", "WEIGHTS", "VALUES");
+        StringBuilder forBest = new StringBuilder();
+        forBest.append("\nBEST VALUE FOR YOU:");
+        forBest.append(String.format("%n%-55s%-40s%-40s%n", "ITEM/S", "WEIGHTS", "VALUES"));
         int n = 0;
         for (List<Items> i : getSubsetList()) {
             double feasibleWeights = computeWeight(i);
             if (feasibleWeights <= cart && feasibleWeights != 0) {
                 if (computeValue(i) == bestValue(cart)) {
-                    System.out.printf("%2d%s%-50s", n + 1, ".) ", printProductName(i));
-                    System.out.printf("%-40s", printWeight(i));
-                    System.out.printf("%-30s%n", printValue(i));
+                    forBest.append(String.format("%2d%s%-50s", n + 1, ".) ", printProductName(i)));
+                    forBest.append(String.format("%-40s", printWeight(i)));
+                    forBest.append(String.format("%-30s%n", printValue(i)));
                 }
             }
         }
+        bestValue=forBest.toString();
     }
 
     public void printSort() {
 
-        // Sort by product names alphabetically
-        feasibleList.sort((list1, list2) -> {
-            String productName1 = printProductName(list1);
-            String productName2 = printProductName(list2);
-            return productName1.compareTo(productName2);
-        });
-    
-        
-        // Print sorted feasibleList by items
-        System.out.println("\nSorted by items:");
-        System.out.println("ITEM/S\t\t\t\t\t\t\t       WEIGHTS   \t\t\t\tVALUES");
-        for (int i = 0; i < feasibleList.size(); i++) {
-            List<Items> itemList = feasibleList.get(i);
-            double totalWeight = computeWeight(itemList);
-            double totalValue = computeValue(itemList);
-    
-            // Adjust spacing for better alignment
-            System.out.printf("%2d%s%-60s", i + 1, ".) ", printProductName(itemList));
-            System.out.printf("%-40.1f", totalWeight);
-            System.out.printf("%-30.1f%n", totalValue);
-        }
-    
-        // Sort by weight in ascending order
-        feasibleList.sort(Comparator.comparingDouble(itemsList -> computeWeight(itemsList)));
-    
-        // Print sorted list by weight
-        System.out.println("\nSorted by weight:");
-        System.out.println("ITEM/S\t\t\t\t\t\t\t       WEIGHTS   \t\t\t\tVALUES");
-        for (int i = 0; i < feasibleList.size(); i++) {
-            List<Items> itemList = feasibleList.get(i);
-            double totalWeight = computeWeight(itemList);
-            double totalValue = computeValue(itemList);
-            System.out.printf("%2d%s%-60s", i + 1, ".) ", printProductName(itemList));
-            System.out.printf("%-40.1f", totalWeight);
-            System.out.printf("%-30.1f%n", totalValue);
-        }
-    
-        // Sort by value in ascending order
-        feasibleList.sort(Comparator.comparingDouble(itemsList -> computeValue(itemsList)));
+   // Sort by product names alphabetically
+   feasibleList.sort((list1, list2) -> {
+    String productName1 = printProductName(list1);
+    String productName2 = printProductName(list2);
+    return productName1.compareTo(productName2);
+});
 
-    
-        // Print sorted list by value
-        System.out.println("\nSorted by value:");
-        System.out.println("ITEM/S\t\t\t\t\t\t\t       WEIGHTS   \t\t\t\tVALUES");
-        for (int i = 0; i < feasibleList.size(); i++) {
-            List<Items> itemList = feasibleList.get(i);
-            double totalWeight = computeWeight(itemList);
-            double totalValue = computeValue(itemList);
-            System.out.printf("%2d%s%-60s", i + 1, ".) ", printProductName(itemList));
 
 // Print sorted feasibleList by items
 StringBuilder forProduct = new StringBuilder();
@@ -400,7 +374,7 @@ for (int i = 0; i < feasibleList.size(); i++) {
     forWeight.append(String.format("%-40.1f", totalWeight));
     forWeight.append(String.format("%-30.1f%n", totalValue));
 }
-    byWeight=forWeight.toString();
+byWeight=forWeight.toString();
     // Sort by value in ascending order
     feasibleList.sort(Comparator.comparingDouble(itemsList -> computeValue(itemsList)));
 
@@ -417,11 +391,10 @@ for (int i = 0; i < feasibleList.size(); i++) {
     forValue.append(String.format("%-40.1f", totalWeight));
     forValue.append(String.format("%-30.1f%n", totalValue));
     }
+    byValue=forValue.toString();
+}
 
 }
 
 
     
-}
-}
-

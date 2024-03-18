@@ -12,27 +12,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Frame10 extends JFrame implements ActionListener {
-    JButton yes,rest;
-    Frame10() {
-        JPanel ratingPanel = new JPanel();
-        ratingPanel.setLayout(new GridLayout(4, 0));
-        ratingPanel.setBounds(0, 0, 500, 500);
+    private JButton yes, rest;
 
-        // Upper area
-        JLabel topMessage = new JLabel();
-        topMessage.setLayout(new FlowLayout());
-        topMessage.setVerticalAlignment(JLabel.CENTER);
-        topMessage.setHorizontalAlignment(JLabel.CENTER);
-        ImageIcon guyIcon = new ImageIcon();
-        JLabel guyLabel = new JLabel("May Icon dito eh");
-        guyLabel.setVerticalAlignment(JLabel.CENTER);
-        guyLabel.setHorizontalAlignment(JLabel.CENTER);
-        guyLabel.setIcon(guyIcon);
-        JLabel congratsMesLabel = new JLabel("Congrats");
-        congratsMesLabel.setVerticalAlignment(JLabel.CENTER);
-        congratsMesLabel.setHorizontalAlignment(JLabel.CENTER);
-        topMessage.add(guyLabel);
-        topMessage.add(congratsMesLabel);
+    public Frame10() {
+        // Panel 1 - guy
+        JPanel guyPanel = new JPanel();
+        guyPanel.setBounds(0, -10, 1000, 346);
+        guyPanel.setBackground(Color.decode("#FDFDFD"));
 
        
         ImageIcon guyIcon5 = new ImageIcon("resources/page10/guy-5star.png");
@@ -53,11 +39,6 @@ public class Frame10 extends JFrame implements ActionListener {
         guyPanel.add(guyLabel2);
         guyPanel.add(guyLabel1);
 
-        // Componets
-        ratingPanel.add(topMessage);
-        ratingPanel.add(ratingLable);
-        ratingPanel.add(questionLabel);
-        ratingPanel.add(optionLabel);
 
         // Panel 2 - rate 'to
         JPanel ratePanel = new JPanel();
@@ -124,20 +105,22 @@ public class Frame10 extends JFrame implements ActionListener {
         setTitle("This Guy Needs Some Attitude");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1000, 707);
+        ImageIcon logo = new ImageIcon("resources/AttitudeIcon.png");
+        setIconImage(logo.getImage());
+        setLocationRelativeTo(null); // Center the window to screen when run
         setVisible(true);
         setResizable(false);
-        this.add(ratingPanel);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        dispose();
-        if (e.getSource()==yes) {
-            Frame1 frame = new Frame1();
-        }else{
-            Frame11 frame11 = new Frame11();
+        if (e.getActionCommand().equals("YES")) {
+            dispose();
+            Frame1 frame1 = new Frame1(); // Open new frame
+        } else if (e.getActionCommand().equals("REST")) {
+            dispose();
+            Frame11 frame11 = new Frame11(); // Open new frame
         }
-        
     }
     
 }

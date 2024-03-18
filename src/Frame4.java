@@ -2,17 +2,13 @@ package src;
 
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Image;
+import java.awt.ScrollPane;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.BorderFactory;
+import javax.swing.text.AbstractDocument;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -59,16 +55,19 @@ public class Frame4 extends JFrame implements ActionListener {
         JPanel sortPanel = new JPanel();
         sortPanel.setBounds(0,110,1000,65);
         sortPanel.setLayout(new FlowLayout());
-        sortPanel.setBackground(Color.WHITE);
+        sortPanel.setBackground(Color.decode("#FDFDFD"));
 
         //Display flowlayout here;
         JLabel sortByText = new JLabel("Sort By:");
-        sortByText.setFont(new Font("Arial", Font.PLAIN, 17));
+        sortByText.setFont(new Font("DM SANS", Font.PLAIN, 17));
 
-        RoundedButton attitude = new RoundedButton("Attitude", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
-        RoundedButton weight = new RoundedButton("Weight", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
-        RoundedButton value = new RoundedButton("Value", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
-        
+        attitude = new RoundedButton("ATTITUDE", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
+        weight = new RoundedButton("WEIGHT", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
+        value = new RoundedButton("VALUE", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 16);
+        attitude.addActionListener(this);
+        weight.addActionListener(this);
+        value.addActionListener(this);
+
         sortPanel.add(sortByText);
         sortPanel.add(attitude);
         sortPanel.add(weight);
@@ -112,19 +111,21 @@ public class Frame4 extends JFrame implements ActionListener {
 
         JScrollPane tablePanel = new JScrollPane(tab);
         tablePanel.setBounds(0,175,1000,410);
-        tablePanel.setBackground(Color.WHITE);
-        
-        RoundedButton proceed = new RoundedButton("PROCEED", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 20);
+        tablePanel.setBackground(Color.decode("#FDFDFD"));
+    
+        proceed = new RoundedButton("PROCEED", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 20);
         proceed.addActionListener(this);
+        proceed.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
        /* choose = new JFormattedTextField();
         choose.setPreferredSize(new Dimension(50,75));
-        choose.setFont(new Font("Arial", Font.PLAIN, 20));
+        choose.setFont(new Font("Arial", Font.PLAIN, 30));
         choose.setForeground(Color.GRAY);
-        choose.setBackground(Color.WHITE);
+        choose.setBackground(Color.decode("#FDFDFD"));
         choose.setCaretColor(Color.decode("#242323"));
         choose.setText("##");
         choose.setBorder(null);
+        ((AbstractDocument) choose.getDocument()).setDocumentFilter(new IntegerFilter());
 
         JLabel instruct = new JLabel("Choose a combination to proceed: ");
         instruct.setForeground(Color.decode("#242323"));
@@ -134,7 +135,7 @@ public class Frame4 extends JFrame implements ActionListener {
         JPanel giveBot = new JPanel();
         giveBot.setLayout(new FlowLayout());
         giveBot.setBounds(0, 585, 1000, 122);
-        giveBot.setBackground(Color.WHITE);
+        giveBot.setBackground(Color.decode("#FDFDFD"));
 
        // giveBot.add(instruct);
         //giveBot.add(choose);
@@ -158,6 +159,9 @@ public class Frame4 extends JFrame implements ActionListener {
        setResizable(false);
        setLocationRelativeTo(null);
     }
+    
+    
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {

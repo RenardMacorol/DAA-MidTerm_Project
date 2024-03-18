@@ -7,7 +7,8 @@ import java.util.List;
 
 // Class for searching addresses
 class AddressSearch {
-    private List<String> addresses;
+    private String output;
+    private List<String> addresses; // List of addresses
 
 
     // Constructor to initialize the list of addresses
@@ -15,6 +16,10 @@ class AddressSearch {
         this.addresses = addresses;
     }
 
+
+    public String getOutput(){
+        return output;
+    }
 
 
     // Method to search for occurrences of user input in addresses
@@ -26,9 +31,11 @@ class AddressSearch {
         //foundMatches.append("\nSearch Address: " + userInput+"\n");
         foundMatches.append("\nMatched Address:\n");
 
+
+        // Loop through each address
         for (String address : addresses) {
-            String lowerCaseAddress = address.toLowerCase();
-            int index = lowerCaseAddress.indexOf(userInput);
+            String lowerCaseAddress = address.toLowerCase(); // Convert address to lowercase for case-insensitive search
+            int index = lowerCaseAddress.indexOf(userInput); // Find the index of user input in the address
             int occurrences = 0;
 
 
@@ -46,14 +53,12 @@ class AddressSearch {
                     foundMatches.append("  - - - " + address+"\n");
                 }
 
-                // Print searched position and occurrence
-                foundMatches.append("            occurence number " + occurrences + ", at position " + position + "\n");
 
                 // Print searched position and occurrence
                 foundMatches.append("            occurence number " + occurrences + ", at position " + position + "\n");
 
 
-                // proceed to the next occurrence
+                // Proceed to the next occurrence
                 index = lowerCaseAddress.indexOf(userInput, index + 1);
             }
 
@@ -67,10 +72,11 @@ class AddressSearch {
 
         // Print the total number of matching addresses or "No matches found."
         if (totalMatches > 0) {
-            System.out.println("\n" + totalMatches + " address found.");
+            foundMatches.append("\n" + totalMatches + " address found."+"\n");
         } else {
             foundMatches.append("\n\nNo matches found."+"\n");
         }
+        output= foundMatches.toString();
     }
 
 
