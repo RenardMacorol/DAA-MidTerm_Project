@@ -1,6 +1,6 @@
 package src.KnapSort;
 
-class Items {
+public class Items {
     private String productName;
     private double weight;
     private double value;

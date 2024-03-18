@@ -1,5 +1,6 @@
 package src;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +14,10 @@ public class Frame11 extends JFrame {
     Frame11() {
         ImageIcon thankyouIcon = new ImageIcon("resources\\Thank You.png");
         JLabel thankJLabel = new JLabel();
+        thankJLabel.setBackground(Color.decode("#FDFDFD"));
+
+        thankJLabel.setBounds(0, 20, 1000, 500);
+        
         thankJLabel.setIcon(thankyouIcon);
         
 

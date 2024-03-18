@@ -18,7 +18,9 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.NumberFormatter;
 
 public class Frame3 extends JFrame implements ActionListener {
@@ -38,6 +40,36 @@ public class Frame3 extends JFrame implements ActionListener {
         butTable.setBounds(0, 210, 1000, 240);
         butTable.setBackground(Color.WHITE);
 
+        DefaultTableModel blue = new DefaultTableModel();
+        blue.addColumn("#");
+        blue.addColumn("ATTITUDE");
+        blue.addColumn("WEIGHT");
+        blue.addColumn("VALUE");
+
+        Operation op = new Operation();
+        blue.addRow(new Object[]{blue.getColumnName(0), blue.getColumnName(1), 
+                                blue.getColumnName(2), blue.getColumnName(3)});
+        for(int i = 0; i<op.getItemArray().length; i++){
+            blue.addRow(new Object[]{i+1, op.getItemArray()[i].getProductName(), 
+                                    op.getItemArray()[i].getWeight(), op.getItemArray()[i].getValue()});
+        }
+
+        JTable tab = new JTable(blue);
+        tab.setBorder(null);
+        tab.setBackground(Color.decode("#FDFDFD"));
+        tab.setFont(new Font("DM SANS", Font.PLAIN, 25));
+        tab.setShowGrid(false);
+        tab.setShowHorizontalLines(false);
+        tab.setShowVerticalLines(false);
+        tab.setIntercellSpacing(new Dimension(0,0));
+        tab.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tab.getColumnModel().getColumn(1).setPreferredWidth(230);
+        tab.getColumnModel().getColumn(2).setPreferredWidth(200);
+        tab.getColumnModel().getColumn(3).setPreferredWidth(150);
+        tab.setRowHeight(35);
+
+        butTable.add(tab);
+    
         JPanel butEnter = new JPanel();
         butEnter.setBounds(0, 450, 755, 100);
         butEnter.setBackground(Color.WHITE);
