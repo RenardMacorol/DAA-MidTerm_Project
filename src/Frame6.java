@@ -11,9 +11,8 @@ import javax.swing.*;
 public class Frame6 extends JFrame implements ActionListener {
     private JFormattedTextField userAddress; // Text field for user address input
     RoundedButton proceedButton;
-    JLabel output;
+    JLabel output; 
     JButton nextButton;// New button for "Next"
-
 
     // Constructor to initialize the frame and UI components
     Frame6() {
@@ -88,6 +87,32 @@ public class Frame6 extends JFrame implements ActionListener {
         setResizable(false); // Disable frame resizing
         add(searchPanel); // Add search panel to the frame
 
+        //next button format
+
+        nextButton = new RoundedButton("Proceed", Color.decode("#242323"), Color.WHITE, 30, 0, 0, "Arial", 20);
+        
+
+        nextButton = new JButton("Proceed");
+        nextButton.setEnabled(false); // Initially disabled
+        nextButton.setFont(new Font("Arial", Font.PLAIN, 20));
+        nextButton.setForeground(Color.WHITE);
+        nextButton.setBackground(Color.decode("#242323"));
+        nextButton.setBorderPainted(false);
+        nextButton.setFocusPainted(false);
+        nextButton.setOpaque(true);
+        nextButton.setPreferredSize(new Dimension(50, 40));
+        nextButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Handle "Next" button click, navigate to page 7
+                dispose(); // Close current frame
+                new Frame7(); // Open next frame (assuming Frame7 is another JFrame class)
+            }
+        });
+
+        // Add "Next" button to the frame
+        add(nextButton, BorderLayout.SOUTH);
+    }
+    
 
         //next button format
 
@@ -129,12 +154,10 @@ public class Frame6 extends JFrame implements ActionListener {
             searchResult = formatSearchResult(searchResult);
             output.setText(searchResult);
 
-
             // Enable the "Next" button after the search button is clicked
             nextButton.setEnabled(true);
         }
     }
-
 
     private String formatSearchResult(String searchResult) {
         searchResult = searchResult.replaceAll("\n", "<br>");

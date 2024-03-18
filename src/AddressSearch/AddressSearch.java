@@ -26,7 +26,6 @@ class AddressSearch {
         //foundMatches.append("\nSearch Address: " + userInput+"\n");
         foundMatches.append("\nMatched Address:\n");
 
-
         for (String address : addresses) {
             String lowerCaseAddress = address.toLowerCase();
             int index = lowerCaseAddress.indexOf(userInput);
@@ -47,6 +46,8 @@ class AddressSearch {
                     foundMatches.append("  - - - " + address+"\n");
                 }
 
+                // Print searched position and occurrence
+                foundMatches.append("            occurence number " + occurrences + ", at position " + position + "\n");
 
                 // Print searched position and occurrence
                 foundMatches.append("            occurence number " + occurrences + ", at position " + position + "\n");
