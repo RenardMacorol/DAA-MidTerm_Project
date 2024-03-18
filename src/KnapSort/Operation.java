@@ -400,7 +400,7 @@ for (int i = 0; i < feasibleList.size(); i++) {
     forWeight.append(String.format("%-40.1f", totalWeight));
     forWeight.append(String.format("%-30.1f%n", totalValue));
 }
-byWeight=forWeight.toString();
+    byWeight=forWeight.toString();
     // Sort by value in ascending order
     feasibleList.sort(Comparator.comparingDouble(itemsList -> computeValue(itemsList)));
 
@@ -422,5 +422,6 @@ byWeight=forWeight.toString();
 
 
     
+}
 }
 
