@@ -111,17 +111,15 @@ public class Tsp {
     private void compare(int[] arr) {
         int tempDistance = 0;
         int[] distanceArr = new int[5];
-        int lastvalue = 0;
-
+       
         for (int i = 0; i <= arr.length - 2; i++) {
             tempDistance += graph.getMatrix()[arr[i]][arr[i + 1]];
             distanceArr[i] = graph.getMatrix()[arr[i]][arr[i + 1]];
-            // System.out.println(arr[i]+" "+arr[i+1]);
-            // System.out.println(graph.getMatrix()[arr[i]][arr[i+1]]);
-            lastvalue = i;
+            
+            
         }
 
-        // System.out.println("Debug" + input + " " + lastvalue);
+      
 
         tempDistance += graph.getMatrix()[input][arr[arr.length-1]];
         distanceArr[arr.length - 1] = graph.getMatrix()[input][arr[arr.length-1]];
