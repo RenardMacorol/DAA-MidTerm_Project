@@ -22,6 +22,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.NumberFormatter;
+import src.KnapSort.*;
 
 public class Frame3 extends JFrame implements ActionListener {
     Frame3() {
