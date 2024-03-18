@@ -69,8 +69,7 @@ public class Frame4 extends JFrame implements ActionListener{
 
         JLabel instruct = new JLabel("Choose a combination to proceed: ");
         instruct.setForeground(Color.decode("#242323"));
-        instruct.setFont(new Font("Arial", Font.PLAIN, 17));
-
+        instruct.setFont(new Font("DM SANS", Font.PLAIN, 17));
 
         JPanel giveBot = new JPanel();
         giveBot.setLayout(new FlowLayout());
