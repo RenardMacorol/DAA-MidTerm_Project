@@ -3,7 +3,6 @@ package src;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Cursor;
 
 import javax.swing.*;
 
@@ -26,20 +25,14 @@ public class Frame1 extends JFrame implements ActionListener {
         startPanel.add(title);
 
         // Only one button only one yieee
-        RoundedButton start = new RoundedButton("START", Color.decode("#242323"), Color.WHITE, 30,0,0, "DM SANS", 20);
+        RoundedButton start = new RoundedButton("START", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 20);
         start.addActionListener(this);
-        start.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        
-        //add to the panel
-        //startPanel.add(start,BorderLayout.CENTER);
-        //startPanel.add(attitudeLabel,BorderLayout.CENTER);
-        setTitle("This Guy Needs Some Attitude");
 
         //bottom panel
         JPanel startBot = new JPanel();
         startBot.setBounds(0, 550, 1000, 207);
         startBot.add(start);
-        startBot.setBackground(Color.decode("#FDFDFD"));
+        startBot.setBackground(Color.WHITE);
        
         //frame again
         ImageIcon icon = new ImageIcon("resources/MainIcon.png");
@@ -48,9 +41,6 @@ public class Frame1 extends JFrame implements ActionListener {
         setTitle("This Guy Needs Some Attitude");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1000, 707);
-        ImageIcon logo = new ImageIcon("resources//AttitudeIcon.png");
-        setIconImage(logo.getImage());
-        setLocationRelativeTo(null);//center the window to screen when run
         setVisible(true);
         setResizable(false);
         setLocationRelativeTo(null);

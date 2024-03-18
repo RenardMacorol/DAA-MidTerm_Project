@@ -45,16 +45,13 @@ public class Frame9 extends JFrame implements ActionListener {
         invoicePanel.add(anotherMessage);
 
         //frame settings
-       ImageIcon icon = new ImageIcon("resources/MainIcon.png");
-       setIconImage(icon.getImage());
-       setLayout(null);
-       setTitle("This Guy Needs Some Attitude");
-       setDefaultCloseOperation(EXIT_ON_CLOSE);
-       setSize(1000, 707);
-       setVisible(true);
-       setResizable(false);
-       setLocationRelativeTo(null);
+        setTitle("Midterm Project");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(1000, 707);
+        setVisible(true);
+        setResizable(false);
         this.add(invoicePanel);
+
     }
 
     @Override

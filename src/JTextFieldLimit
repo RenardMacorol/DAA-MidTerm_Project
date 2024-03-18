@@ -1,5 +1,5 @@
-package src;
 import java.awt.FlowLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -26,5 +26,23 @@ class JTextFieldLimit extends PlainDocument {
     if ((getLength() + str.length()) <= limit) {
       super.insertString(offset, str, attr);
     }
+  }
+}
+
+public class Main extends JFrame {
+  JTextField textfield1;
+
+  JLabel label1;
+
+  public void init() {
+    setLayout(new FlowLayout());
+    label1 = new JLabel("max 10 chars");
+    textfield1 = new JTextField(15);
+    add(label1);
+    add(textfield1);
+    textfield1.setDocument(new JTextFieldLimit(10));
+    
+    setSize(300,300);
+    setVisible(true);
   }
 }

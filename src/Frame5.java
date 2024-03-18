@@ -24,13 +24,13 @@ public class Frame5 extends JFrame implements ActionListener{
         //
         JPanel guyName = new JPanel();
         guyName.setBounds(0, 342, 1000, 208);
-        guyName.setBackground(Color.decode("#FDFDFD"));
+        guyName.setBackground(Color.WHITE);
 
         JFormattedTextField choose = new JFormattedTextField();
         choose.setPreferredSize(new Dimension(250,200));
         choose.setFont(new Font("Arial", Font.PLAIN, 50));
         choose.setForeground(Color.GRAY);
-        choose.setBackground(Color.decode("#FDFDFD"));
+        choose.setBackground(Color.WHITE);
         choose.setCaretColor(Color.decode("#242323"));
         choose.setText("##");
         choose.setBorder(null);
@@ -38,14 +38,13 @@ public class Frame5 extends JFrame implements ActionListener{
         guyName.add(choose);
 
         //Proceed button
-        RoundedButton proceed = new RoundedButton("PROCEED", Color.decode("#242323"), Color.WHITE, 30,0,0, "DM SANS", 20);
+        RoundedButton proceed = new RoundedButton("PROCEED", Color.decode("#242323"), Color.WHITE, 30,0,0, "Arial", 20);
         proceed.addActionListener(this);
-        proceed.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         //Panel only one for this
         JPanel proceedBottom = new JPanel();
         proceedBottom.setBounds(0,550,1000,157);
-        proceedBottom.setBackground(Color.decode("#FDFDFD"));
+        proceedBottom.setBackground(Color.WHITE);
         
         //Import those componets in Panel
         proceedBottom.add(proceed);

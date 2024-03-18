@@ -1,4 +1,4 @@
-package src.KnapAndSort;
+package src.Knapsack;
 
 public class Items {
     private String productName;
@@ -29,3 +29,4 @@ public class Items {
         this.value = value;
     }
 }
+
