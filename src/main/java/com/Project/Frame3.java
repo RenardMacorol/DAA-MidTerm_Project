@@ -34,7 +34,7 @@ public class Frame3 extends JFrame implements ActionListener {
         but.setBackground(Color.decode("#FDFDFD"));
 
         // Label in the top
-        ImageIcon butWaitIcon = new ImageIcon("resources/page3/ButWait.png");
+        ImageIcon butWaitIcon = new ImageIcon("src\\resources\\page3\\ButWait.png");
         JLabel butWaitLabel = new JLabel();
         butWaitLabel.setIcon(butWaitIcon);
 
@@ -79,7 +79,7 @@ public class Frame3 extends JFrame implements ActionListener {
         butEnter.setBackground(Color.decode("#FDFDFD"));
 
         // Enter your heart capacity with inputField
-        ImageIcon heart = new ImageIcon("resources/page3/Heart.png");
+        ImageIcon heart = new ImageIcon("src\\resources\\page3\\Heart.png");
         JLabel input = new JLabel();
         input.setIcon(heart);
 
@@ -117,7 +117,7 @@ public class Frame3 extends JFrame implements ActionListener {
         butBot.add(seeResults);
 
         // frame settings
-        ImageIcon icon = new ImageIcon("resources/MainIcon.png");
+        ImageIcon icon = new ImageIcon("src\\resources\\MainIcon.png");
         setIconImage(icon.getImage());
         setLayout(null);
         setTitle("This Guy Needs Some Attitude");

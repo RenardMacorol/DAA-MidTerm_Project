@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 public class Frame11 extends JFrame {
     Frame11() {
-        ImageIcon thankyouIcon = new ImageIcon("resources\\Last Page TY.png");
+        ImageIcon thankyouIcon = new ImageIcon("src\\resources\\Thank You.png");
         JLabel thankJLabel = new JLabel();
         thankJLabel.setBackground(Color.decode("#FDFDFD"));
 
@@ -22,7 +22,7 @@ public class Frame11 extends JFrame {
         
 
         // frame settings
-       ImageIcon icon = new ImageIcon("resources/MainIcon.png");
+       ImageIcon icon = new ImageIcon("src\\resources\\MainIcon.png");
        setIconImage(icon.getImage());
        setLayout(null);
        setTitle("This Guy Needs Some Attitude");

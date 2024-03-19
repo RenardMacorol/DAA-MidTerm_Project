@@ -15,7 +15,7 @@ public class Frame5 extends JFrame implements ActionListener{
         guyPanel.setBounds(0, 0, 1000, 342);
 
         //Label in the top 
-        ImageIcon wonder = new ImageIcon("resources/page5/Wonder.png");
+        ImageIcon wonder = new ImageIcon("src\\resources\\page5\\Wonder.png");
         JLabel guysIconLabel = new JLabel();
         guysIconLabel.setIcon(wonder);
 
@@ -51,7 +51,7 @@ public class Frame5 extends JFrame implements ActionListener{
         proceedBottom.add(proceed);
 
         //frame settings
-        ImageIcon icon = new ImageIcon("resources/MainIcon.png");
+        ImageIcon icon = new ImageIcon("src\\resources\\MainIcon.png");
        setIconImage(icon.getImage());
        setLayout(null);
        setTitle("This Guy Needs Some Attitude");

@@ -80,7 +80,7 @@ public class Frame8 extends JFrame implements ActionListener {
         invoiceBot.add(invoiceButton);
     
         //frame settings
-       ImageIcon icon = new ImageIcon("resources/MainIcon.png");
+       ImageIcon icon = new ImageIcon("src\\resources\\MainIcon.png");
        setIconImage(icon.getImage());
        setLayout(null);
        setTitle("This Guy Needs Some Attitude");
@@ -103,19 +103,19 @@ public class Frame8 extends JFrame implements ActionListener {
 
     private ImageIcon display(int output) {
         if (output == 0) {
-            return new ImageIcon("resources/page8/Case _Tree House.png");
+            return new ImageIcon("src/resources/page8/Case _Tree House.png");
         }
         if (output == 1) {
-            return new ImageIcon("resources/page8/Case _Candy Kingdom.png");
+            return new ImageIcon("src/resources/page8/Case _Candy Kingdom.png");
         }
         if (output == 2) {
-            return new ImageIcon("resources/page8/Case _Farm World.png");
+            return new ImageIcon("src/resources/page8/Case _Farm World.png");
         }
         if (output == 3) {
-            return new ImageIcon("resources/page8/Case _Ice Kingdom.png");
+            return new ImageIcon("src/resources/page8/Case _Ice Kingdom.png");
         }
         if (output == 4) {
-            return new ImageIcon("resources/page8/Case _Beautopia.png");
+            return new ImageIcon("src/resources/page8/Case _Beautopia.png");
         }
       
         return new ImageIcon();

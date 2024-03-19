@@ -46,7 +46,7 @@ public class Frame4 extends JFrame implements ActionListener {
         givePanel.setBounds(0,0,1000,110);
 
         //Label in the top
-        ImageIcon topMessage = new ImageIcon("resources/page4/Give.png");
+        ImageIcon topMessage = new ImageIcon("src\\resources\\page4\\Give.png");
         JLabel topMessageLabel = new JLabel();
         topMessageLabel.setIcon(topMessage);
 
@@ -150,7 +150,7 @@ public class Frame4 extends JFrame implements ActionListener {
         this.add(giveBot);
         
         //frame settings
-       ImageIcon icon = new ImageIcon("resources/MainIcon.png");
+       ImageIcon icon = new ImageIcon("src\\resources\\MainIcon.png");
        setIconImage(icon.getImage());
        setLayout(null);
        setTitle("This Guy Needs Some Attitude");

@@ -17,7 +17,7 @@ public class Frame2 extends JFrame implements ActionListener{
         proceedPanel.setBounds(0,0,1000,550);
 
         //Image UI itself
-        ImageIcon messageIcon = new ImageIcon("resources/page2/Choices.png");
+        ImageIcon messageIcon = new ImageIcon("src\\resources\\page2\\Choices.png");
         JLabel messageLabel = new JLabel();
         messageLabel.setIcon(messageIcon);
 

@@ -12,7 +12,7 @@ public class Frame1 extends JFrame implements ActionListener {
         
 
         // Image
-        ImageIcon attitudeIcon = new ImageIcon("resources/page1/Title.png");
+        ImageIcon attitudeIcon = new ImageIcon("src\\resources\\page1\\Title.png");
 
         JLabel title = new JLabel();
         title.setIcon(attitudeIcon);

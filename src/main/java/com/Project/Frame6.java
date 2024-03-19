@@ -24,7 +24,7 @@ public class Frame6 extends JFrame implements ActionListener {
 
 
         // Icon for search panel
-        ImageIcon messageIcon = new ImageIcon("resources/page6/1pane_static.png");
+        ImageIcon messageIcon = new ImageIcon("src\\resources\\page6\\1pane_static.png");
         JLabel messageIconLabel = new JLabel(messageIcon);
         searchPanel.add(messageIconLabel);
 
@@ -78,7 +78,7 @@ public class Frame6 extends JFrame implements ActionListener {
         setTitle("This Guy Needs Some Attitude"); // Set frame title
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1000, 707); // Set frame size
-        ImageIcon logo = new ImageIcon("resources//AttitudeIcon.png");
+        ImageIcon logo = new ImageIcon("src\\resources\\AttitudeIcon.png");
         setIconImage(logo.getImage()); // Set frame icon
         setLocationRelativeTo(null); // Center the frame on the screen
         setVisible(true); // Make the frame visible

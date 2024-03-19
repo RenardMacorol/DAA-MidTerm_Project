@@ -23,7 +23,7 @@ public class Frame7 extends JFrame implements ActionListener {
         JPanel places = new JPanel();
         places.setBounds(0,0,1000,490);
 
-        ImageIcon map = new ImageIcon("resources/page7/places.png");
+        ImageIcon map = new ImageIcon("src\\resources\\page7\\1panel_static.png");
         JLabel across = new JLabel();
         across.setIcon(map);
 
@@ -34,35 +34,35 @@ public class Frame7 extends JFrame implements ActionListener {
         point.setBounds(0,490,1000,217);
         point.setBackground(Color.decode("#FDFDFD"));
 
-        ImageIcon candyKingdom = new ImageIcon("resources/page7/candy-kingdom_button.png");
+        ImageIcon candyKingdom = new ImageIcon("src\\resources\\page7\\candy-kingdom_button.png");
         this.candyKingdomButton = new JButton();
         this.candyKingdomButton.setIcon(candyKingdom);
         this.candyKingdomButton.setBorder(null);
         this.candyKingdomButton.setFocusable(false);
         this.candyKingdomButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        ImageIcon farmWorld = new ImageIcon("resources/page7/farm-world_button.png");
+        ImageIcon farmWorld = new ImageIcon("src\\resources\\page7\\farm-world_button.png");
         this.farmWorldButton = new JButton();
         this.farmWorldButton.setIcon(farmWorld);
         this.farmWorldButton.setBorder(null);
         this.farmWorldButton.setFocusable(false);
         this.farmWorldButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        ImageIcon treeHouse = new ImageIcon("resources/page7/tree-house_button.png");
+        ImageIcon treeHouse = new ImageIcon("src\\resources\\page7\\tree-house_button.png");
         this.treeHouseButton = new JButton();
         this.treeHouseButton.setIcon(treeHouse);
         this.treeHouseButton.setBorder(null);
         this.treeHouseButton.setFocusable(false);
         this.treeHouseButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        ImageIcon iceKingdom = new ImageIcon("resources/page7/ice-kingdom_button.png");
+        ImageIcon iceKingdom = new ImageIcon("src\\resources\\page7\\candy-kingdom_button.png");
         this.iceKinggdomButton = new JButton();
         this.iceKinggdomButton.setIcon(iceKingdom);
         this.iceKinggdomButton.setBorder(null);
         this.iceKinggdomButton.setFocusable(false);
         this.iceKinggdomButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        ImageIcon beautopia = new ImageIcon("resources/page7/beautopia_button.png");
+        ImageIcon beautopia = new ImageIcon("src\\resources\\page7\\beautopia_button.png");
         this.beutopiaButton = new JButton();
         this.beutopiaButton.setIcon(beautopia);
         this.beutopiaButton.setBorder(null);
@@ -85,7 +85,7 @@ public class Frame7 extends JFrame implements ActionListener {
         this.add(point);
 
         // frame settings
-       ImageIcon icon = new ImageIcon("resources/MainIcon.png");
+       ImageIcon icon = new ImageIcon("src\\resources\\MainIcon.png");
        setIconImage(icon.getImage());
        setLayout(null);
        setTitle("This Guy Needs Some Attitude");
